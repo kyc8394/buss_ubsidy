@@ -6,152 +6,184 @@
 <title>전국 버스지원 현황 — 공공교통네트워크 · 경실련 공동</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --green:#1d4e3a; --green-mid:#2a6b50; --green-light:#e8f0ec; --green-pale:#f2f7f4;
-  --rust:#8b3a1a; --rust-light:#f5ece7;
-  --blue:#1a3a5c; --blue-light:#e8eef5;
-  --amber:#6b4a0e; --amber-light:#faf3e0;
-  --bg:#f5f2ec; --surface:#fff; --surface2:#f8f6f1;
-  --border:#e0dbd0; --border-mid:#c8c2b5; --border-strong:#a89e8c;
-  --text:#1a1814; --muted:#6b6558; --light:#9b9285;
-  --mono:'IBM Plex Mono',monospace; --sans:'Noto Sans KR',sans-serif;
-  --r:8px; --rl:12px;
+  --green:#1d4e3a;--green-mid:#2a6b50;--green-light:#e8f0ec;--green-pale:#f2f7f4;
+  --rust:#8b3a1a;--rust-light:#f5ece7;
+  --blue:#1a3a5c;--blue-light:#e8eef5;
+  --amber:#6b4a0e;--amber-light:#faf3e0;
+  --bg:#f5f2ec;--surface:#fff;--surface2:#f8f6f1;
+  --border:#e0dbd0;--border-mid:#c8c2b5;
+  --text:#1a1814;--muted:#6b6558;--light:#9b9285;
+  --mono:'IBM Plex Mono',monospace;--sans:'Noto Sans KR',sans-serif;
+  --r:8px;--rl:12px;
 }
-
 body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
 
-/* ── HEADER ── */
+/* HEADER */
 .site-header{background:var(--green);color:#fff;padding:0}
-.header-inner{max-width:1060px;margin:0 auto;padding:2rem 1.5rem 1.5rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.header-left .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.4rem}
-.header-left h1{font-size:clamp(18px,3.5vw,26px);font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.header-inner{max-width:1060px;margin:0 auto;padding:1.5rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.header-left .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.header-left h1{font-size:clamp(18px,3vw,24px);font-weight:700;margin-bottom:.25rem}
 .header-left .sub{font-size:12px;color:rgba(255,255,255,.55)}
-.header-right{display:flex;gap:.5rem;flex-wrap:wrap}
+.nav-btns{display:flex;gap:.4rem;flex-wrap:wrap}
 .nav-btn{font-family:var(--sans);font-size:12px;padding:7px 14px;border:1px solid rgba(255,255,255,.25);border-radius:var(--r);background:transparent;color:rgba(255,255,255,.75);cursor:pointer;transition:.15s;white-space:nowrap}
-.nav-btn:hover{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.5)}
+.nav-btn:hover{background:rgba(255,255,255,.12);color:#fff}
 .nav-btn.active{background:#fff;color:var(--green);font-weight:500;border-color:#fff}
 
-/* ── LAYOUT ── */
+/* LAYOUT */
 .page{display:none;max-width:1060px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
 .page.active{display:block}
 
-/* ── STAT PILLS at top ── */
+/* PILLS */
 .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem}
-.pill{background:var(--surface);border:0.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--muted);font-family:var(--mono);cursor:default}
-.pill-btn{background:var(--surface);border:0.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--muted);font-family:var(--mono);cursor:pointer;transition:.15s;display:inline-block}
-.pill-btn:hover{border-color:var(--green);color:var(--green)}
-.pill-btn.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:500}
-.pill-btn.active-pd{background:var(--rust);color:#fff;border-color:var(--rust);font-weight:500}
-.pill-btn.active-free{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:500}
+.pill{background:var(--surface);border:.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--muted);font-family:var(--mono)}
 .pill strong{color:var(--text);font-weight:500}
+.pill-btn{background:var(--surface);border:.5px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--muted);font-family:var(--mono);cursor:pointer;transition:.15s}
+.pill-btn:hover{border-color:var(--green);color:var(--green)}
+.pill-btn.on-qp{background:var(--green);color:#fff;border-color:var(--green);font-weight:500}
+.pill-btn.on-pd{background:var(--rust);color:#fff;border-color:var(--rust);font-weight:500}
+.pill-btn.on-free{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:500}
 
-/* ── SELECTOR HERO ── */
-.selector-hero{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--rl);padding:1.5rem;margin-bottom:1.5rem}
-.selector-hero h2{font-size:15px;font-weight:500;margin-bottom:1rem;color:var(--muted)}
-.region-picker{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
-.rgn-btn{font-family:var(--sans);font-size:13px;padding:6px 14px;border:0.5px solid var(--border-mid);border-radius:20px;background:var(--surface2);color:var(--muted);cursor:pointer;transition:.12s}
+/* SELECTOR */
+.selector-box{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:1.25rem;margin-bottom:1.25rem}
+.selector-box h2{font-size:15px;font-weight:500;margin-bottom:.9rem;color:var(--muted)}
+.sec-label{font-size:10px;font-family:var(--mono);color:var(--light);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.btn-group{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem}
+.rgn-btn{font-family:var(--sans);font-size:13px;padding:6px 14px;border:.5px solid var(--border-mid);border-radius:20px;background:var(--surface2);color:var(--muted);cursor:pointer;transition:.12s}
 .rgn-btn:hover{border-color:var(--green);color:var(--green)}
 .rgn-btn.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:500}
-.city-row{display:flex;flex-wrap:wrap;gap:.4rem}
-.city-chip{font-family:var(--sans);font-size:12px;padding:4px 12px;border:0.5px solid var(--border);border-radius:16px;background:var(--surface2);color:var(--muted);cursor:pointer;transition:.12s}
+.rgn-btn.metro-style{border-color:#a8c8b8;background:var(--green-light);color:var(--green)}
+.rgn-btn.metro-style:hover,.rgn-btn.metro-style.active{background:var(--green);color:#fff}
+.city-chip{font-family:var(--sans);font-size:12px;padding:4px 12px;border:.5px solid var(--border);border-radius:14px;background:var(--surface2);color:var(--muted);cursor:pointer;transition:.12s}
 .city-chip:hover{border-color:var(--green);color:var(--green)}
 .city-chip.active{background:var(--green-light);color:var(--green);border-color:var(--green);font-weight:500}
+.divider{border-top:.5px solid var(--border);margin:.75rem 0}
 
-/* ── CITY CARD ── */
-.city-display{animation:fadeIn .2s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.city-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
-.city-title{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
-.city-name-big{font-size:clamp(20px,4vw,28px);font-weight:700;line-height:1}
-.city-region-tag{font-size:12px;color:var(--light);font-family:var(--mono)}
-.badge-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
-.badge{font-size:11px;padding:3px 9px;border-radius:4px;font-weight:500}
-.bqp{background:var(--green-light);color:var(--green);border:0.5px solid #a8c8b8}
-.bfree{background:var(--blue-light);color:var(--blue);border:0.5px solid #b0c4d8}
-.bpd{background:var(--rust-light);color:var(--rust);border:0.5px solid #d8b0a0}
-
+/* STAT CARDS */
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
-.stat-card{background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:14px 16px}
-.stat-card .sc-label{font-size:11px;color:var(--light);font-family:var(--mono);margin-bottom:4px;letter-spacing:.03em}
-.stat-card .sc-val{font-size:20px;font-weight:700;font-family:var(--mono);line-height:1}
-.stat-card .sc-sub{font-size:11px;margin-top:3px}
-.up{color:var(--green)}.dn{color:var(--rust)}.na{color:var(--light)}
+.stat-card{background:var(--surface2);border:.5px solid var(--border);border-radius:var(--r);padding:14px 16px}
+.sc-label{font-size:11px;color:var(--light);font-family:var(--mono);margin-bottom:2px}
+.sc-year{font-size:9px;color:var(--light);font-family:var(--mono);margin-bottom:4px}
+.sc-val{font-size:18px;font-weight:700;font-family:var(--mono);line-height:1.1}
+.sc-diff{font-size:11px;margin-top:3px;line-height:1.5}
 
-.trend-section{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--rl);padding:1.25rem;margin-bottom:1.25rem}
-.trend-section h3{font-size:12px;font-family:var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem}
-.metric-tabs{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:1rem}
-.mt-btn{font-family:var(--sans);font-size:12px;padding:4px 11px;border:0.5px solid var(--border);border-radius:14px;background:none;color:var(--muted);cursor:pointer;transition:.12s}
+/* BADGES */
+.badge{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500}
+.bqp{background:var(--green-light);color:var(--green);border:.5px solid #a8c8b8}
+.bfree{background:var(--blue-light);color:var(--blue);border:.5px solid #b0c4d8}
+.bpd{background:var(--rust-light);color:var(--rust);border:.5px solid #d8b0a0}
+
+/* TREND CHART */
+.trend-box{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:1.25rem;margin-bottom:1.25rem}
+.trend-box h3{font-size:11px;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
+.metric-tabs{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.75rem}
+.mt-btn{font-family:var(--sans);font-size:12px;padding:4px 10px;border:.5px solid var(--border);border-radius:12px;background:none;color:var(--muted);cursor:pointer;transition:.12s}
 .mt-btn:hover{border-color:var(--green);color:var(--green)}
 .mt-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
-.chart-wrap{position:relative;height:200px;width:100%}
+.chart-wrap{position:relative;height:220px;width:100%}
+.no-data-box{height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--surface2);border-radius:var(--r);border:.5px dashed var(--border-mid)}
+.no-data-box span{color:var(--muted);font-size:12px}
 
-.info-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:.5rem}
-.info-table td{padding:7px 10px;border-bottom:0.5px solid var(--border)}
-.info-table td:first-child{color:var(--muted);width:130px;font-family:var(--mono);font-size:11px}
-.info-table tr:last-child td{border-bottom:none}
+/* INFO TABLE */
+.info-table{width:100%;border-collapse:collapse;font-size:12px}
+.info-table td{padding:7px 10px;border-bottom:.5px solid var(--border)}
+.info-table td:first-child{color:var(--muted);width:120px;font-family:var(--mono);font-size:11px}
+.info-table tr:last-child td{border:none}
 
+/* WARNING */
+.warn-box{background:var(--rust-light);border:.5px solid #d8b0a0;border-radius:var(--r);padding:10px 14px;margin-bottom:1rem}
+.warn-box .wt{font-size:11px;font-family:var(--mono);color:var(--rust);font-weight:500;margin-bottom:3px}
+.warn-box .wi{font-size:12px;color:var(--rust);line-height:1.7}
+
+/* COMPARE BAR */
+.cmp-bar-box{background:var(--surface2);border:.5px solid var(--border);border-radius:var(--r);padding:12px 14px;margin-bottom:1rem}
+.cmp-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px}
+.bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.bar-fill-g{height:100%;background:var(--green);border-radius:4px}
+.bar-fill-r{height:100%;background:var(--rust);border-radius:4px;opacity:.7}
+
+/* PLACEHOLDER */
 .placeholder-msg{padding:3rem 1rem;text-align:center;color:var(--light);font-size:13px}
-.placeholder-msg .big{font-size:32px;display:block;margin-bottom:.5rem}
+.placeholder-msg .big{font-size:30px;display:block;margin-bottom:.5rem}
 
-/* ── COMPARE PAGE ── */
-.compare-controls{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--rl);padding:1.25rem;margin-bottom:1.5rem}
-.compare-controls h2{font-size:14px;font-weight:500;margin-bottom:.75rem;color:var(--muted)}
-.compare-slots{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}
-.slot-select{font-family:var(--sans);font-size:13px;padding:6px 10px;border:0.5px solid var(--border-mid);border-radius:var(--r);background:var(--surface);color:var(--text);height:36px;min-width:160px;cursor:pointer;outline:none}
-.slot-select:focus{border-color:var(--green)}
-.compare-year-row{display:flex;align-items:center;gap:.75rem;margin-top:.75rem;flex-wrap:wrap}
-.compare-year-row label{font-size:12px;color:var(--muted)}
-.yr-btn{font-family:var(--mono);font-size:11px;padding:3px 10px;border:0.5px solid var(--border);border-radius:12px;background:none;color:var(--muted);cursor:pointer}
+/* CAT CARDS */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.cat-card{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:14px 16px;cursor:pointer;transition:border-color .12s}
+.cat-card:hover{border-color:var(--green)}
+
+/* COMPARE PAGE */
+.cmp-controls{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:1.25rem;margin-bottom:1.25rem}
+.cmp-controls h2{font-size:14px;font-weight:500;margin-bottom:.75rem;color:var(--muted)}
+.cmp-slots{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}
+.slot-sel{font-family:var(--sans);font-size:13px;padding:6px 10px;border:.5px solid var(--border-mid);border-radius:var(--r);background:var(--surface);color:var(--text);height:36px;min-width:160px;cursor:pointer;outline:none}
+.yr-btns{display:flex;gap:.3rem;flex-wrap:wrap}
+.yr-btn{font-family:var(--mono);font-size:11px;padding:3px 9px;border:.5px solid var(--border);border-radius:10px;background:none;color:var(--muted);cursor:pointer}
 .yr-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
-.compare-metric-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem}
+.cmp-table-wrap{overflow-x:auto}
+.cmp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px}
+.cmp-table th{padding:9px 12px;font-size:11px;font-family:var(--mono);color:var(--light);text-transform:uppercase;border-bottom:1px solid var(--border-mid);background:var(--surface2);text-align:right;white-space:nowrap}
+.cmp-table th:first-child{text-align:left}
+.cmp-table td{padding:9px 12px;border-bottom:.5px solid var(--border);text-align:right;font-family:var(--mono)}
+.cmp-table td:first-child{text-align:left;font-family:var(--sans)}
+.cmp-table tr:hover td{background:var(--green-pale)}
+.best-val{color:var(--green);font-weight:700}
+.worst-val{color:var(--rust)}
+.bar-inline{display:flex;align-items:center;justify-content:flex-end;gap:5px}
+.mini-bar{width:50px;height:5px;background:var(--border);border-radius:3px;overflow:hidden;flex-shrink:0}
+.mini-fill{height:100%;background:var(--green);border-radius:3px}
 
-.compare-table-wrap{overflow-x:auto}
-.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:500px}
-.compare-table th{padding:10px 14px;font-size:11px;font-family:var(--mono);color:var(--light);letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--border-mid);background:var(--surface2);text-align:left;white-space:nowrap}
-.compare-table td{padding:10px 14px;border-bottom:0.5px solid var(--border);vertical-align:middle}
-.compare-table tr:hover td{background:var(--green-pale)}
-.compare-table .num{text-align:right;font-family:var(--mono)}
-.compare-table .best{color:var(--green);font-weight:700}
-.compare-table .worst{color:var(--rust)}
-.city-col{display:flex;flex-direction:column;gap:2px}
-.city-col .cn{font-weight:500;font-size:13px}
-.city-col .cr{font-size:11px;color:var(--light);font-family:var(--mono)}
-
-.bar-inline{display:flex;align-items:center;gap:6px;justify-content:flex-end}
-.bar-bg{width:60px;height:6px;background:var(--border);border-radius:3px;overflow:hidden;flex-shrink:0}
-.bar-fill{height:100%;background:var(--green);border-radius:3px;transition:width .3s}
-
-/* ── REPORT PAGE ── */
-.report-page{max-width:680px}
-.report-section{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--rl);padding:1.5rem;margin-bottom:1rem}
+/* REPORT/ABOUT */
+.report-section{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:1.5rem;margin-bottom:1rem}
 .report-section h2{font-size:15px;font-weight:700;margin-bottom:.4rem}
-.report-section .rp-sub{font-size:13px;color:var(--muted);margin-bottom:1.25rem;line-height:1.7}
-.report-item{display:flex;gap:1rem;align-items:flex-start;padding:.9rem 0;border-bottom:0.5px solid var(--border)}
-.report-item:last-child{border-bottom:none;padding-bottom:0}
+.rp-sub{font-size:13px;color:var(--muted);margin-bottom:1.25rem;line-height:1.7}
+.report-item{display:flex;gap:1rem;align-items:flex-start;padding:.9rem 0;border-bottom:.5px solid var(--border)}
+.report-item:last-child{border:none;padding-bottom:0}
 .ri-icon{width:40px;height:40px;border-radius:var(--r);background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.ri-body .ri-title{font-size:14px;font-weight:500;margin-bottom:2px}
-.ri-body .ri-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:.5rem}
-.ri-body a,.ri-body .link-btn{font-size:12px;color:var(--green);font-weight:500;text-decoration:none;cursor:pointer;border:none;background:none;font-family:var(--sans);padding:0}
-.ri-body a:hover,.ri-body .link-btn:hover{text-decoration:underline}
-.notice-box{background:var(--amber-light);border:0.5px solid #d4c090;border-radius:var(--r);padding:.75rem 1rem;font-size:12px;color:var(--amber);line-height:1.7;margin-top:1rem}
-
-/* ── ABOUT ── */
-.about-section{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--rl);padding:1.5rem;margin-bottom:1rem;font-size:13px;color:var(--muted);line-height:1.9}
+.ri-title{font-size:14px;font-weight:500;margin-bottom:2px}
+.ri-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:.4rem}
+.ri-link{font-size:12px;color:var(--green);font-weight:500;text-decoration:none}
+.ri-link:hover{text-decoration:underline}
+.notice-box{background:var(--amber-light);border:.5px solid #d4c090;border-radius:var(--r);padding:.75rem 1rem;font-size:12px;color:var(--amber);line-height:1.7;margin-top:1rem}
+.about-section{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:1.5rem;margin-bottom:1rem;font-size:13px;color:var(--muted);line-height:1.9}
 .about-section h2{font-size:15px;font-weight:700;color:var(--text);margin-bottom:.75rem}
 .about-section strong{color:var(--text);font-weight:500}
 
-/* ── FOOTER ── */
-footer{background:var(--green);color:rgba(255,255,255,.4);text-align:center;padding:1.25rem;font-size:11px;font-family:var(--mono);margin-top:2rem}
+/* FINDINGS */
+.findings-hero{background:var(--green);color:#fff;border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.25rem}
+.fh-label{font-size:10px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.4rem}
+.findings-hero h2{font-size:clamp(17px,3vw,22px);font-weight:700;line-height:1.3;margin-bottom:.5rem}
+.findings-hero .fh-sub{font-size:13px;color:rgba(255,255,255,.65)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:1.25rem}
+.kpi-card{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:14px 16px}
+.kpi-card.alert{border-color:#c8a090;background:var(--rust-light)}
+.kpi-top{font-size:11px;font-family:var(--mono);color:var(--light);letter-spacing:.04em;margin-bottom:6px}
+.kpi-num{font-size:26px;font-weight:700;font-family:var(--mono);line-height:1}
+.kpi-num.red{color:var(--rust)}
+.kpi-desc{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.6}
+.finding-block{background:var(--surface);border:.5px solid var(--border);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:1rem}
+.finding-block h3{font-size:14px;font-weight:700;margin-bottom:.6rem}
+.finding-block p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:.75rem}
+.finding-block p:last-child{margin-bottom:0}
+.hl{font-weight:500;color:var(--text)}
+.metro-table{width:100%;border-collapse:collapse;font-size:13px}
+.metro-table th{font-size:11px;font-family:var(--mono);color:var(--light);text-transform:uppercase;padding:7px 12px;border-bottom:1px solid var(--border-mid);background:var(--surface2);text-align:right}
+.metro-table th:first-child{text-align:left}
+.metro-table td{padding:8px 12px;border-bottom:.5px solid var(--border);text-align:right;font-family:var(--mono);font-size:12px}
+.metro-table td:first-child{text-align:left;font-family:var(--sans);font-weight:500}
+.red-val{color:var(--rust);font-weight:500}
+.grn-val{color:var(--green);font-weight:500}
+.paradox-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:.75rem 0}
+.paradox-item{background:var(--surface2);border:.5px solid var(--border);border-radius:var(--r);padding:12px;text-align:center}
+.pi-num{font-size:22px;font-weight:700;font-family:var(--mono);color:var(--rust)}
+.pi-label{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+.issue-list{list-style:none;padding:0;margin:.75rem 0}
+.issue-list li{padding:.6rem .75rem;border-left:3px solid var(--green);margin-bottom:.4rem;background:var(--green-pale);border-radius:0 var(--r) var(--r) 0;font-size:13px;color:var(--muted);line-height:1.6}
+.issue-list li strong{color:var(--text)}
 
-@media(max-width:600px){
-  .header-inner{padding:1.25rem 1rem 1rem}
-  .page{padding:1rem 1rem 3rem}
-  .compare-slots{flex-direction:column}
-  .slot-select{width:100%}
-}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+footer{background:var(--green);color:rgba(255,255,255,.4);text-align:center;padding:1.25rem;font-size:11px;font-family:var(--mono);margin-top:2rem}
+@media(max-width:600px){.header-inner{padding:1rem}.page{padding:1rem 1rem 3rem}.cmp-slots{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -163,482 +195,681 @@ footer{background:var(--green);color:rgba(255,255,255,.4);text-align:center;padd
       <h1>전국 버스지원 현황</h1>
       <p class="sub">버스준공영제 및 지자체 버스 재정지원 현황 · 2019–2025</p>
     </div>
-    <div class="header-right">
-      <button class="nav-btn active" onclick="goPage('look')">📍 내 지역 보기</button>
-      <button class="nav-btn" onclick="goPage('compare')">⚖️ 지역 비교</button>
-      <button class="nav-btn" onclick="goPage('report')">✉️ 제보 · 정보공유</button>
-      <button class="nav-btn" onclick="goPage('about')">ℹ️ 자료 안내</button>
-    </div>
+    <nav class="nav-btns">
+      <button class="nav-btn active" data-page="look">📍 내 지역 보기</button>
+      <button class="nav-btn" data-page="compare">⚖️ 지역 비교</button>
+      <button class="nav-btn" data-page="findings">📋 주요 분석 결과</button>
+      <button class="nav-btn" data-page="report">✉️ 제보 · 정보공유</button>
+      <button class="nav-btn" data-page="about">ℹ️ 자료 안내</button>
+    </nav>
   </div>
 </header>
 
-<!-- ══ PAGE: 내 지역 보기 ══ -->
+<!-- 내 지역 보기 -->
 <div id="pg-look" class="page active">
-
-  <div class="pill-row" id="summary-pills"></div>
-
-  <div class="selector-hero" id="selector-hero">
-    <h2 id="selector-title">지역을 선택하세요</h2>
-    <div class="region-picker" id="region-picker"></div>
-    <div class="city-row" id="city-row"></div>
+  <div class="pill-row" id="pill-row"></div>
+  <div class="selector-box">
+    <h2 id="sel-title">지역을 선택하세요</h2>
+    <div class="sec-label">특·광역시 / 광역단위</div>
+    <div class="btn-group" id="metro-btns"></div>
+    <div class="divider"></div>
+    <div class="sec-label">기초자치단체</div>
+    <div class="btn-group" id="do-btns"></div>
+    <div class="btn-group" id="city-btns" style="margin-top:.4rem"></div>
   </div>
-
   <div id="city-display">
     <div class="placeholder-msg">
       <span class="big">🚌</span>
-      위에서 광역시도를 선택하면 시군구 목록이 나옵니다
+      위에서 지역을 선택하세요<br>
+      <span style="font-size:12px;color:var(--light)">특·광역시는 클릭하면 바로 표시됩니다</span>
     </div>
   </div>
-
 </div>
 
-<!-- ══ PAGE: 지역 비교 ══ -->
+<!-- 지역 비교 -->
 <div id="pg-compare" class="page">
-
-  <div class="compare-controls">
+  <div class="cmp-controls">
     <h2>비교할 지역을 선택하세요 (최대 4개)</h2>
-    <div class="compare-slots" id="compare-slots"></div>
-    <div class="compare-year-row">
-      <label>기준 연도</label>
-      <div id="yr-btns" style="display:flex;gap:.3rem;flex-wrap:wrap"></div>
+    <div class="cmp-slots" id="cmp-slots"></div>
+    <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
+      <span style="font-size:12px;color:var(--muted)">기준 연도</span>
+      <div class="yr-btns" id="yr-btns"></div>
     </div>
-    <div class="compare-metric-row" id="cmp-metric-row"></div>
+    <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem" id="cmp-metric-btns"></div>
   </div>
-
-  <div id="compare-result">
-    <div class="placeholder-msg"><span class="big">⚖️</span>2개 이상 지역을 선택하면 비교표가 나타납니다</div>
+  <div id="cmp-result">
+    <div class="placeholder-msg"><span class="big">⚖️</span>2개 이상 선택하면 비교표가 나타납니다</div>
   </div>
-
 </div>
 
-<!-- ══ PAGE: 제보 ══ -->
+<!-- 주요 분석 결과 -->
+<div id="pg-findings" class="page">
+<div style="max-width:860px">
+  <div class="findings-hero">
+    <div class="fh-label">공공교통네트워크 × 경실련 공동 분석 · 2019–2024</div>
+    <h2>재정지원은 2배 늘었는데<br>승객은 줄고 서비스도 줄었다</h2>
+    <p class="fh-sub">전국 기초자치단체 151곳 + 특·광역시 7곳 버스 운영실태 분석 결과</p>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card alert"><div class="kpi-top">전국 재정지원금 증가 (2019→2024)</div><div class="kpi-num red">+107.1%</div><div class="kpi-desc">1조 9,795억 → <strong>4조 1,002억 원</strong></div></div>
+    <div class="kpi-card alert"><div class="kpi-top">전국 승객 수 변화 (2019→2024)</div><div class="kpi-num red">-12.6%</div><div class="kpi-desc">42억 → <strong>36억 8,691만 명</strong></div></div>
+    <div class="kpi-card alert"><div class="kpi-top">기초지자체 운송수입 변화</div><div class="kpi-num red">-6.4%</div><div class="kpi-desc">재정지원은 <strong>+82.6%</strong> 증가</div></div>
+    <div class="kpi-card alert"><div class="kpi-top">기초지자체 총운행거리</div><div class="kpi-num red">-4.8%</div><div class="kpi-desc">정류장은 <strong>+9.6%</strong> 늘었지만</div></div>
+  </div>
+  <div class="finding-block">
+    <h3>❶ 전국: 재정지원 폭증, 승객 회복은 더뎌</h3>
+    <p>코로나19 이후 전국 버스 재정지원금은 <span class="hl">107.1% 증가</span>했습니다. 반면 승객 수는 12.6% 줄어 코로나 이전 수준을 회복하지 못했습니다. 운송수입 증가는 요금 인상 효과입니다.</p>
+    <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px;min-width:400px">
+      <thead><tr style="background:var(--green);color:#fff">
+        <th style="padding:8px 12px;text-align:left;font-weight:500;font-size:12px">연도</th>
+        <th style="padding:8px 12px;text-align:right;font-weight:500;font-size:12px">재정지원금(억원)</th>
+        <th style="padding:8px 12px;text-align:right;font-weight:500;font-size:12px">운송수입(억원)</th>
+        <th style="padding:8px 12px;text-align:right;font-weight:500;font-size:12px">승객수(천명)</th>
+      </tr></thead>
+      <tbody id="nat-tbody"></tbody>
+    </table></div>
+  </div>
+  <div class="finding-block">
+    <h3>❷ 기초자치단체: 재정지원↑ 수입↓ 승객↓</h3>
+    <p>151개 기초자치단체에서 <span class="hl">재정지원금 82.6% 증가, 운송수입 6.4% 감소, 승객 수 13.7% 감소</span>가 동시에 발생했습니다. 지방에서 버스는 유일한 공공교통 수단인 경우가 많아 이동권 문제로 직결됩니다.</p>
+    <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px;min-width:400px">
+      <thead><tr style="background:var(--rust);color:#fff">
+        <th style="padding:8px 12px;text-align:left;font-weight:500;font-size:12px">연도</th>
+        <th style="padding:8px 12px;text-align:right;font-weight:500;font-size:12px">재정지원금(억원)</th>
+        <th style="padding:8px 12px;text-align:right;font-weight:500;font-size:12px">운송수입(억원)</th>
+        <th style="padding:8px 12px;text-align:right;font-weight:500;font-size:12px">승객수(천명)</th>
+      </tr></thead>
+      <tbody id="basic-tbody"></tbody>
+    </table></div>
+    <p style="font-size:11px;color:var(--light);margin-top:.5rem">※ 재정지원 123곳·운송수입 100곳·승객수 106곳 기준 (2019~2024 연속자료 확보 지자체)</p>
+  </div>
+  <div class="finding-block">
+    <h3>❸ 정류장은 늘었지만 실제 서비스는 줄었다</h3>
+    <p>99곳 기준 총운행거리 <span class="hl">-4.8%</span>, 정류장 수 +9.6%. 배차 간격과 운행거리가 서비스의 실질 지표입니다.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.75rem 0">
+      <div style="background:var(--rust-light);border:.5px solid #d8b0a0;border-radius:var(--r);padding:14px;text-align:center"><div style="font-size:11px;color:var(--rust);font-family:var(--mono);margin-bottom:4px">총운행거리 (99곳)</div><div style="font-size:22px;font-weight:700;color:var(--rust);font-family:var(--mono)">-4.8%</div><div style="font-size:11px;color:var(--muted);margin-top:3px">7억 3,571만 → 7억 121만km</div></div>
+      <div style="background:var(--green-pale);border:.5px solid #a0c0b0;border-radius:var(--r);padding:14px;text-align:center"><div style="font-size:11px;color:var(--green);font-family:var(--mono);margin-bottom:4px">정류장 수 (99곳)</div><div style="font-size:22px;font-weight:700;color:var(--green);font-family:var(--mono)">+9.6%</div><div style="font-size:11px;color:var(--muted);margin-top:3px">7만 5,323 → 8만 2,532개</div></div>
+    </div>
+    <div class="paradox-grid">
+      <div class="paradox-item"><div class="pi-num">30곳</div><div class="pi-label">정류장↑ + 운행거리↓ 동시</div></div>
+      <div class="paradox-item"><div class="pi-num">20곳</div><div class="pi-label">운행거리 10% 이상 감소</div></div>
+      <div class="paradox-item"><div class="pi-num">16곳</div><div class="pi-label">운행거리↓ + 승객↓ 동시</div></div>
+      <div class="paradox-item"><div class="pi-num">13곳</div><div class="pi-label">노선↑ + 운행거리↓ 동시</div></div>
+    </div>
+  </div>
+  <div class="finding-block">
+    <h3>❹ 특·광역시 7곳 모두: 승객 미회복, 재정지원 급증</h3>
+    <div style="overflow-x:auto"><table class="metro-table" style="margin-top:.75rem">
+      <thead><tr><th style="text-align:left">도시</th><th>승객 수</th><th>운송수입</th><th>재정지원금</th><th>운행거리</th></tr></thead>
+      <tbody>
+        <tr><td>서울</td><td class="red-val">-7.7%</td><td class="grn-val">+17.5%</td><td class="red-val">+37.2%</td><td style="text-align:right;color:var(--light)">자료없음</td></tr>
+        <tr><td>인천</td><td class="red-val">-17.7%</td><td class="grn-val">+15.2%</td><td class="red-val">+81.3%</td><td class="red-val">-6.7%</td></tr>
+        <tr><td>대구</td><td class="red-val">-10.5%</td><td class="grn-val">+7.8%</td><td class="red-val">+67.3%</td><td class="grn-val">+0.3%</td></tr>
+        <tr><td>광주</td><td class="red-val">-17.4%</td><td class="red-val">-17.5%</td><td class="red-val">+86.2%</td><td class="red-val">-10.8%</td></tr>
+        <tr><td>대전</td><td class="red-val">-5.8%</td><td class="grn-val">+6.3%</td><td class="red-val">+63.7%</td><td class="grn-val">+4.3%</td></tr>
+        <tr><td>부산</td><td class="red-val">-27.1%</td><td class="grn-val">+10.4%</td><td class="red-val">+100.0%</td><td class="red-val">-10.0%</td></tr>
+        <tr><td>울산</td><td class="red-val">-21.6%</td><td class="red-val">-1.3%</td><td class="red-val">+135.8%</td><td style="text-align:right;color:var(--light)">자료없음</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:11px;color:var(--light);margin-top:.5rem">※ 경실련·공공교통네트워크 정보공개청구 결과. 2019→2024년 기준.</p>
+  </div>
+  <div class="finding-block">
+    <h3>⚠️ 구조적 문제</h3>
+    <ul class="issue-list">
+      <li><strong>고비용 구조 고착</strong> — 승객이 줄었는데도 재정지원과 요금이 동시에 오르는 구조</li>
+      <li><strong>투명성 부재</strong> — 표준운송원가·정산근거를 공개하는 지자체가 극히 드묾</li>
+      <li><strong>외형 지표의 함정</strong> — 정류장·노선 수 증가가 서비스 개선을 의미하지 않음</li>
+      <li><strong>거버넌스 부실</strong> — 시민 이용자 참여 없는 행정·사업자 중심 의사결정</li>
+    </ul>
+  </div>
+  <div class="notice-box">📄 <strong>전문 보고서</strong> — 경실련·공공교통네트워크 공동 발표 「전국 버스 운영실태 및 준공영제 개선방안」 전문은 <a href="https://ccej.or.kr" style="color:var(--amber);font-weight:500">ccej.or.kr</a>에서 확인하실 수 있습니다.</div>
+</div>
+</div>
+
+<!-- 제보 -->
 <div id="pg-report" class="page">
-  <div class="report-page">
-
-    <div class="report-section">
-      <h2>버스 문제를 제보해주세요</h2>
-      <p class="rp-sub">노선 감축, 배차 간격 문제, 요금 인상, 정보공개 거부 등 여러분이 경험한 지역 버스 문제를 알려주세요. 제보 내용은 공공교통네트워크·경실련의 공동 정책 활동에 활용됩니다.</p>
-
-      <div class="report-item">
-        <div class="ri-icon">📝</div>
-        <div class="ri-body">
-          <div class="ri-title">버스 문제 제보</div>
-          <div class="ri-desc">노선 감축·폐지, 배차 간격, 요금 문제, 준공영제 관련 문제 등을 제보해주세요. 지역, 노선번호, 구체적인 상황을 적어주시면 더 도움이 됩니다.</div>
-          <a href="mailto:ccej@ccej.or.kr,kimsangchul75@gmail.com?subject=[버스제보] 지역명을 적어주세요&body=지역:%0A노선번호(있으면):%0A문제내용:%0A">→ 이메일로 제보하기</a><br><span style="font-size:11px;color:var(--muted)">ccej@ccej.or.kr (경실련) · kimsangchul75@gmail.com (공공교통네트워크)</span></a>
-        </div>
-      </div>
-
-      <div class="report-item">
-        <div class="ri-icon">📊</div>
-        <div class="ri-body">
-          <div class="ri-title">정보공개 자료 공유</div>
-          <div class="ri-desc">직접 정보공개를 청구해 받은 자료, 또는 추가 데이터가 있으시면 공유해주세요. 이 데이터를 더 정확하게 만드는 데 활용됩니다.</div>
-          <a href="mailto:ccej@ccej.or.kr,kimsangchul75@gmail.com?subject=[자료공유] 지역명을 적어주세요">→ 이메일로 보내기</a><br><span style="font-size:11px;color:var(--muted)">ccej@ccej.or.kr (경실련) · kimsangchul75@gmail.com (공공교통네트워크)</span>
-        </div>
-      </div>
-
-      <div class="report-item">
-        <div class="ri-icon">📰</div>
-        <div class="ri-body">
-          <div class="ri-title">언론 제보 · 취재 문의</div>
-          <div class="ri-desc">지역 버스 문제를 취재하시는 기자분들, 또는 언론에 알리고 싶은 사안이 있으신 분들은 연락주세요.</div>
-          <a href="mailto:ccej@ccej.or.kr,kimsangchul75@gmail.com?subject=[취재문의]">→ 이메일로 연락하기</a><br><span style="font-size:11px;color:var(--muted)">ccej@ccej.or.kr (경실련) · kimsangchul75@gmail.com (공공교통네트워크)</span>
-        </div>
-      </div>
-
-      <div class="notice-box">
-        💡 제보 내용은 공공교통네트워크·경실련이 공동으로 검토하며, 정책 제안 및 후속 조사에 활용됩니다. 개인정보는 제보 목적 외에 사용되지 않습니다.
+<div style="max-width:680px">
+  <div class="report-section">
+    <h2>버스 문제를 제보해주세요</h2>
+    <p class="rp-sub">노선 감축, 배차 간격, 요금 문제, 정보공개 거부 등 여러분이 경험한 지역 버스 문제를 알려주세요. 제보는 공공교통네트워크·경실련의 공동 정책 활동에 활용됩니다.</p>
+    <div class="report-item">
+      <div class="ri-icon">📝</div>
+      <div>
+        <div class="ri-title">버스 문제 제보</div>
+        <div class="ri-desc">노선 감축·폐지, 배차 간격, 요금 문제 등. 지역명·노선번호·상황을 함께 적어주세요.</div>
+        <a class="ri-link" href="mailto:ccej@ccej.or.kr,2020optn@gmail.com?subject=[버스제보] 지역명을 적어주세요&body=지역:%0A노선번호(있으면):%0A문제내용:%0A">→ 이메일로 제보하기</a>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">ccej@ccej.or.kr (경실련) · 2020optn@gmail.com (공공교통네트워크)</div>
       </div>
     </div>
-
-    <div class="report-section">
-      <h2>이 자료를 활용하고 싶다면</h2>
-      <p class="rp-sub" style="margin-bottom:.75rem">이 데이터는 공개 정보공개청구 자료입니다. 연구, 보도, 정책 제안 등에 자유롭게 활용하실 수 있습니다. 다만 출처를 명시해주세요.</p>
-
-      <div class="report-item">
-        <div class="ri-icon">📎</div>
-        <div class="ri-body">
-          <div class="ri-title">원본 엑셀 파일 다운로드</div>
-          <div class="ri-desc">정보공개청구 원본 데이터를 그대로 받아보실 수 있습니다.</div>
-          <a href="#">→ 다운로드 (준비 중)</a>
-        </div>
+    <div class="report-item">
+      <div class="ri-icon">📊</div>
+      <div>
+        <div class="ri-title">정보공개 자료 공유</div>
+        <div class="ri-desc">직접 정보공개 청구해 받은 자료나 추가 데이터를 공유해주세요.</div>
+        <a class="ri-link" href="mailto:ccej@ccej.or.kr,2020optn@gmail.com?subject=[자료공유] 지역명을 적어주세요">→ 이메일로 보내기</a>
       </div>
-
-      <div class="report-item">
-        <div class="ri-icon">🔗</div>
-        <div class="ri-body">
-          <div class="ri-title">출처 표기</div>
-          <div class="ri-desc">이 자료를 인용하실 때는 아래와 같이 표기해주세요.</div>
-          <div style="margin-top:6px;background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:8px 12px;font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7">
-            공공교통네트워크·경실련 공동, 「전국 버스지원 현황」, 정보공개청구 자료, 2025
-          </div>
+    </div>
+    <div class="report-item">
+      <div class="ri-icon">📰</div>
+      <div>
+        <div class="ri-title">언론 제보 · 취재 문의</div>
+        <div class="ri-desc">취재하시는 기자분들이나 언론을 통해 알리고 싶은 사안도 연락주세요.</div>
+        <a class="ri-link" href="mailto:ccej@ccej.or.kr,2020optn@gmail.com?subject=[취재문의]">→ 이메일로 연락하기</a>
+      </div>
+    </div>
+    <div class="notice-box">💡 제보 내용은 공공교통네트워크·경실련이 공동으로 검토하며, 정책 제안 및 후속 조사에 활용됩니다.</div>
+  </div>
+  <div class="report-section">
+    <h2>이 자료를 활용하고 싶다면</h2>
+    <p class="rp-sub" style="margin-bottom:.75rem">정보공개청구 자료입니다. 연구·보도·정책 제안에 자유롭게 활용하실 수 있습니다. 출처를 명시해주세요.</p>
+    <div class="report-item">
+      <div class="ri-icon">🔗</div>
+      <div>
+        <div class="ri-title">출처 표기</div>
+        <div style="margin-top:6px;background:var(--surface2);border:.5px solid var(--border);border-radius:var(--r);padding:8px 12px;font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7">
+          공공교통네트워크·경실련 공동, 「전국 버스지원 현황」, 정보공개청구 자료, 2025
         </div>
       </div>
     </div>
-
   </div>
 </div>
+</div>
 
-<!-- ══ PAGE: 자료 안내 ══ -->
+<!-- 자료 안내 -->
 <div id="pg-about" class="page">
-  <div style="max-width:680px">
-
-    <div class="about-section">
-      <h2>이 자료는 무엇인가요?</h2>
-      공공교통네트워크와 경실련이 공동으로 <strong>정보공개청구</strong>를 통해 전국 지방자치단체로부터 받은 버스 재정지원 현황 자료입니다. 2019년부터 2025년까지 전국 시군구의 버스 수입, 지원금, 승객수, 노선수, 정류장 수, 준공영제 여부, 요금할인 제도 등을 담고 있습니다.
-    </div>
-
-    <div class="about-section">
-      <h2>자료의 한계와 주의사항</h2>
-      <strong>데이터 공백이 많습니다.</strong> 일부 지자체는 정보공개를 거부하거나 불완전한 자료를 제출했습니다. '자료 없음(—)'으로 표시된 항목은 해당 지자체가 자료를 제출하지 않았거나 존재하지 않는 경우입니다.<br><br>
-      <strong>수치의 기준이 다를 수 있습니다.</strong> 지자체마다 집계 방식이 다를 수 있어 단순 비교에 주의가 필요합니다.<br><br>
-      <strong>정확성의 책임은 해당 지자체에 있습니다.</strong> 제출된 자료를 그대로 정리한 것으로, 공공교통네트워크·경실련이 수치의 정확성을 별도로 검증하지는 않았습니다.
-    </div>
-
-    <div class="about-section">
-      <h2>준공영제란?</h2>
-      버스 운영은 민간 업체가 하되, 운행 손실을 지방자치단체가 보전해주는 제도입니다. 수익성이 낮은 노선도 유지할 수 있다는 장점이 있지만, 지원금 규모와 투명성에 대한 논란도 있습니다. 이 데이터에서 준공영제 '도입' 여부와 구체적인 형태(전체/일부/표준운송원가 방식 등)를 확인할 수 있습니다.
-    </div>
-
-    <div class="about-section">
-      <h2>문의</h2>
-      공공교통네트워크 · 경실련 교통위원회 공동<br>
-      <a href="mailto:ccej@ccej.or.kr" style="font-family:var(--mono);font-size:12px;color:var(--green)">ccej@ccej.or.kr</a> (경실련) &nbsp;·&nbsp; <a href="mailto:kimsangchul75@gmail.com" style="font-family:var(--mono);font-size:12px;color:var(--green)">kimsangchul75@gmail.com</a> (공공교통네트워크)
-    </div>
-
+<div style="max-width:680px">
+  <div class="about-section">
+    <h2>이 자료는 무엇인가요?</h2>
+    공공교통네트워크와 경실련이 <strong>정보공개청구</strong>를 통해 전국 지방자치단체로부터 받은 버스 재정지원 현황 자료입니다. 2019~2025년 전국 시군구의 버스 수입, 지원금, 승객수, 노선수, 정류장, 운행거리, 준공영제 여부, 요금할인 제도를 담고 있습니다.
+  </div>
+  <div class="about-section">
+    <h2>자료의 한계와 주의사항</h2>
+    <strong>데이터 공백이 많습니다.</strong> 일부 지자체는 정보공개를 거부하거나 불완전한 자료를 제출했습니다. '자료없음(—)'은 해당 지자체가 자료를 제출하지 않은 경우입니다.<br><br>
+    <strong>집계 기준이 다를 수 있습니다.</strong> 지자체마다 집계 방식이 달라 단순 비교에 주의가 필요합니다.<br><br>
+    <strong>2025년 자료는 잠정치입니다.</strong> 일부 지자체만 제출한 상태로, 최종 확정치가 아닙니다.
+  </div>
+  <div class="about-section">
+    <h2>준공영제란?</h2>
+    버스 운영은 민간 업체가 하되 운행 손실을 지방자치단체가 보전해주는 제도입니다. 수익성이 낮은 노선도 유지할 수 있다는 장점이 있지만, 지원금 규모와 투명성에 대한 논란도 있습니다.
+  </div>
+  <div class="about-section">
+    <h2>문의</h2>
+    공공교통네트워크 · 경실련 교통위원회 공동<br>
+    <a href="mailto:ccej@ccej.or.kr" style="font-family:var(--mono);font-size:12px;color:var(--green)">ccej@ccej.or.kr</a> (경실련) &nbsp;·&nbsp;
+    <a href="mailto:2020optn@gmail.com" style="font-family:var(--mono);font-size:12px;color:var(--green)">2020optn@gmail.com</a> (공공교통네트워크)
   </div>
 </div>
+</div>
 
-<footer>공공교통네트워크 × 경실련 공동 · 정보공개청구 자료 공개 · ccej@ccej.or.kr · kimsangchul75@gmail.com</footer>
+<footer>공공교통네트워크 × 경실련 공동 · 정보공개청구 자료 공개 · ccej@ccej.or.kr · 2020optn@gmail.com</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const DATA = [{"region":"서울","city":"서울","discount":"기후동행카드","quasi_public":"준공영제","pop_decline":false,"income":[1300200,1011800,1005900,1120700,1287000,1528000,1528000],"subsidy":[291500,170500,456100,811400,891500,400000,457500],"passengers":[1479364,1143751,1139225,1262572,1318186,1365084,1262182],"stops":[6291,6451,3576,6608,6630,6655,6710],"routes":[365,365,373,373,384,394,395]},{"region":"부산","city":"부산","discount":"동백패스","quasi_public":"준공영제","pop_decline":false,"income":[417500,323100,315500,340400,391900,461000,450100],"subsidy":[130000,188100,367200,305600,271100,260000,275000],"passengers":[521321,394640,333208,359387,376670,379908,312401],"stops":[3599,3642,3646,3693,3830,3861,3806],"routes":[145,145,144,144,146,147,147]},{"region":"대구","city":"대구","discount":"","quasi_public":"준공영제","pop_decline":false,"income":[226863,161708,172890,183750,198621,244552,199128],"subsidy":[132000,181900,194600,257735,240388,220876,262684],"passengers":[229654,161434,174093,182958,196848,205566,172641],"stops":[3204,3241,3302,3347,3351,3383,3422],"routes":[115,117,117,119,121,122,127]},{"region":"인천","city":"인천","discount":"인천i패스","quasi_public":"준공영제","pop_decline":false,"income":[234785,179190,189057,208684,233579,270494,202621],"subsidy":[127191,190654,218112,264769,281600,230648,238524],"passengers":[335157,244082,239014,262548,273871,275709,207457],"stops":[5837,6090,6263,6212,6277,6446,6501],"routes":[179,186,190,192,194,199,203]},{"region":"광주","city":"광주","discount":"","quasi_public":"준공영제","pop_decline":false,"income":[130236,89600,93236,100657,105799,107390,97404],"subsidy":[73262,116155,121210,137944,133798,136424,129007],"passengers":[126704,85106,89779,96328,102416,104638,95707],"stops":[2379,2379,2381,2369,2378,2379,2400],"routes":[101,101,101,101,101,102,103]},{"region":"대전","city":"대전","discount":"","quasi_public":"준공영제","pop_decline":false,"income":[145637,100886,105105,115266,122197,154794,129436],"subsidy":[57792,100042,105140,116580,115046,94626,79492],"passengers":[152507,108689,113690,125275,134657,143632,108164],"stops":[2271,2283,2314,2347,2351,2387,2416],"routes":[100,101,101,102,103,105,107]},{"region":"울산","city":"울산","discount":"24년부터 어린이·25년부터 노인무료","quasi_public":"","pop_decline":false,"income":[100765,73305,71873,81757,92110,99425,96947],"subsidy":[68070,100127,114330,137859,145076,160497,181264],"passengers":[99645,70810,70445,75555,78840,78110,74460],"stops":[3079,3130,3140,3657,3484,3496,3388],"routes":[171,174,181,183,183,182,185]},{"region":"세종","city":"세종","discount":"이응패스","quasi_public":"준공영제","pop_decline":false,"income":[17370,14758,17290,20145,22200,24728,null],"subsidy":[13200,15200,15900,18082,21871,28521,null],"passengers":[17141,13451,14741,17174,18921,21493,null],"stops":[null,1159,1188,1270,1298,1430,1452],"routes":[62,61,66,62,63,81,null]},{"region":"경기","city":"안양시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[3644,5890,9519,18161,13983,8783,null],"passengers":[null,null,null,null,null,null,null],"stops":[616,639,641,646,687,719,743],"routes":[36,36,36,36,36,37,37]},{"region":"경기","city":"부천시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[26067,24372,38850,48452,48472,35454,19448],"passengers":[null,null,null,null,null,null,null],"stops":[1111,1102,1106,1104,1104,1110,1106],"routes":[50,51,53,52,52,50,50]},{"region":"경기","city":"평택시","discount":"","quasi_public":"","pop_decline":false,"income":[41681,24650,32087,37254,35709,39648,37998],"subsidy":[19387,38174,32493,29082,32383,30200,20336],"passengers":[35873,21215,27616,32063,31950,32871,30774],"stops":[null,null,null,null,1917,1922,1938],"routes":[null,null,null,null,347,363,385]},{"region":"경기","city":"고양시","discount":"","quasi_public":"24년부터 일부","pop_decline":false,"income":[66128,55751,55892,64041,67579,73734,null],"subsidy":[9045,9112,15461,16938,19480,27121,null],"passengers":[70706,51813,48787,52812,53834,61967,null],"stops":[null,null,null,null,null,null,null],"routes":[41,42,42,42,43,49,49]},{"region":"경기","city":"과천시","discount":"24.7월부터 노인무상","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[6358,6452,7216,12516,12855,14290,null],"passengers":[null,null,null,null,null,null,null],"stops":[110,110,110,110,131,131,133],"routes":[2,2,3,3,3,3,3]},{"region":"경기","city":"구리시","discount":"65세 어르신 교통비 지원","quasi_public":"일부","pop_decline":false,"income":[18736,13760,12848,14043,15989,16908,13294],"subsidy":[5858,6358,9573,9812,9385,12529,11712],"passengers":[17037,12914,12545,13263,13665,14440,13061],"stops":[367,365,364,356,349,363,331],"routes":[11,11,11,13,14,14,14]},{"region":"경기","city":"오산시","discount":"","quasi_public":"24년부터 일부","pop_decline":false,"income":[4443,12166,5067,4238,15312,15175,7586],"subsidy":[6609,6353,7926,6856,8747,12349,12437],"passengers":[10008,8899,9999,11633,12686,13367,12979],"stops":[null,null,null,null,null,null,null],"routes":[null,23,20,16,19,20,19]},{"region":"경기","city":"군포시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1565,1285,1817,2084,1641,4336,3608],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[2,2,3,3,5,5,5]},{"region":"경기","city":"하남시","discount":"","quasi_public":"24년부터 일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[8240,8490,11896,12065,9097,10634,10652],"passengers":[25759,19067,17216,18811,20193,19105,18987],"stops":[501,533,598,581,583,619,594],"routes":[11,11,11,11,12,12,12]},{"region":"경기","city":"용인시","discount":"","quasi_public":"22년부터 전체 준공영제","pop_decline":false,"income":[5372,3952,4051,4198,4532,4438,null],"subsidy":[11486,8451,8663,15735,16070,22385,21995],"passengers":[30119,22160,22716,24610,24147,25105,22381],"stops":[2617,2634,2661,2694,2720,2754,2794],"routes":[93,93,94,96,94,95,97]},{"region":"경기","city":"파주시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1070,4776,5034,6254,5920,4835,2621],"passengers":[27192,19319,17318,16732,14895,13204,10987],"stops":[null,null,null,null,null,null,null],"routes":[78,77,81,82,84,79,79]},{"region":"경기","city":"이천시","discount":"","quasi_public":"24년부터 일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[2773,3822,5087,6216,7820,11277,null],"passengers":[null,null,null,null,null,null,null],"stops":[1272,1276,1285,1284,1289,1291,1294],"routes":[94,170,184,189,185,193,134]},{"region":"경기","city":"시흥시","discount":"","quasi_public":"24년부터 일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[4000,4924,10000,9346,8211,2962,null],"passengers":[26879,23025,23952,22479,21510,22434,21034],"stops":[1006,1037,1084,1102,1153,1165,1168],"routes":[35,40,47,48,50,58,58]},{"region":"경기","city":"안성시","discount":"23.7월부터 노인무상","quasi_public":"","pop_decline":false,"income":[7507,6391,7052,8146,10005,11739,11303],"subsidy":[null,null,null,null,9976,9344,8196],"passengers":[7142,6032,6717,7849,9092,9891,9392],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,82,82,85]},{"region":"경기","city":"여주시","discount":"24.7월 노인무상","quasi_public":"24년부터 일부","pop_decline":false,"income":[19507,15495,17643,21069,25736,28699,null],"subsidy":[3058,2932,4681,5198,5581,9657,10600],"passengers":[2316,1747,1834,2126,2061,2381,2422],"stops":[1281,1281,1281,1281,1281,1281,1281],"routes":[129,129,138,142,142,141,121]},{"region":"경기","city":"김포시","discount":"","quasi_public":"24년부터 일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1836,1460,2387,2470,2395,2278,1266],"passengers":[66401,41958,36843,40505,40610,41663,37842],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"광주시","discount":"","quasi_public":"","pop_decline":false,"income":[19507,15495,17643,21069,25736,28699,23916],"subsidy":[7690,6503,8079,8045,8327,9593,7994],"passengers":[130978,85425,83985,91941,96752,94439,81987],"stops":[null,null,null,null,null,null,null],"routes":[560,546,561,567,567,492,389]},{"region":"경기","city":"포천시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[7653,8126,9293,10077,13291,17887,19542],"passengers":[705,456,397,509,549,584,533],"stops":[1113,1120,1120,1126,1126,1268,1287],"routes":[63,63,62,70,75,80,83]},{"region":"경기","city":"가평군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[4364,5589,5910,5149,5751,6076,5121],"passengers":[3102,2412,1859,2371,2342,2571,2247],"stops":[null,null,2076,2138,2138,2163,2181],"routes":[77,81,59,59,59,60,60]},{"region":"경기","city":"양평군","discount":"","quasi_public":"일부 도입","pop_decline":false,"income":[2547,2167,2076,2173,2183,2145,null],"subsidy":[3517,2918,4615,4768,5573,5956,null],"passengers":[1698,1445,1384,1449,1454,1430,null],"stops":[1042,1047,1072,1087,1115,1135,1164],"routes":[117,150,155,151,161,163,165]},{"region":"경기도본청","city":"경기도본청(광역버스·공공관리제)","discount":"경기패스","quasi_public":"24년부터 공공관리제","pop_decline":false,"income":[1540500,1199700,1168300,1289300,1353600,1521300,null],"subsidy":[304700,427581,681753,743526,902336,1225730,null],"passengers":[160426,112298,121514,151361,165399,173300,null],"stops":[null,null,null,null,null,null,null],"routes":[242,242,253,262,265,280,291]},{"region":"충북","city":"청주시","discount":"","quasi_public":"21년부터 전체 준공영제","pop_decline":false,"income":[63380,48600,44339,49505,51281,53120,49768],"subsidy":[31830,41646,60954,70496,80763,90302,87654],"passengers":[49576,33209,32542,36445,45654,48316,44778],"stops":[2274,2377,2409,2510,2554,2590,2636],"routes":[142,142,142,142,98,99,99]},{"region":"충북","city":"충주시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1500,2028,2756,3586,3662,4358,4332],"passengers":[7234,4998,4920,5524,5919,4522,null],"stops":[1203,1293,1344,1356,1384,1407,1439],"routes":[100,100,100,100,100,86,88]},{"region":"충북","city":"제천시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[4560,6058,6499,5790,6389,7453,5610],"passengers":[5616,3783,3741,3825,4325,5720,5042],"stops":[946,971,1005,1043,1066,1113,1121],"routes":[123,126,131,130,131,134,134]},{"region":"충북","city":"보은군","discount":"25년부터 전면무료","quasi_public":"","pop_decline":true,"income":[1028,868,797,789,785,783,702],"subsidy":[2628,2969,3047,3288,3923,3883,3837],"passengers":[685,578,531,526,523,522,628],"stops":[394,394,394,394,394,394,394],"routes":[79,79,79,79,79,79,null]},{"region":"충북","city":"옥천군","discount":"","quasi_public":"","pop_decline":true,"income":[1476,1368,1482,1526,1604,1631,null],"subsidy":[3092,3180,3804,2850,4352,4817,null],"passengers":[1008,1057,1349,1084,1458,1119,null],"stops":[801,801,801,801,801,801,801],"routes":[73,73,74,74,76,76,76]},{"region":"충북","city":"영동군","discount":"24년부터 어린이·청소년·노인 무료","quasi_public":"","pop_decline":true,"income":[937,866,773,751,730,702,643],"subsidy":[3304,3259,3608,4157,4472,4248,3840],"passengers":[1307,1223,1170,1135,1128,1054,1106],"stops":[460,480,500,520,540,560,580],"routes":[85,85,87,88,88,89,89]},{"region":"충북","city":"진천군","discount":"25년부터 전면무료","quasi_public":"","pop_decline":false,"income":[1989,1699,1652,1814,1739,1830,828],"subsidy":[2948,3482,3784,3972,3979,4034,4282],"passengers":[1812,1701,1271,1505,1578,1831,2081],"stops":[306,326,328,335,337,341,346],"routes":[62,64,63,63,63,62,62]},{"region":"충북","city":"괴산군","discount":"26년부터 전면무료","quasi_public":"","pop_decline":true,"income":[1257,896,875,897,875,896,null],"subsidy":[3212,3885,4081,4585,4608,4839,4584],"passengers":[968,597,582,597,583,572,null],"stops":[343,358,369,373,378,389,401],"routes":[74,58,58,58,58,58,58]},{"region":"충북","city":"음성군","discount":"25년부터 전면무료","quasi_public":"","pop_decline":false,"income":[1697,1333,1254,1332,1377,1456,null],"subsidy":[3013,3174,3441,3776,3809,3977,null],"passengers":[1257,987,929,987,1020,1078,null],"stops":[396,404,417,426,426,431,438],"routes":[125,126,126,126,126,126,134]},{"region":"충북","city":"단양군","discount":"","quasi_public":"","pop_decline":true,"income":[1283,1107,1064,1054,1059,1037,991],"subsidy":[2070,2229,2316,2508,2775,2814,2900],"passengers":[1124,922,760,702,655,648,null],"stops":[432,433,438,444,451,453,458],"routes":[101,98,96,96,96,96,96]},{"region":"충남","city":"천안시","discount":"65세 노인·청소년 무상","quasi_public":"","pop_decline":false,"income":[48749,31354,35393,36761,38248,37767,null],"subsidy":[26201,28537,34969,37499,41763,46364,null],"passengers":[36409,27696,32349,33827,36200,43115,32868],"stops":[2072,2085,2068,2083,2090,2132,2146],"routes":[157,157,161,159,156,150,152]},{"region":"충남","city":"공주시","discount":"충남형 교통복지","quasi_public":"","pop_decline":true,"income":[5489,3638,3677,3561,3622,3765,2656],"subsidy":[5049,5623,5942,8345,8450,8296,8409],"passengers":[3884,3186,3542,3692,3933,4167,3921],"stops":[873,873,873,950,950,950,950],"routes":[82,81,94,97,99,99,102]},{"region":"충남","city":"보령시","discount":"","quasi_public":"","pop_decline":true,"income":[6366,5762,5938,6213,6851,2454,null],"subsidy":[5509,7449,7536,10741,11590,10855,14786],"passengers":[3451,3275,2875,1968,2435,2046,null],"stops":[985,1012,1024,1034,1049,1052,1061],"routes":[124,124,124,124,124,124,124]},{"region":"충남","city":"아산시","discount":"","quasi_public":"","pop_decline":false,"income":[13615,19728,24057,29857,30522,30128,null],"subsidy":[12860,12768,15576,20491,19576,15534,19104],"passengers":[12059,9655,10501,12141,13158,13479,12582],"stops":[1810,1837,1854,1883,2002,2059,2082],"routes":[78,76,70,71,74,72,76]},{"region":"충남","city":"서산시","discount":"","quasi_public":"","pop_decline":false,"income":[5689,3830,3890,4011,3812,3676,2940],"subsidy":[4714,6020,7434,9186,7941,9052,7532],"passengers":[null,null,null,null,null,null,null],"stops":[1552,1800,1801,1809,1816,1819,1832],"routes":[143,274,275,274,297,216,230]},{"region":"충남","city":"논산시","discount":"","quasi_public":"","pop_decline":true,"income":[5932,4970,5453,5718,6113,6468,5391],"subsidy":[3991,4115,4003,5688,5234,4756,4137],"passengers":[3374,2948,3176,3381,3671,3930,3737],"stops":[1202,1202,1231,1240,1253,1257,1265],"routes":[128,131,131,131,132,132,132]},{"region":"충남","city":"계룡시","discount":"","quasi_public":"","pop_decline":false,"income":[1914,1253,1274,1554,1701,1698,1204],"subsidy":[1330,2453,1684,3629,2646,2964,3461],"passengers":[1573,1246,1319,1696,1954,2014,1661],"stops":[521,521,595,595,607,607,637],"routes":[7,7,8,8,8,9,9]},{"region":"충남","city":"금산군","discount":"노인무료","quasi_public":"","pop_decline":true,"income":[642,525,497,489,492,492,427],"subsidy":[1541,1934,2343,2468,2602,3226,4108],"passengers":[1098,761,761,607,757,753,550],"stops":[433,433,433,433,433,434,438],"routes":[136,139,139,139,139,140,140]},{"region":"충남","city":"부여군","discount":"","quasi_public":"","pop_decline":true,"income":[1233,1443,1498,1474,1497,1531,885],"subsidy":[4964,5861,5918,7348,7386,7993,8195],"passengers":[1785,1810,1822,1832,1900,1977,1602],"stops":[1172,1200,1230,1257,1283,1302,1317],"routes":[65,65,65,65,65,65,65]},{"region":"충남","city":"서천군","discount":"","quasi_public":"","pop_decline":true,"income":[1440,1600,743,743,712,680,null],"subsidy":[3428,4365,4392,5743,5920,5857,6616],"passengers":[1468,1252,1107,1126,1091,1056,931],"stops":[1058,1058,1060,1060,1060,1060,1060],"routes":[122,134,134,134,134,134,134]},{"region":"충남","city":"청양군","discount":"","quasi_public":"","pop_decline":true,"income":[711,423,419,403,392,367,321],"subsidy":[2004,1882,2379,3140,2969,3393,3311],"passengers":[703,644,619,597,586,569,455],"stops":[419,502,556,568,582,595,610],"routes":[106,106,106,106,108,108,165]},{"region":"충남","city":"홍성군","discount":"","quasi_public":"","pop_decline":false,"income":[3114,1965,1963,1957,2007,2102,1604],"subsidy":[3284,3520,3966,5734,5825,6004,null],"passengers":[2087,1821,1900,1966,2132,2293,2144],"stops":[793,793,793,793,793,793,793],"routes":[232,169,168,173,175,175,177]},{"region":"충남","city":"예산군","discount":"","quasi_public":"","pop_decline":true,"income":[3550,3067,3301,3259,3632,3675,null],"subsidy":[4002,3526,3802,5137,5342,5498,5080],"passengers":[2465,2503,2100,2227,2385,2413,null],"stops":[442,448,467,486,502,518,528],"routes":[148,143,143,143,143,143,143]},{"region":"충남","city":"태안군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[6880,7220,7374,7304,6838,7398,7926],"passengers":[1742,1363,1353,1335,1364,1353,1111],"stops":[785,795,805,820,838,858,884],"routes":[176,176,290,290,290,275,274]},{"region":"전북","city":"전주시","discount":"","quasi_public":"마을버스 공영","pop_decline":false,"income":[53290,37550,37620,39711,46018,46691,null],"subsidy":[27375,39437,39275,38477,43418,44969,null],"passengers":[49458,38986,44650,48397,50891,51632,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전북","city":"군산시","discount":"25년부터 청소년무상","quasi_public":"","pop_decline":false,"income":[11166,8371,8747,9377,10613,11133,11254],"subsidy":[6468,11074,11804,11693,12971,11683,11230],"passengers":[10436,7967,8277,8525,6162,6722,5613],"stops":[1042,1060,1080,1118,1168,1222,1244],"routes":[56,58,57,57,56,55,48]},{"region":"전북","city":"익산시","discount":"어린이·청소년 100원","quasi_public":"","pop_decline":true,"income":[16438,12432,15019,15570,13275,13463,11157],"subsidy":[11036,12895,16210,17543,17347,18636,14833],"passengers":[13072,10274,9695,9748,10550,11393,8643],"stops":[null,null,1740,1740,1750,1934,1963],"routes":[107,107,105,105,119,118,119]},{"region":"전북","city":"정읍시","discount":"","quasi_public":"","pop_decline":true,"income":[1112,1765,1714,1672,1685,1685,1543],"subsidy":[5398,5597,6009,6815,7056,7270,6636],"passengers":[null,null,null,null,null,null,null],"stops":[717,757,835,861,873,884,898],"routes":[226,226,226,226,226,228,228]},{"region":"전북","city":"남원시","discount":"노인무료·천원단일요금제","quasi_public":"","pop_decline":true,"income":[2091,1843,1725,1733,1466,1125,1052],"subsidy":[4720,4898,5208,5900,6399,7025,7589],"passengers":[2440,2393,2301,2171,2272,2340,2386],"stops":[570,570,570,580,580,600,620],"routes":[112,112,108,112,112,112,112]},{"region":"전북","city":"김제시","discount":"천원단일요금제","quasi_public":"","pop_decline":true,"income":[1999,1134,1081,1077,1144,1199,1116],"subsidy":[4635,4835,5223,6145,6017,6094,7030],"passengers":[null,null,null,null,null,null,null],"stops":[945,945,970,990,1005,1018,1073],"routes":[132,132,132,140,143,143,144]},{"region":"전북","city":"완주군","discount":"성인 제외 무상","quasi_public":"25년 완전공영제","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[6739,7068,7416,9844,9850,10025,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전북","city":"진안군","discount":"","quasi_public":"","pop_decline":true,"income":[664,502,500,568,598,567,516],"subsidy":[644,765,877,667,1048,1328,2452],"passengers":[876,716,593,600,600,507,554],"stops":[453,453,464,464,486,486,487],"routes":[161,161,159,159,159,159,162]},{"region":"전북","city":"장수군","discount":"","quasi_public":"","pop_decline":true,"income":[661,535,255,196,186,196,181],"subsidy":[1054,936,946,896,1421,1736,1684],"passengers":[394,322,267,252,244,228,167],"stops":[202,206,215,219,224,234,245],"routes":[89,75,75,71,71,62,62]},{"region":"전북","city":"임실군","discount":"","quasi_public":"","pop_decline":true,"income":[1253,1051,930,900,791,730,701],"subsidy":[2596,2779,2957,3460,3307,3518,3729],"passengers":[862,1082,1054,1055,822,908,834],"stops":[340,388,438,478,523,548,580],"routes":[88,88,88,88,88,88,88]},{"region":"전북","city":"순창군","discount":"","quasi_public":"","pop_decline":true,"income":[537,411,348,333,791,265,275],"subsidy":[2007,1937,1931,2432,2881,2721,2864],"passengers":[505,415,340,310,294,321,287],"stops":[null,null,null,null,null,null,null],"routes":[67,71,64,64,66,66,66]},{"region":"전북","city":"부안군","discount":"","quasi_public":"","pop_decline":true,"income":[1097,949,827,781,710,684,650],"subsidy":[4148,4361,4960,5537,6307,6488,6222],"passengers":[1342,1168,1009,948,891,849,815],"stops":[912,912,912,912,912,912,912],"routes":[62,62,62,62,62,62,62]},{"region":"전남","city":"나주시","discount":"","quasi_public":"","pop_decline":false,"income":[11090,7714,7156,7147,7371,6753,4772],"subsidy":[16186,16785,17841,19844,20123,19689,16138],"passengers":[8055,5603,5198,5191,4950,4687,2861],"stops":[1667,1667,1667,1667,1500,1485,1485],"routes":[49,47,47,47,49,49,57]},{"region":"전남","city":"목포시","discount":"","quasi_public":"","pop_decline":false,"income":[17871,13421,14290,11980,10369,11306,9291],"subsidy":[7973,7388,10241,11428,15934,18081,12112],"passengers":[13581,9811,9815,8511,9811,11202,10535],"stops":[526,526,526,527,527,486,489],"routes":[21,20,20,20,20,15,15]},{"region":"전남","city":"여수시","discount":"","quasi_public":"","pop_decline":false,"income":[21716,18180,19499,16967,17132,15770,13399],"subsidy":[10879,13083,13604,19814,22562,29597,24083],"passengers":[18934,16297,15594,17512,18205,19546,15729],"stops":[1481,1524,1544,1563,1593,1597,1606],"routes":[61,61,61,61,62,62,62]},{"region":"전남","city":"순천시","discount":"","quasi_public":"","pop_decline":false,"income":[19740,13852,13800,13093,14181,14599,null],"subsidy":[12682,14099,16643,22385,24163,25586,27812],"passengers":[5612,12624,12772,13586,15265,15737,13999],"stops":[null,null,null,null,null,null,null],"routes":[57,58,55,55,55,55,55]},{"region":"전남","city":"광양시","discount":"노인무상","quasi_public":"","pop_decline":false,"income":[3507,2981,5352,5776,6335,7847,7659],"subsidy":[5854,7298,7326,8476,10226,12636,12760],"passengers":[null,null,null,null,null,null,null],"stops":[440,449,461,456,435,440,413],"routes":[31,28,28,28,28,29,30]},{"region":"전남","city":"담양군","discount":"","quasi_public":"","pop_decline":true,"income":[1261,2370,2464,2513,2258,2293,2289],"subsidy":[3467,3728,4083,5186,5610,5876,5827],"passengers":[2113,1443,1732,1320,1288,1391,null],"stops":[null,null,null,null,410,410,413],"routes":[85,85,85,85,85,85,96]},{"region":"전남","city":"곡성군","discount":"","quasi_public":"","pop_decline":true,"income":[781,627,644,544,512,492,449],"subsidy":[2305,2333,2815,3075,3156,3270,3062],"passengers":[804,660,610,551,538,520,461],"stops":[225,232,237,245,251,255,256],"routes":[68,66,65,65,65,56,56]},{"region":"전남","city":"구례군","discount":"","quasi_public":"","pop_decline":true,"income":[627,435,395,380,389,394,355],"subsidy":[239,439,411,485,652,611,459],"passengers":[467,438,411,391,405,364,366],"stops":[null,null,156,161,161,161,164],"routes":[56,56,56,56,56,56,56]},{"region":"전남","city":"보성군","discount":"","quasi_public":"","pop_decline":true,"income":[850,683,641,614,580,587,540],"subsidy":[1051,866,966,1115,1053,830,513],"passengers":[944,758,712,682,644,652,600],"stops":[486,486,486,486,486,486,486],"routes":[128,128,128,134,134,134,134]},{"region":"전남","city":"화순군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[1360,1317,1525,2732,2387,3090,2720],"passengers":[3848,2963,3339,3246,3318,3224,3018],"stops":[358,373,416,428,429,429,429],"routes":[94,94,94,94,94,94,94]},{"region":"전남","city":"장흥군","discount":"","quasi_public":"","pop_decline":true,"income":[456,449,380,393,382,380,384],"subsidy":[2090,2189,2196,2439,2475,2572,2712],"passengers":[452,443,387,379,389,380,374],"stops":[288,289,290,291,293,295,296],"routes":[78,78,78,78,78,78,78]},{"region":"전남","city":"강진군","discount":"","quasi_public":"","pop_decline":true,"income":[533,511,468,453,397,375,346],"subsidy":[1160,1560,2359,3028,3113,3341,3206],"passengers":[541,530,533,497,425,425,415],"stops":[280,295,300,300,305,310,320],"routes":[49,49,49,49,49,49,49]},{"region":"전남","city":"해남군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[2707,2941,3169,3434,3456,3645,3920],"passengers":[1168,959,924,932,878,888,864],"stops":[null,null,null,null,555,560,565],"routes":[166,166,166,166,166,166,166]},{"region":"전남","city":"영광군","discount":"천원버스·25년부터 노인무료","quasi_public":"","pop_decline":true,"income":[1054,799,772,808,864,934,964],"subsidy":[3752,3146,4470,4951,5800,5885,6580],"passengers":[1050,798,773,794,864,920,1025],"stops":[590,590,590,590,590,634,634],"routes":[39,39,39,39,40,40,40]},{"region":"전남","city":"진도군","discount":"24.7월부터 전면무료","quasi_public":"","pop_decline":true,"income":[804,678,381,339,322,210,null],"subsidy":[1018,1033,1579,1684,1847,2509,2548],"passengers":[436,356,345,321,366,499,481],"stops":[255,256,256,256,256,256,256],"routes":[34,35,35,35,35,35,35]},{"region":"전남","city":"신안군","discount":"노인·어린이청소년 무상·천원단일요금","quasi_public":"07년부터 완전공영제","pop_decline":true,"income":[120,148,152,146,156,167,160],"subsidy":[3413,4576,4323,5530,5964,6312,6585],"passengers":[672,540,553,570,623,642,600],"stops":[400,415,420,425,426,428,430],"routes":[118,118,119,119,119,119,119]},{"region":"경북","city":"포항시","discount":"25.7월부터 노인무상","quasi_public":"","pop_decline":false,"income":[26726,18539,17196,18280,20094,20628,null],"subsidy":[20969,25677,30918,34798,39919,37912,36424],"passengers":[24296,16853,15632,17233,19815,20492,null],"stops":[1616,1624,1635,1802,1815,1839,1874],"routes":[109,24,24,24,24,23,23]},{"region":"경북","city":"경주시","discount":"","quasi_public":"","pop_decline":true,"income":[16839,10940,11288,12768,13650,13973,10763],"subsidy":[9194,14704,15299,18490,19019,19897,21009],"passengers":[10928,7221,7765,8979,9856,11295,null],"stops":[null,null,1105,1137,1211,1241,1297],"routes":[86,86,89,90,90,96,95]},{"region":"경북","city":"영천시","discount":"노인·어린이청소년 무상","quasi_public":"","pop_decline":true,"income":[4958,3692,3703,3910,3810,4660,null],"subsidy":[6440,7684,7592,7499,6304,6015,5161],"passengers":[3831,3090,3238,2547,2547,3119,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,120,122,124,124,112]},{"region":"경북","city":"김천시","discount":"","quasi_public":"","pop_decline":true,"income":[5224,3762,3843,3828,4001,4111,3010],"subsidy":[768,1864,1002,869,703,503,419],"passengers":[4630,3479,3466,3525,3698,3731,3758],"stops":[1461,1461,1461,1461,1461,1461,1461],"routes":[475,475,475,475,475,475,475]},{"region":"경북","city":"안동시","discount":"","quasi_public":"","pop_decline":true,"income":[10272,6979,8246,8341,8662,8863,7307],"subsidy":[14242,16577,17258,20242,20123,20884,22751],"passengers":[7577,5403,5939,5979,6256,6470,6631],"stops":[1229,1273,1302,1310,1350,1364,1381],"routes":[39,39,47,47,47,47,47]},{"region":"경북","city":"구미시","discount":"","quasi_public":"","pop_decline":false,"income":[15678,11045,12772,13718,14277,14463,13342],"subsidy":[9281,15180,14719,15039,20904,25396,25258],"passengers":[16174,11394,11519,11907,12419,12994,11680],"stops":[894,null,null,null,null,922,957],"routes":[192,192,191,209,210,214,184]},{"region":"경북","city":"영주시","discount":"","quasi_public":"","pop_decline":true,"income":[3810,2325,2452,2648,2940,2981,2603],"subsidy":[4900,5050,5100,5300,5450,5600,6100],"passengers":[2020,1233,1367,1409,1453,1602,1402],"stops":[405,410,416,418,420,422,429],"routes":[57,57,57,57,57,57,57]},{"region":"경북","city":"상주시","discount":"25년부터 전면무료","quasi_public":"","pop_decline":true,"income":[1415,1024,976,1042,1013,999,958],"subsidy":[5954,6711,6917,8036,8892,9902,11082],"passengers":[1048,759,679,651,647,625,516],"stops":[665,665,705,744,765,792,792],"routes":[58,58,69,69,69,69,69]},{"region":"경북","city":"문경시","discount":"25년부터 전면무료","quasi_public":"","pop_decline":true,"income":[1566,1156,1237,1312,1348,1287,0],"subsidy":[4291,4507,4714,5383,5383,5783,6442],"passengers":[1332,987,954,735,851,812,1608],"stops":[948,948,948,948,1010,1022,1059],"routes":[72,72,72,72,72,72,73]},{"region":"경북","city":"경산시","discount":"","quasi_public":"","pop_decline":false,"income":[23236,14832,16237,16615,15785,17053,14848],"subsidy":[9179,14899,12591,17009,27891,25876,20038],"passengers":[18589,11865,12989,13292,12628,11368,9899],"stops":[846,854,882,914,914,1009,1019],"routes":[35,37,33,34,34,34,39]},{"region":"경북","city":"의성군","discount":"25년부터 전면무료","quasi_public":"","pop_decline":true,"income":[739,573,525,507,486,467,null],"subsidy":[2568,2718,3088,3831,4592,4159,4471],"passengers":[684,530,486,469,449,432,515],"stops":[425,442,460,475,497,510,521],"routes":[96,113,113,113,113,114,114]},{"region":"경북","city":"청송군","discount":"23년부터 전면무료","quasi_public":"","pop_decline":true,"income":[469,357,335,325,0,0,0],"subsidy":[1950,2115,2106,2466,2780,3102,3251],"passengers":[376,286,266,262,271,276,311],"stops":[190,195,198,200,203,205,210],"routes":[63,63,63,63,63,63,63]},{"region":"경북","city":"영양군","discount":"","quasi_public":"","pop_decline":true,"income":[306,260,262,235,241,237,209],"subsidy":[1712,1847,1785,2113,2160,2159,2023],"passengers":[235,200,201,181,185,182,176],"stops":[282,299,299,299,299,299,299],"routes":[59,67,67,67,67,67,67]},{"region":"경북","city":"고령군","discount":"","quasi_public":"","pop_decline":true,"income":[1947,1279,1384,1404,1264,1149,444],"subsidy":[1510,1983,1856,2287,2362,2577,2658],"passengers":[1147,780,760,730,700,650,414],"stops":[515,515,515,515,515,515,457],"routes":[72,71,72,71,68,69,63]},{"region":"경북","city":"성주군","discount":"","quasi_public":"","pop_decline":true,"income":[2100,1533,1783,1894,1893,1849,null],"subsidy":[2246,2475,2576,2583,2851,2857,2349],"passengers":[1510,900,960,930,873,812,888],"stops":[null,null,null,null,null,null,null],"routes":[63,63,63,63,63,63,63]},{"region":"경북","city":"칠곡군","discount":"","quasi_public":"","pop_decline":false,"income":[5506,3674,4093,4393,4500,4475,3718],"subsidy":[326,306,277,275,275,195,160],"passengers":[457,260,278,292,300,299,292],"stops":[659,659,659,659,659,659,659],"routes":[36,36,36,36,36,38,38]},{"region":"경북","city":"예천군","discount":"","quasi_public":"","pop_decline":false,"income":[1072,760,912,937,967,1016,1064],"subsidy":[3506,4499,4649,5283,5235,5713,5834],"passengers":[893,633,651,664,691,726,760],"stops":[558,560,823,834,851,888,902],"routes":[71,71,71,76,75,75,75]},{"region":"경북","city":"울진군","discount":"25.3월부터 전면무상","quasi_public":"","pop_decline":true,"income":[1036,1049,817,793,795,789,null],"subsidy":[2098,2407,2409,2897,3125,3321,null],"passengers":[829,655,653,634,636,631,821],"stops":[268,277,283,288,296,300,304],"routes":[83,83,83,83,83,83,86]},{"region":"경남","city":"창원시","discount":"","quasi_public":"21.9월부터 준공영제","pop_decline":false,"income":[109136,89227,89441,93485,95829,89351,87788],"subsidy":[39777,50226,66966,92820,92376,94301,85404],"passengers":[84661,61505,62285,65664,68804,79368,null],"stops":[2182,2111,2111,2187,2473,2473,2473],"routes":[138,138,140,136,135,136,136]},{"region":"경남","city":"진주시","discount":"","quasi_public":"","pop_decline":false,"income":[29848,24576,22763,25184,26383,26827,20472],"subsidy":[17664,23206,27986,31749,31072,30647,29293],"passengers":[27844,20406,18482,21040,21915,22494,20376],"stops":[1743,1768,1780,1795,1822,1845,1881],"routes":[87,94,94,95,96,96,91]},{"region":"경남","city":"통영시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[3958,6451,8036,10721,9791,9385,null],"passengers":[8000,6000,5500,6500,7000,7000,null],"stops":[800,830,860,890,920,940,null],"routes":[145,145,103,103,103,109,null]},{"region":"경남","city":"사천시","discount":"","quasi_public":"","pop_decline":true,"income":[2341,2198,1987,1970,1811,1993,2081],"subsidy":[2333,2571,3227,4286,4695,4958,4868],"passengers":[906,810,804,847,989,1149,1146],"stops":[505,508,510,512,516,536,543],"routes":[156,156,96,96,56,58,60]},{"region":"경남","city":"김해시","discount":"","quasi_public":"","pop_decline":false,"income":[13475,12776,14345,18657,24755,30101,30482],"subsidy":[12543,15965,18953,24578,25455,26917,30357],"passengers":[19652,14285,15356,16542,18676,20756,19665],"stops":[1404,1479,1481,1486,1496,1530,1555],"routes":[54,56,57,58,61,62,64]},{"region":"경남","city":"밀양시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[2881,3158,3420,4370,3580,4025,3764],"passengers":[2389,1966,1720,1731,1750,1794,1796],"stops":[945,945,945,945,945,945,945],"routes":[63,63,63,61,61,60,60]},{"region":"경남","city":"거제시","discount":"성인 제외 무료","quasi_public":"22년부터 표준운송원가 전액보장","pop_decline":false,"income":[12646,10840,9931,11014,11760,13314,15007],"subsidy":[9896,10255,15680,15917,14940,16539,18073],"passengers":[8959,6876,6379,7212,7653,8894,7480],"stops":[1163,1176,1228,1241,1240,1251,1260],"routes":[50,50,50,50,50,49,49]},{"region":"경남","city":"의령군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[1627,1418,1565,1998,2305,2527,2556],"passengers":[null,null,null,null,null,null,null],"stops":[302,312,329,342,342,342,342],"routes":[47,43,45,45,45,46,47]},{"region":"경남","city":"함안군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[4417,4534,4731,5411,5891,5993,6261],"passengers":[null,null,null,null,null,null,null],"stops":[434,426,426,426,426,426,426],"routes":[70,67,67,68,68,68,65]},{"region":"경남","city":"창녕군","discount":"24년부터 천원단일요금제","quasi_public":"","pop_decline":true,"income":[457,516,554,469,480,341,368],"subsidy":[1320,1839,2387,2581,2677,2871,2805],"passengers":[398,387,382,358,367,392,397],"stops":[288,288,288,295,303,306,306],"routes":[51,51,51,51,51,51,51]},{"region":"경남","city":"남해군","discount":"23년부터 천원단일요금제","quasi_public":"","pop_decline":true,"income":[1449,1256,1113,1200,727,707,677],"subsidy":[1139,1538,1791,2228,2670,2846,2711],"passengers":[1190,889,788,850,746,726,null],"stops":[258,312,312,312,316,318,322],"routes":[36,35,35,34,34,34,34]},{"region":"경남","city":"하동군","discount":"24년부터 100원버스","quasi_public":"","pop_decline":true,"income":[657,408,377,382,345,194,42],"subsidy":[987,1131,1265,1710,1711,2135,2445],"passengers":[379,278,255,299,311,366,412],"stops":[263,277,282,323,342,360,370],"routes":[42,42,42,42,42,49,49]},{"region":"경남","city":"산청군","discount":"","quasi_public":"","pop_decline":true,"income":[385,294,256,290,302,277,96],"subsidy":[621,938,1130,1393,1377,1522,1841],"passengers":[265,294,256,290,302,277,null],"stops":[258,264,266,273,278,285,288],"routes":[48,48,56,57,57,57,57]},{"region":"경남","city":"함양군","discount":"천원요금제·노인청소년 무료","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[3500,3650,3680,3732,4213,4071,3986],"passengers":[360,362,365,368,371,378,348],"stops":[255,255,255,255,255,258,262],"routes":[60,60,60,60,60,60,60]},{"region":"경남","city":"합천군","discount":"","quasi_public":"","pop_decline":true,"income":[2040,1449,1379,1260,485,509,537],"subsidy":[2005,1988,2550,3079,3363,3597,3760],"passengers":[2147,1525,1451,1326,510,535,null],"stops":[812,812,812,812,405,405,405],"routes":[176,174,174,177,93,86,86]},{"region":"강원","city":"원주시","discount":"","quasi_public":"","pop_decline":false,"income":[22659,19417,13674,13815,18141,18376,19004],"subsidy":[7304,8058,8493,11831,9544,10473,10272],"passengers":[18899,12010,11326,12223,12602,12952,11065],"stops":[1622,1791,1843,1864,1881,1901,1916],"routes":[75,46,51,51,52,53,51]},{"region":"강원","city":"강릉시","discount":"23년부터 노인(20회) 무상","quasi_public":"","pop_decline":true,"income":[14609,10239,7765,8354,11599,12490,12900],"subsidy":[3083,5487,5350,5601,3786,4016,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[108,104,64,64,64,65,69]},{"region":"강원","city":"동해시","discount":"","quasi_public":"","pop_decline":true,"income":[3080,2117,2097,2214,2599,2768,2929],"subsidy":[2173,2220,2469,2729,2506,2705,2728],"passengers":[2349,1849,1683,1811,1783,1818,1873],"stops":[330,368,368,368,362,364,364],"routes":[45,35,35,35,32,32,34]},{"region":"강원","city":"춘천시","discount":"22년부터 노인(20회) 무상","quasi_public":"23.7부터 준공영제","pop_decline":false,"income":[13410,8465,8712,8525,9914,10815,9308],"subsidy":[4575,8527,10015,12664,14095,14770,14922],"passengers":[11522,7973,8213,9907,10686,11719,10195],"stops":[1470,1666,1666,1736,1760,1797,1827],"routes":[18,25,25,26,28,53,52]},{"region":"강원","city":"태백시","discount":"","quasi_public":"","pop_decline":true,"income":[1749,1340,1265,1296,1385,1350,null],"subsidy":[1743,2292,2391,2377,2530,2890,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"강원","city":"속초시","discount":"24년부터 노인무료(10회)","quasi_public":"","pop_decline":true,"income":[5346,3703,3445,3428,4205,4033,3809],"subsidy":[1008,1543,2002,2654,1838,1781,1200],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[27,16,20,19,19,19,19]},{"region":"강원","city":"삼척시","discount":"24년부터 노인무료(20회)","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[3520,4299,4592,4302,3673,4292,4845],"passengers":[null,null,null,null,null,null,null],"stops":[389,393,422,1061,910,916,919],"routes":[56,53,53,52,98,50,50]},{"region":"강원","city":"홍천군","discount":"24년부터 노인무료(20회)","quasi_public":"","pop_decline":true,"income":[1374,1101,905,1198,1331,1290,1181],"subsidy":[4835,4296,4360,4849,4742,4785,5101],"passengers":[531,491,440,568,571,699,800],"stops":[1050,1052,1057,1059,1065,1065,1065],"routes":[92,92,92,92,92,92,92]},{"region":"강원","city":"영월군","discount":"","quasi_public":"","pop_decline":true,"income":[727,497,473,468,474,458,415],"subsidy":[1484,1554,1557,1984,2081,2196,2254],"passengers":[342,260,232,231,217,207,null],"stops":[278,300,300,300,309,321,322],"routes":[28,28,28,28,28,28,28]},{"region":"강원","city":"평창군","discount":"24년부터 천원요금 수요응답형버스","quasi_public":"","pop_decline":true,"income":[641,496,446,454,536,592,332],"subsidy":[1376,1531,1690,1664,1991,2106,1914],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[44,44,45,45,45,44,49]},{"region":"강원","city":"철원군","discount":"23년부터 노인·청소년·어린이 무료","quasi_public":"","pop_decline":true,"income":[651,454,441,471,507,401,392],"subsidy":[2055,2208,2190,2365,2409,2434,2480],"passengers":[484,334,331,373,500,523,480],"stops":[183,183,183,183,183,183,183],"routes":[29,29,29,29,29,29,29]},{"region":"강원","city":"화천군","discount":"","quasi_public":"","pop_decline":true,"income":[681,262,164,189,182,282,231],"subsidy":[1255,1131,1349,1565,1468,1484,1452],"passengers":[569,271,192,201,162,195,157],"stops":[120,125,130,136,142,148,157],"routes":[24,11,13,13,12,8,9]},{"region":"강원","city":"양구군","discount":"25년부터 무료 완전공영제","quasi_public":"","pop_decline":true,"income":[419,282,251,244,275,274,0],"subsidy":[1079,923,1111,1176,1246,1514,0],"passengers":[277,206,186,190,176,184,206],"stops":[225,225,225,225,218,218,295],"routes":[11,11,11,11,10,10,21]},{"region":"강원","city":"인제군","discount":"24년부터 노인무상·천원요금제","quasi_public":"","pop_decline":true,"income":[739,419,318,294,345,395,319],"subsidy":[1543,1660,1840,2313,2124,2375,2438],"passengers":[767,620,321,352,398,456,null],"stops":[null,null,null,null,null,null,null],"routes":[48,49,41,41,41,41,41]},{"region":"강원","city":"고성군","discount":"","quasi_public":"","pop_decline":true,"income":[2076,1722,1567,1295,1656,1715,1714],"subsidy":[465,445,491,1065,1122,1005,1277],"passengers":[1538,1276,956,1066,1015,1177,1170],"stops":[423,423,423,423,423,424,424],"routes":[5,5,5,5,5,5,5]},{"region":"강원","city":"양양군","discount":"","quasi_public":"","pop_decline":true,"income":[597,464,445,454,436,468,436],"subsidy":[1164,1111,1223,1299,1454,1455,1430],"passengers":[486,316,285,307,272,291,280],"stops":[321,321,321,408,457,457,463],"routes":[22,22,22,22,22,22,22]},{"region":"강원","city":"정선군","discount":"20년부터 노인무료·25년부터 완전무료","quasi_public":"20년부터 완전공영","pop_decline":true,"income":[1017,150,269,315,341,355,191],"subsidy":[2874,3729,4460,5455,5548,5696,6445],"passengers":[457,529,663,780,865,934,797],"stops":[582,624,645,645,668,672,700],"routes":[57,75,75,75,75,75,75]},{"region":"제주","city":"제주특별자치도","discount":"24.7부터 노인전면무료·25.8청소년무료","quasi_public":"준공영제·일부 공영제","pop_decline":false,"income":[51437,37759,41163,44607,45699,45156,null],"subsidy":[93468,100880,107160,122224,120235,122326,null],"passengers":[64845,50373,53133,57727,59515,61265,null],"stops":[3763,3916,3965,4069,4081,4145,4233],"routes":[184,182,182,181,185,176,178]}];
+const DATA = [{"region":"서울","city":"서울","discount":"기후동행카드","quasi_public":"0","pop_decline":false,"income":[1300200.0,1011800.0,1005900.0,1120700.0,1287000.0,1528000.0,1528000.0],"subsidy":[291500.0,170500.0,456100.0,811400.0,891500.0,400000.0,457500.0],"distance":[null,null,null,null,null,null,null],"passengers":[1479364.0,1143751.0,1139225.0,1262572.0,1318186.0,1365084.0,1262182.0],"stops":[6291.0,6451.0,3576.0,6608.0,6630.0,6655.0,6710.0],"routes":[365.0,365.0,373.0,373.0,384.0,394.0,395.0]},{"region":"부산","city":"부산","discount":"동백패스","quasi_public":"0","pop_decline":false,"income":[417500.0,323100.0,315500.0,340400.0,391900.0,461000.0,450100.0],"subsidy":[130000.0,188100.0,367200.0,305600.0,271100.0,260000.0,275000.0],"distance":[228301295.0,228151280.0,210253140.0,210446955.0,209661840.0,205405210.0,166774096.0],"passengers":[521321.0,394640.0,333208.0,359387.0,376670.0,379908.0,312401.0],"stops":[3599.0,3642.0,3646.0,3693.0,3830.0,3861.0,3806.0],"routes":[145.0,145.0,144.0,144.0,146.0,147.0,147.0]},{"region":"대구","city":"대구","discount":"","quasi_public":"0","pop_decline":false,"income":[226863.0,161708.0,172890.0,183750.0,198621.0,244552.0,199128.0],"subsidy":[132000.0,181900.0,194600.0,257735.0,240388.0,220876.0,262684.0],"distance":[152093986.52,150700554.27,149553080.12,152022405.63,152749811.39,152521689.11,124839717.98],"passengers":[229654.0,161434.0,174093.0,182958.0,196848.0,205566.0,172641.0],"stops":[3204.0,3241.0,3302.0,3347.0,3351.0,3383.0,3422.0],"routes":[115.0,117.0,117.0,119.0,121.0,122.0,127.0]},{"region":"인천","city":"인천","discount":"인천i패스( k패스연계)","quasi_public":"0","pop_decline":false,"income":[234785.0,179190.0,189057.0,208684.0,233579.0,270494.0,202621.0],"subsidy":[127191.0,190654.0,218112.0,264769.0,281600.0,230648.0,238524.0],"distance":[195744025.0,183967704.0,181575820.0,180698360.0,180221670.0,182710605.0,168681656.0],"passengers":[335157.0,244082.0,239014.0,262548.0,273871.0,275709.0,207457.0],"stops":[5837.0,6090.0,6263.0,6212.0,6277.0,6446.0,6501.0],"routes":[179.0,186.0,190.0,192.0,194.0,199.0,203.0]},{"region":"광주","city":"광주","discount":"","quasi_public":"0","pop_decline":false,"income":[130236.0,89600.0,93236.0,100657.0,105799.0,107390.0,97404.0],"subsidy":[73262.0,116155.0,121210.0,137944.0,133798.0,136424.0,129007.0],"distance":[80210526.0,70789808.0,73136760.0,72089341.0,72367425.0,71584164.0,66269887.0],"passengers":[126704.0,85106.0,89779.0,96328.0,102416.0,104638.0,95707.0],"stops":[2379.0,2379.0,2381.0,2369.0,2378.0,2379.0,2400.0],"routes":[101.0,101.0,101.0,101.0,101.0,102.0,103.0]},{"region":"대전","city":"대전","discount":"","quasi_public":"0","pop_decline":false,"income":[145637.0,100886.0,105105.0,115266.0,122197.0,154794.0,129436.0],"subsidy":[57792.0,100042.0,105140.0,116580.0,115046.0,94626.0,79492.0],"distance":[147952750.0,149096295.0,149522980.0,146546405.0,151692540.0,154251920.0,153190865.0],"passengers":[152507.0,108689.0,113690.0,125275.0,134657.0,143632.0,108164.0],"stops":[2271.0,2283.0,2314.0,2347.0,2351.0,2387.0,2416.0],"routes":[100.0,101.0,101.0,102.0,103.0,105.0,107.0]},{"region":"울산","city":"울산","discount":"24년부터 어린이, 25년부터노인무료","quasi_public":"","pop_decline":false,"income":[100765.0,73305.0,71873.0,81757.0,92110.0,99425.0,96947.0],"subsidy":[68070.0,100127.0,114330.0,137859.0,145076.0,160497.0,181264.0],"distance":[null,null,null,null,null,null,null],"passengers":[99645.0,70810.0,70445.0,75555.0,78840.0,78110.0,74460.0],"stops":[3079.0,3130.0,3140.0,3657.0,3484.0,3496.0,3388.0],"routes":[171.0,174.0,181.0,183.0,183.0,182.0,185.0]},{"region":"세종","city":"세종","discount":"이응패스","quasi_public":"0","pop_decline":false,"income":[17370.0,14758.0,17290.0,20145.0,22200.0,24728.0,null],"subsidy":[13200.0,15200.0,15900.0,18082.0,21871.0,28521.0,null],"distance":[21996725.0,24416310.0,22246951.0,23931542.0,25580280.0,29444534.0,null],"passengers":[17141.0,13451.0,14741.0,17174.0,18921.0,21493.0,null],"stops":[null,1159.0,1188.0,1270.0,1298.0,1430.0,1452.0],"routes":[62.0,61.0,66.0,62.0,63.0,81.0,null]},{"region":"경기","city":"수원시(부존재)","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"성남시(부존재)","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"의정부시(자료부실)","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[581.0,592.0,606.0,607.0,617.0,707.0,715.0],"routes":[32.0,32.0,34.0,36.0,36.0,40.0,39.0]},{"region":"경기","city":"안양시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[3644.0,5890.0,9519.0,18161.0,13983.0,8783.0,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[616.0,639.0,641.0,646.0,687.0,719.0,743.0],"routes":[36.0,36.0,36.0,36.0,36.0,37.0,37.0]},{"region":"경기","city":"부천시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[26067.0,24372.0,38850.0,48452.0,48472.0,35454.0,19448.0],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[1111.0,1102.0,1106.0,1104.0,1104.0,1110.0,1106.0],"routes":[50.0,51.0,53.0,52.0,52.0,50.0,50.0]},{"region":"경기","city":"광명시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,1639.0,12620.0],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,449.0,449.0,449.0],"routes":[19.0,19.0,18.0,20.0,19.0,20.0,19.0]},{"region":"경기","city":"평택시","discount":"","quasi_public":"","pop_decline":false,"income":[41681.0,24650.0,32087.0,37254.0,35709.0,39648.0,37998.0],"subsidy":[19387.0,38174.0,32493.0,29082.0,32383.0,30200.0,20336.0],"distance":[null,null,null,null,null,null,null],"passengers":[35873.0,21215.0,27616.0,32063.0,31950.0,32871.0,30774.0],"stops":[null,null,null,null,1917.0,1922.0,1938.0],"routes":[null,null,null,null,347.0,363.0,385.0]},{"region":"경기","city":"동두천시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"안산시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"고양시","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[66128.0,55751.0,55892.0,64041.0,67579.0,73734.0,null],"subsidy":[9045.0,9112.0,15461.0,16938.0,19480.0,27121.0,null],"distance":[45724295.0,41069163.0,39337815.0,40711234.0,41573855.0,44169060.0,null],"passengers":[70706.0,51813.0,48787.0,52812.0,53834.0,61967.0,null],"stops":[null,null,null,null,null,null,null],"routes":[41.0,42.0,42.0,42.0,43.0,49.0,49.0]},{"region":"경기","city":"과천시","discount":"24.7월부터노인무상","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[6358.0,6452.0,7216.0,12516.0,12855.0,14290.0,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[110.0,110.0,110.0,110.0,131.0,131.0,133.0],"routes":[2.0,2.0,3.0,3.0,3.0,3.0,3.0]},{"region":"경기","city":"구리시","discount":"65세 어르신 교통비 지원(월 1만원)","quasi_public":"일부","pop_decline":false,"income":[18736.0,13760.0,12848.0,14043.0,15989.0,16908.0,13294.0],"subsidy":[5858.0,6358.0,9573.0,9812.0,9385.0,12529.0,11712.0],"distance":[206178.0,207484.0,210077.0,230826.0,246387.0,259355.0,221451.0],"passengers":[17037.0,12914.0,12545.0,13263.0,13665.0,14440.0,13061.0],"stops":[367.0,365.0,364.0,356.0,349.0,363.0,331.0],"routes":[11.0,11.0,11.0,13.0,14.0,14.0,14.0]},{"region":"경기","city":"남양주시(자료부실)","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"오산시","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[4443.0,12166.0,5067.0,4238.0,15312.0,15175.0,7586.0],"subsidy":[6609.0,6353.0,7926.0,6856.0,8747.0,12349.0,12437.0],"distance":[null,null,null,null,null,null,null],"passengers":[10008.0,8899.0,9999.0,11633.0,12686.0,13367.0,12979.0],"stops":[null,null,null,null,null,null,null],"routes":[null,23.0,20.0,16.0,19.0,20.0,19.0]},{"region":"경기","city":"군포시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1565.0,1285.0,1817.0,2084.0,1641.0,4336.0,3608.0],"distance":[298132.0,298132.0,1369334.0,1369334.0,2469875.0,2469875.0,2469875.0],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[2.0,2.0,3.0,3.0,5.0,5.0,5.0]},{"region":"경기","city":"의왕시(자료부실)","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"하남시","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[8240.0,8490.0,11896.0,12065.0,9097.0,10634.0,10652.0],"distance":[17302978.0,10059573.0,10077546.0,10162953.0,9449513.0,9449513.0,9469887.0],"passengers":[25759.0,19067.0,17216.0,18811.0,20193.0,19105.0,18987.0],"stops":[501.0,533.0,598.0,581.0,583.0,619.0,594.0],"routes":[11.0,11.0,11.0,11.0,12.0,12.0,12.0]},{"region":"경기","city":"용인시","discount":"","quasi_public":"22년부터전체준공영제(입찰)","pop_decline":false,"income":[5372.0,3952.0,4051.0,4198.0,4532.0,4438.0,null],"subsidy":[11486.0,8451.0,8663.0,15735.0,16070.0,22385.0,21995.0],"distance":[null,null,null,null,null,null,null],"passengers":[30119.0,22160.0,22716.0,24610.0,24147.0,25105.0,22381.0],"stops":[2617.0,2634.0,2661.0,2694.0,2720.0,2754.0,2794.0],"routes":[93.0,93.0,94.0,96.0,94.0,95.0,97.0]},{"region":"경기","city":"파주시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1070.0,4776.0,5034.0,6254.0,5920.0,4835.0,2621.0],"distance":[null,null,null,null,null,null,null],"passengers":[27192.0,19319.0,17318.0,16732.0,14895.0,13204.0,10987.0],"stops":[null,null,null,null,null,null,null],"routes":[78.0,77.0,81.0,82.0,84.0,79.0,79.0]},{"region":"경기","city":"이천시","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[2773.0,3822.0,5087.0,6216.0,7820.0,11277.0,null],"distance":[8959.0,18785.0,21386.0,21386.0,23987.0,28900.0,27744.0],"passengers":[null,null,null,null,null,null,null],"stops":[1272.0,1276.0,1285.0,1284.0,1289.0,1291.0,1294.0],"routes":[94.0,170.0,184.0,189.0,185.0,193.0,134.0]},{"region":"경기","city":"시흥시","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[4000.0,4924.0,10000.0,9346.0,8211.0,2962.0,null],"distance":[null,null,null,null,null,null,null],"passengers":[26879.0,23025.0,23952.0,22479.0,21510.0,22434.0,21034.0],"stops":[1006.0,1037.0,1084.0,1102.0,1153.0,1165.0,1168.0],"routes":[35.0,40.0,47.0,48.0,50.0,58.0,58.0]},{"region":"경기","city":"안성시","discount":"23.7월부터노인무상","quasi_public":"","pop_decline":false,"income":[7507.0,6391.0,7052.0,8146.0,10005.0,11739.0,11303.0],"subsidy":[null,null,null,null,9976.0,9344.0,8196.0],"distance":[null,null,null,null,null,null,null],"passengers":[7142.0,6032.0,6717.0,7849.0,9092.0,9891.0,9392.0],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,82.0,82.0,85.0]},{"region":"경기","city":"여주시","discount":"24.7월노인무상","quasi_public":"24년부터일부","pop_decline":false,"income":[19507.0,15495.0,17643.0,21069.0,25736.0,28699.0,null],"subsidy":[3058.0,2932.0,4681.0,5198.0,5581.0,9657.0,10600.0],"distance":[4031268.0,3820916.0,3994640.0,4214825.0,4243520.0,4252919.0,4133151.0],"passengers":[2316.0,1747.0,1834.0,2126.0,2061.0,2381.0,2422.0],"stops":[1281.0,1281.0,1281.0,1281.0,1281.0,1281.0,1281.0],"routes":[129.0,129.0,138.0,142.0,142.0,141.0,121.0]},{"region":"경기","city":"김포시","discount":"","quasi_public":"24년부터일부","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1836.0,1460.0,2387.0,2470.0,2395.0,2278.0,1266.0],"distance":[null,null,null,null,null,null,null],"passengers":[66401.0,41958.0,36843.0,40505.0,40610.0,41663.0,37842.0],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"화성시(부존재)","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"광주시","discount":"","quasi_public":"","pop_decline":false,"income":[19507.0,15495.0,17643.0,21069.0,25736.0,28699.0,23916.0],"subsidy":[7690.0,6503.0,8079.0,8045.0,8327.0,9593.0,7994.0],"distance":[135019515.0,115116719.0,119953846.0,121664494.0,135152464.0,136716012.0,120847298.0],"passengers":[130978.0,85425.0,83985.0,91941.0,96752.0,94439.0,81987.0],"stops":[null,null,null,null,null,null,null],"routes":[560.0,546.0,561.0,567.0,567.0,492.0,389.0]},{"region":"경기","city":"양주시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"포천시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[7653.0,8126.0,9293.0,10077.0,13291.0,17887.0,19542.0],"distance":[27259956.0,25633944.0,26875092.0,28168188.0,29532576.0,30874272.0,30903096.0],"passengers":[705.0,456.0,397.0,509.0,549.0,584.0,533.0],"stops":[1113.0,1120.0,1120.0,1126.0,1126.0,1268.0,1287.0],"routes":[63.0,63.0,62.0,70.0,75.0,80.0,83.0]},{"region":"경기","city":"연천군(자료부실)","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경기","city":"가평군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[4364.0,5589.0,5910.0,5149.0,5751.0,6076.0,5121.0],"distance":[10172317.8,7040157.5,6958305.0,7215138.7,7204274.1,7649028.0,7023609.0],"passengers":[3102.0,2412.0,1859.0,2371.0,2342.0,2571.0,2247.0],"stops":[null,null,2076.0,2138.0,2138.0,2163.0,2181.0],"routes":[77.0,81.0,59.0,59.0,59.0,60.0,60.0]},{"region":"경기","city":"양평군","discount":"","quasi_public":"일부도입","pop_decline":false,"income":[2547.0,2167.0,2076.0,2173.0,2183.0,2145.0,null],"subsidy":[3517.0,2918.0,4615.0,4768.0,5573.0,5956.0,null],"distance":[3648528.0,4270031.0,4158965.0,4163546.0,4309267.0,4295493.0,null],"passengers":[1698.0,1445.0,1384.0,1449.0,1454.0,1430.0,null],"stops":[1042.0,1047.0,1072.0,1087.0,1115.0,1135.0,1164.0],"routes":[117.0,150.0,155.0,151.0,161.0,163.0,165.0]},{"region":"충북","city":"청주시","discount":"","quasi_public":"21년부터전체준공영제","pop_decline":false,"income":[63380.0,48600.0,44339.0,49505.0,51281.0,53120.0,49768.0],"subsidy":[31830.0,41646.0,60954.0,70496.0,80763.0,90302.0,87654.0],"distance":[null,null,null,null,null,null,null],"passengers":[49576.0,33209.0,32542.0,36445.0,45654.0,48316.0,44778.0],"stops":[2274.0,2377.0,2409.0,2510.0,2554.0,2590.0,2636.0],"routes":[142.0,142.0,142.0,142.0,98.0,99.0,99.0]},{"region":"충북","city":"충주시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[1500.0,2028.0,2756.0,3586.0,3662.0,4358.0,4332.0],"distance":[9002698.0,9002698.0,9002698.0,9222276.0,9222276.0,10100588.0,10320255.0],"passengers":[7234.0,4998.0,4920.0,5524.0,5919.0,4522.0,null],"stops":[1203.0,1293.0,1344.0,1356.0,1384.0,1407.0,1439.0],"routes":[100.0,100.0,100.0,100.0,100.0,86.0,88.0]},{"region":"충북","city":"제천시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[4560.0,6058.0,6499.0,5790.0,6389.0,7453.0,5610.0],"distance":[6184897.0,5997044.0,5921991.0,6005685.0,6019268.0,6528479.0,6493134.0],"passengers":[5616.0,3783.0,3741.0,3825.0,4325.0,5720.0,5042.0],"stops":[946.0,971.0,1005.0,1043.0,1066.0,1113.0,1121.0],"routes":[123.0,126.0,131.0,130.0,131.0,134.0,134.0]},{"region":"충북","city":"보은군","discount":"25년부터전면무료","quasi_public":"","pop_decline":true,"income":[1028.0,868.0,797.0,789.0,785.0,783.0,702.0],"subsidy":[2628.0,2969.0,3047.0,3288.0,3923.0,3883.0,3837.0],"distance":[null,null,null,null,null,null,null],"passengers":[685.0,578.0,531.0,526.0,523.0,522.0,628.0],"stops":[394.0,394.0,394.0,394.0,394.0,394.0,394.0],"routes":[79.0,79.0,79.0,79.0,79.0,79.0,null]},{"region":"충북","city":"옥천군","discount":"","quasi_public":"","pop_decline":true,"income":[1476.0,1368.0,1482.0,1526.0,1604.0,1631.0,null],"subsidy":[3092.0,3180.0,3804.0,2850.0,4352.0,4817.0,null],"distance":[2967450.0,3002672.0,2968545.0,2973290.0,2973290.0,2973290.0,null],"passengers":[1008.0,1057.0,1349.0,1084.0,1458.0,1119.0,null],"stops":[801.0,801.0,801.0,801.0,801.0,801.0,801.0],"routes":[73.0,73.0,74.0,74.0,76.0,76.0,76.0]},{"region":"충북","city":"영동군","discount":"24년부터어린이청소년, 15년부터노인무료","quasi_public":"","pop_decline":true,"income":[937.0,866.0,773.0,751.0,730.0,702.0,643.0],"subsidy":[3304.0,3259.0,3608.0,4157.0,4472.0,4248.0,3840.0],"distance":[2952014.0,3022897.0,3027459.0,3027459.0,3108349.0,3148262.0,3171050.0],"passengers":[1307.0,1223.0,1170.0,1135.0,1128.0,1054.0,1106.0],"stops":[460.0,480.0,500.0,520.0,540.0,560.0,580.0],"routes":[85.0,85.0,87.0,88.0,88.0,89.0,89.0]},{"region":"충북","city":"증평군(부존재)","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"충북","city":"진천군","discount":"25년부터 전면무료","quasi_public":"","pop_decline":false,"income":[1989.0,1699.0,1652.0,1814.0,1739.0,1830.0,828.0],"subsidy":[2948.0,3482.0,3784.0,3972.0,3979.0,4034.0,4282.0],"distance":[3014535.0,3241200.0,3063080.0,3066730.0,3070380.0,3071475.0,3071475.0],"passengers":[1812.0,1701.0,1271.0,1505.0,1578.0,1831.0,2081.0],"stops":[306.0,326.0,328.0,335.0,337.0,341.0,346.0],"routes":[62.0,64.0,63.0,63.0,63.0,62.0,62.0]},{"region":"충북","city":"괴산군","discount":"26년부터전면무료","quasi_public":"","pop_decline":true,"income":[1257.0,896.0,875.0,897.0,875.0,896.0,null],"subsidy":[3212.0,3885.0,4081.0,4585.0,4608.0,4839.0,4584.0],"distance":[3922668.0,3360852.0,3360852.0,3360852.0,3412255.0,3539052.0,3559052.0],"passengers":[968.0,597.0,582.0,597.0,583.0,572.0,null],"stops":[343.0,358.0,369.0,373.0,378.0,389.0,401.0],"routes":[74.0,58.0,58.0,58.0,58.0,58.0,58.0]},{"region":"충북","city":"음성군","discount":"25년부터전면무료","quasi_public":"","pop_decline":false,"income":[1697.0,1333.0,1254.0,1332.0,1377.0,1456.0,null],"subsidy":[3013.0,3174.0,3441.0,3776.0,3809.0,3977.0,null],"distance":[7903510.0,7903520.0,7903870.0,7903950.0,7904000.0,7904120.0,7905000.0],"passengers":[1257.0,987.0,929.0,987.0,1020.0,1078.0,null],"stops":[396.0,404.0,417.0,426.0,426.0,431.0,438.0],"routes":[125.0,126.0,126.0,126.0,126.0,126.0,134.0]},{"region":"충북","city":"단양군","discount":"","quasi_public":"","pop_decline":true,"income":[1283.0,1107.0,1064.0,1054.0,1059.0,1037.0,991.0],"subsidy":[2070.0,2229.0,2316.0,2508.0,2775.0,2814.0,2900.0],"distance":[2481817.0,2377464.0,2359287.0,2359287.0,2359287.0,2359287.0,2359287.0],"passengers":[1124.0,922.0,760.0,702.0,655.0,648.0,null],"stops":[432.0,433.0,438.0,444.0,451.0,453.0,458.0],"routes":[101.0,98.0,96.0,96.0,96.0,96.0,96.0]},{"region":"충남","city":"천안시","discount":"65세 노인무상(17년부터), 어린이청소년무료화 22년","quasi_public":"","pop_decline":false,"income":[48749.0,31354.0,35393.0,36761.0,38248.0,37767.0,null],"subsidy":[26201.0,28537.0,34969.0,37499.0,41763.0,46364.0,null],"distance":[26045464.0,23347635.0,22377759.0,20403417.0,19896430.0,null,null],"passengers":[36409.0,27696.0,32349.0,33827.0,36200.0,43115.0,32868.0],"stops":[2072.0,2085.0,2068.0,2083.0,2090.0,2132.0,2146.0],"routes":[157.0,157.0,161.0,159.0,156.0,150.0,152.0]},{"region":"충남","city":"공주시","discount":"22년부터충남형교통복지모두적용(노인(75세이상),어린이,청소년(1일 3회내 무상)","quasi_public":"","pop_decline":true,"income":[5489.0,3638.0,3677.0,3561.0,3622.0,3765.0,2656.0],"subsidy":[5049.0,5623.0,5942.0,8345.0,8450.0,8296.0,8409.0],"distance":[6425000.0,6221679.0,6108943.0,5698966.0,5736135.0,5736135.0,5258000.0],"passengers":[3884.0,3186.0,3542.0,3692.0,3933.0,4167.0,3921.0],"stops":[873.0,873.0,873.0,950.0,950.0,950.0,950.0],"routes":[82.0,81.0,94.0,97.0,99.0,99.0,102.0]},{"region":"충남","city":"보령시","discount":"","quasi_public":"","pop_decline":true,"income":[6366.0,5762.0,5938.0,6213.0,6851.0,2454.0,null],"subsidy":[5509.0,7449.0,7536.0,10741.0,11590.0,10855.0,14786.0],"distance":[4895454.0,4749562.5,4806121.2,4890671.5,4863213.0,4700251.0,null],"passengers":[3451.0,3275.0,2875.0,1968.0,2435.0,2046.0,null],"stops":[985.0,1012.0,1024.0,1034.0,1049.0,1052.0,1061.0],"routes":[124.0,124.0,124.0,124.0,124.0,124.0,124.0]},{"region":"충남","city":"아산시","discount":"","quasi_public":"","pop_decline":false,"income":[13615.0,19728.0,24057.0,29857.0,30522.0,30128.0,null],"subsidy":[12860.0,12768.0,15576.0,20491.0,19576.0,15534.0,19104.0],"distance":[33067.0,30379.0,29325.0,33187.0,30026.0,29099.0,29462.0],"passengers":[12059.0,9655.0,10501.0,12141.0,13158.0,13479.0,12582.0],"stops":[1810.0,1837.0,1854.0,1883.0,2002.0,2059.0,2082.0],"routes":[78.0,76.0,70.0,71.0,74.0,72.0,76.0]},{"region":"충남","city":"서산시","discount":"","quasi_public":"","pop_decline":false,"income":[5689.0,3830.0,3890.0,4011.0,3812.0,3676.0,2940.0],"subsidy":[4714.0,6020.0,7434.0,9186.0,7941.0,9052.0,7532.0],"distance":[5922490.0,5788609.0,5861552.0,5936241.0,5286660.0,4803832.0,null],"passengers":[null,null,null,null,null,null,null],"stops":[1552.0,1800.0,1801.0,1809.0,1816.0,1819.0,1832.0],"routes":[143.0,274.0,275.0,274.0,297.0,216.0,230.0]},{"region":"충남","city":"논산시","discount":"","quasi_public":"","pop_decline":true,"income":[5932.0,4970.0,5453.0,5718.0,6113.0,6468.0,5391.0],"subsidy":[3991.0,4115.0,4003.0,5688.0,5234.0,4756.0,4137.0],"distance":[5985322.0,5937765.0,5887881.0,5876244.0,5875811.0,5931422.0,5912005.0],"passengers":[3374.0,2948.0,3176.0,3381.0,3671.0,3930.0,3737.0],"stops":[1202.0,1202.0,1231.0,1240.0,1253.0,1257.0,1265.0],"routes":[128.0,131.0,131.0,131.0,132.0,132.0,132.0]},{"region":"충남","city":"계룡시","discount":"","quasi_public":"","pop_decline":false,"income":[1914.0,1253.0,1274.0,1554.0,1701.0,1698.0,1204.0],"subsidy":[1330.0,2453.0,1684.0,3629.0,2646.0,2964.0,3461.0],"distance":[2082167.0,2076995.0,2161375.0,2615069.0,2486612.0,2474276.0,2045237.0],"passengers":[1573.0,1246.0,1319.0,1696.0,1954.0,2014.0,1661.0],"stops":[521.0,521.0,595.0,595.0,607.0,607.0,637.0],"routes":[7.0,7.0,8.0,8.0,8.0,9.0,9.0]},{"region":"충남","city":"당진시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"충남","city":"금산군","discount":"노인무료","quasi_public":"","pop_decline":true,"income":[642.0,525.0,497.0,489.0,492.0,492.0,427.0],"subsidy":[1541.0,1934.0,2343.0,2468.0,2602.0,3226.0,4108.0],"distance":[2049584.5,2049584.5,2246757.5,2245781.5,2243837.5,2243837.5,2243837.5],"passengers":[1098.0,761.0,761.0,607.0,757.0,753.0,550.0],"stops":[433.0,433.0,433.0,433.0,433.0,434.0,438.0],"routes":[136.0,139.0,139.0,139.0,139.0,140.0,140.0]},{"region":"충남","city":"부여군","discount":"","quasi_public":"","pop_decline":true,"income":[1233.0,1443.0,1498.0,1474.0,1497.0,1531.0,885.0],"subsidy":[4964.0,5861.0,5918.0,7348.0,7386.0,7993.0,8195.0],"distance":[5299800.0,5299800.0,5299800.0,5299800.0,5299800.0,5299800.0,5299800.0],"passengers":[1785.0,1810.0,1822.0,1832.0,1900.0,1977.0,1602.0],"stops":[1172.0,1200.0,1230.0,1257.0,1283.0,1302.0,1317.0],"routes":[65.0,65.0,65.0,65.0,65.0,65.0,65.0]},{"region":"충남","city":"서천군","discount":"","quasi_public":"","pop_decline":true,"income":[1440.0,1600.0,743.0,743.0,712.0,680.0,null],"subsidy":[3428.0,4365.0,4392.0,5743.0,5920.0,5857.0,6616.0],"distance":[8252.6,8252.6,8754.0,8754.0,8437.0,8437.0,8437.0],"passengers":[1468.0,1252.0,1107.0,1126.0,1091.0,1056.0,931.0],"stops":[1058.0,1058.0,1060.0,1060.0,1060.0,1060.0,1060.0],"routes":[122.0,134.0,134.0,134.0,134.0,134.0,134.0]},{"region":"충남","city":"청양군","discount":"","quasi_public":"","pop_decline":true,"income":[711.0,423.0,419.0,403.0,392.0,367.0,321.0],"subsidy":[2004.0,1882.0,2379.0,3140.0,2969.0,3393.0,3311.0],"distance":[2406117.0,2582654.0,2595625.0,2452820.0,2556209.0,2543956.0,null],"passengers":[703.0,644.0,619.0,597.0,586.0,569.0,455.0],"stops":[419.0,502.0,556.0,568.0,582.0,595.0,610.0],"routes":[106.0,106.0,106.0,106.0,108.0,108.0,165.0]},{"region":"충남","city":"홍성군","discount":"","quasi_public":"","pop_decline":false,"income":[3114.0,1965.0,1963.0,1957.0,2007.0,2102.0,1604.0],"subsidy":[3284.0,3520.0,3966.0,5734.0,5825.0,6004.0,null],"distance":[4823639.3,4168820.4,4155269.5,4194101.0,4337601.9,4597716.2,4376394.0],"passengers":[2087.0,1821.0,1900.0,1966.0,2132.0,2293.0,2144.0],"stops":[793.0,793.0,793.0,793.0,793.0,793.0,793.0],"routes":[232.0,169.0,168.0,173.0,175.0,175.0,177.0]},{"region":"충남","city":"예산군","discount":"","quasi_public":"","pop_decline":true,"income":[3550.0,3067.0,3301.0,3259.0,3632.0,3675.0,null],"subsidy":[4002.0,3526.0,3802.0,5137.0,5342.0,5498.0,5080.0],"distance":[3638217.0,3525585.0,3534178.0,3533858.0,3573629.0,null,null],"passengers":[2465.0,2503.0,2100.0,2227.0,2385.0,2413.0,null],"stops":[442.0,448.0,467.0,486.0,502.0,518.0,528.0],"routes":[148.0,143.0,143.0,143.0,143.0,143.0,143.0]},{"region":"충남","city":"태안군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[6880.0,7220.0,7374.0,7304.0,6838.0,7398.0,7926.0],"distance":[11829.0,11829.0,10806.9,10806.9,10806.9,10758.2,10886.3],"passengers":[1742.0,1363.0,1353.0,1335.0,1364.0,1353.0,1111.0],"stops":[785.0,795.0,805.0,820.0,838.0,858.0,884.0],"routes":[176.0,176.0,290.0,290.0,290.0,275.0,274.0]},{"region":"전북","city":"전주시","discount":"","quasi_public":"마을버스공영","pop_decline":false,"income":[53290.0,37550.0,37620.0,39711.0,46018.0,46691.0,null],"subsidy":[27375.0,39437.0,39275.0,38477.0,43418.0,44969.0,null],"distance":[36907238.0,38746176.0,37217325.0,35991179.0,33468621.0,32059308.0,null],"passengers":[49458.0,38986.0,44650.0,48397.0,50891.0,51632.0,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전북","city":"군산시","discount":"25년부터청소년무상교통","quasi_public":"","pop_decline":false,"income":[11166.0,8371.0,8747.0,9377.0,10613.0,11133.0,11254.0],"subsidy":[6468.0,11074.0,11804.0,11693.0,12971.0,11683.0,11230.0],"distance":[12103467.0,13751136.0,12390841.0,12357784.0,12268307.0,12308181.0,12057932.0],"passengers":[10436.0,7967.0,8277.0,8525.0,6162.0,6722.0,5613.0],"stops":[1042.0,1060.0,1080.0,1118.0,1168.0,1222.0,1244.0],"routes":[56.0,58.0,57.0,57.0,56.0,55.0,48.0]},{"region":"전북","city":"익산시","discount":"24년부터어린이100원,25.7청소년100원","quasi_public":"","pop_decline":true,"income":[16438.0,12432.0,15019.0,15570.0,13275.0,13463.0,11157.0],"subsidy":[11036.0,12895.0,16210.0,17543.0,17347.0,18636.0,14833.0],"distance":[19031830.0,14140830.0,19031830.0,18403665.0,16128803.0,16149644.0,15764423.0],"passengers":[13072.0,10274.0,9695.0,9748.0,10550.0,11393.0,8643.0],"stops":[null,null,1740.0,1740.0,1750.0,1934.0,1963.0],"routes":[107.0,107.0,105.0,105.0,119.0,118.0,119.0]},{"region":"전북","city":"정읍시","discount":"","quasi_public":"","pop_decline":true,"income":[1112.0,1765.0,1714.0,1672.0,1685.0,1685.0,1543.0],"subsidy":[5398.0,5597.0,6009.0,6815.0,7056.0,7270.0,6636.0],"distance":[4758067.0,4758067.0,4758067.0,4758067.0,4757556.0,4757921.0,4757921.0],"passengers":[null,null,null,null,null,null,null],"stops":[717.0,757.0,835.0,861.0,873.0,884.0,898.0],"routes":[226.0,226.0,226.0,226.0,226.0,228.0,228.0]},{"region":"전북","city":"남원시","discount":"23.7부터노인무료,천원단일요금제","quasi_public":"","pop_decline":true,"income":[2091.0,1843.0,1725.0,1733.0,1466.0,1125.0,1052.0],"subsidy":[4720.0,4898.0,5208.0,5900.0,6399.0,7025.0,7589.0],"distance":[10486.0,10626.0,10394.0,10510.0,10510.0,10556.0,10556.0],"passengers":[2440.0,2393.0,2301.0,2171.0,2272.0,2340.0,2386.0],"stops":[570.0,570.0,570.0,580.0,580.0,600.0,620.0],"routes":[112.0,112.0,108.0,112.0,112.0,112.0,112.0]},{"region":"전북","city":"김제시","discount":"천원단일요금제","quasi_public":"","pop_decline":true,"income":[1999.0,1134.0,1081.0,1077.0,1144.0,1199.0,1116.0],"subsidy":[4635.0,4835.0,5223.0,6145.0,6017.0,6094.0,7030.0],"distance":[4469169.5,3774684.0,3774684.0,3797095.0,3836259.5,3836259.5,3920574.5],"passengers":[null,null,null,null,null,null,null],"stops":[945.0,945.0,970.0,990.0,1005.0,1018.0,1073.0],"routes":[132.0,132.0,132.0,140.0,143.0,143.0,144.0]},{"region":"전북","city":"완주군(전주시버스업체재정지원)","discount":"20년부터성인제외모두무상","quasi_public":"21.6월부터 마을버스공영제시작, 25년 완전공영제","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[6739.0,7068.0,7416.0,9844.0,9850.0,10025.0,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전북","city":"진안군","discount":"","quasi_public":"","pop_decline":true,"income":[664.0,502.0,500.0,568.0,598.0,567.0,516.0],"subsidy":[644.0,765.0,877.0,667.0,1048.0,1328.0,2452.0],"distance":[2110211.0,2110211.0,2110211.0,2402540.0,2402540.0,2558029.0,2558029.0],"passengers":[876.0,716.0,593.0,600.0,600.0,507.0,554.0],"stops":[453.0,453.0,464.0,464.0,486.0,486.0,487.0],"routes":[161.0,161.0,159.0,159.0,159.0,159.0,162.0]},{"region":"전북","city":"무주군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전북","city":"장수군","discount":"","quasi_public":"","pop_decline":true,"income":[661.0,535.0,255.0,196.0,186.0,196.0,181.0],"subsidy":[1054.0,936.0,946.0,896.0,1421.0,1736.0,1684.0],"distance":[1193878.0,1201762.0,1201762.0,1061785.0,1061785.0,1032585.0,1032585.0],"passengers":[394.0,322.0,267.0,252.0,244.0,228.0,167.0],"stops":[202.0,206.0,215.0,219.0,224.0,234.0,245.0],"routes":[89.0,75.0,75.0,71.0,71.0,62.0,62.0]},{"region":"전북","city":"임실군","discount":"","quasi_public":"","pop_decline":true,"income":[1253.0,1051.0,930.0,900.0,791.0,730.0,701.0],"subsidy":[2596.0,2779.0,2957.0,3460.0,3307.0,3518.0,3729.0],"distance":[7541.0,7541.0,7522.0,7530.0,7760.0,7989.0,7989.0],"passengers":[862.0,1082.0,1054.0,1055.0,822.0,908.0,834.0],"stops":[340.0,388.0,438.0,478.0,523.0,548.0,580.0],"routes":[88.0,88.0,88.0,88.0,88.0,88.0,88.0]},{"region":"전북","city":"순창군","discount":"","quasi_public":"","pop_decline":true,"income":[537.0,411.0,348.0,333.0,791.0,265.0,275.0],"subsidy":[2007.0,1937.0,1931.0,2432.0,2881.0,2721.0,2864.0],"distance":[2186168.0,2178395.0,2069573.0,2067834.0,2191058.0,2192120.0,2186131.0],"passengers":[505.0,415.0,340.0,310.0,294.0,321.0,287.0],"stops":[null,null,null,null,null,null,null],"routes":[67.0,71.0,64.0,64.0,66.0,66.0,66.0]},{"region":"전북","city":"고창군(부존재)","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전북","city":"부안군","discount":"","quasi_public":"","pop_decline":true,"income":[1097.0,949.0,827.0,781.0,710.0,684.0,650.0],"subsidy":[4148.0,4361.0,4960.0,5537.0,6307.0,6488.0,6222.0],"distance":[10509.0,10509.0,10509.0,10509.0,10509.0,10509.0,10509.0],"passengers":[1342.0,1168.0,1009.0,948.0,891.0,849.0,815.0],"stops":[912.0,912.0,912.0,912.0,912.0,912.0,912.0],"routes":[62.0,62.0,62.0,62.0,62.0,62.0,62.0]},{"region":"전남","city":"완도군(부존재)","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전남","city":"나주시","discount":"","quasi_public":"","pop_decline":false,"income":[11090.0,7714.0,7156.0,7147.0,7371.0,6753.0,4772.0],"subsidy":[16186.0,16785.0,17841.0,19844.0,20123.0,19689.0,16138.0],"distance":[16125788.0,17676950.0,14192136.0,14188479.0,11473410.0,11801436.0,11801436.0],"passengers":[8055.0,5603.0,5198.0,5191.0,4950.0,4687.0,2861.0],"stops":[1667.0,1667.0,1667.0,1667.0,1500.0,1485.0,1485.0],"routes":[49.0,47.0,47.0,47.0,49.0,49.0,57.0]},{"region":"전남","city":"목포시","discount":"","quasi_public":"","pop_decline":false,"income":[17871.0,13421.0,14290.0,11980.0,10369.0,11306.0,9291.0],"subsidy":[7973.0,7388.0,10241.0,11428.0,15934.0,18081.0,12112.0],"distance":[10514945.0,10585516.0,10480709.0,8654481.0,9572381.0,5104014.0,4806279.0],"passengers":[13581.0,9811.0,9815.0,8511.0,9811.0,11202.0,10535.0],"stops":[526.0,526.0,526.0,527.0,527.0,486.0,489.0],"routes":[21.0,20.0,20.0,20.0,20.0,15.0,15.0]},{"region":"전남","city":"여수시","discount":"","quasi_public":"","pop_decline":false,"income":[21716.0,18180.0,19499.0,16967.0,17132.0,15770.0,13399.0],"subsidy":[10879.0,13083.0,13604.0,19814.0,22562.0,29597.0,24083.0],"distance":[17034185.0,17034185.0,17034185.0,17034185.0,17124340.0,17171009.0,17124340.0],"passengers":[18934.0,16297.0,15594.0,17512.0,18205.0,19546.0,15729.0],"stops":[1481.0,1524.0,1544.0,1563.0,1593.0,1597.0,1606.0],"routes":[61.0,61.0,61.0,61.0,62.0,62.0,62.0]},{"region":"전남","city":"순천시","discount":"","quasi_public":"","pop_decline":false,"income":[19740.0,13852.0,13800.0,13093.0,14181.0,14599.0,null],"subsidy":[12682.0,14099.0,16643.0,22385.0,24163.0,25586.0,27812.0],"distance":[48808.0,41916.0,44041.0,44501.0,43978.0,44218.0,44572.0],"passengers":[5612.0,12624.0,12772.0,13586.0,15265.0,15737.0,13999.0],"stops":[null,null,null,null,null,null,null],"routes":[57.0,58.0,55.0,55.0,55.0,55.0,55.0]},{"region":"전남","city":"광양시","discount":"22.11월부터 노인무상","quasi_public":"","pop_decline":false,"income":[3507.0,2981.0,5352.0,5776.0,6335.0,7847.0,7659.0],"subsidy":[5854.0,7298.0,7326.0,8476.0,10226.0,12636.0,12760.0],"distance":[5966582.0,5665384.0,5913438.0,5854668.0,5775773.0,6336730.0,5741755.0],"passengers":[null,null,null,null,null,null,null],"stops":[440.0,449.0,461.0,456.0,435.0,440.0,413.0],"routes":[31.0,28.0,28.0,28.0,28.0,29.0,30.0]},{"region":"전남","city":"담양군","discount":"","quasi_public":"","pop_decline":true,"income":[1261.0,2370.0,2464.0,2513.0,2258.0,2293.0,2289.0],"subsidy":[3467.0,3728.0,4083.0,5186.0,5610.0,5876.0,5827.0],"distance":[4674479.0,4674479.0,4385621.0,4385621.0,4605497.0,4785953.0,4092745.0],"passengers":[2113.0,1443.0,1732.0,1320.0,1288.0,1391.0,null],"stops":[null,null,null,null,410.0,410.0,413.0],"routes":[85.0,85.0,85.0,85.0,85.0,85.0,96.0]},{"region":"전남","city":"곡성군","discount":"","quasi_public":"","pop_decline":true,"income":[781.0,627.0,644.0,544.0,512.0,492.0,449.0],"subsidy":[2305.0,2333.0,2815.0,3075.0,3156.0,3270.0,3062.0],"distance":[2400569.0,2352515.0,2335990.0,2208344.0,2208344.0,2209300.0,2209300.0],"passengers":[804.0,660.0,610.0,551.0,538.0,520.0,461.0],"stops":[225.0,232.0,237.0,245.0,251.0,255.0,256.0],"routes":[68.0,66.0,65.0,65.0,65.0,56.0,56.0]},{"region":"전남","city":"구례군","discount":"","quasi_public":"","pop_decline":true,"income":[627.0,435.0,395.0,380.0,389.0,394.0,355.0],"subsidy":[239.0,439.0,411.0,485.0,652.0,611.0,459.0],"distance":[1940272.0,1940272.0,1940272.0,1940272.0,1940272.0,1945515.6,1899887.8],"passengers":[467.0,438.0,411.0,391.0,405.0,364.0,366.0],"stops":[null,null,156.0,161.0,161.0,161.0,164.0],"routes":[56.0,56.0,56.0,56.0,56.0,56.0,56.0]},{"region":"전남","city":"고흥군(부존재)","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전남","city":"보성군","discount":"","quasi_public":"","pop_decline":true,"income":[850.0,683.0,641.0,614.0,580.0,587.0,540.0],"subsidy":[1051.0,866.0,966.0,1115.0,1053.0,830.0,513.0],"distance":[3564227.0,3564227.0,3564227.0,3607662.0,3607662.0,3607662.0,3608757.0],"passengers":[944.0,758.0,712.0,682.0,644.0,652.0,600.0],"stops":[486.0,486.0,486.0,486.0,486.0,486.0,486.0],"routes":[128.0,128.0,128.0,134.0,134.0,134.0,134.0]},{"region":"전남","city":"화순군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[1360.0,1317.0,1525.0,2732.0,2387.0,3090.0,2720.0],"distance":[5867000.0,6120019.0,6120019.0,6120019.0,6118358.0,6118358.0,5818976.0],"passengers":[3848.0,2963.0,3339.0,3246.0,3318.0,3224.0,3018.0],"stops":[358.0,373.0,416.0,428.0,429.0,429.0,429.0],"routes":[94.0,94.0,94.0,94.0,94.0,94.0,94.0]},{"region":"전남","city":"장흥군","discount":"","quasi_public":"","pop_decline":true,"income":[456.0,449.0,380.0,393.0,382.0,380.0,384.0],"subsidy":[2090.0,2189.0,2196.0,2439.0,2475.0,2572.0,2712.0],"distance":[2786811.0,2794446.0,2794446.0,2794446.0,2794446.0,2794446.0,2794446.0],"passengers":[452.0,443.0,387.0,379.0,389.0,380.0,374.0],"stops":[288.0,289.0,290.0,291.0,293.0,295.0,296.0],"routes":[78.0,78.0,78.0,78.0,78.0,78.0,78.0]},{"region":"전남","city":"강진군","discount":"","quasi_public":"","pop_decline":true,"income":[533.0,511.0,468.0,453.0,397.0,375.0,346.0],"subsidy":[1160.0,1560.0,2359.0,3028.0,3113.0,3341.0,3206.0],"distance":[1691410.0,1691410.0,1691410.0,1691410.0,1691410.0,1691410.0,1691410.0],"passengers":[541.0,530.0,533.0,497.0,425.0,425.0,415.0],"stops":[280.0,295.0,300.0,300.0,305.0,310.0,320.0],"routes":[49.0,49.0,49.0,49.0,49.0,49.0,49.0]},{"region":"전남","city":"해남군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[2707.0,2941.0,3169.0,3434.0,3456.0,3645.0,3920.0],"distance":[null,null,null,null,null,null,null],"passengers":[1168.0,959.0,924.0,932.0,878.0,888.0,864.0],"stops":[null,null,null,null,555.0,560.0,565.0],"routes":[166.0,166.0,166.0,166.0,166.0,166.0,166.0]},{"region":"전남","city":"영암군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전남","city":"무안군","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전남","city":"함평군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[3706.0,3572.0,4273.0,4687.0,4244.0,4699.0,3749.0],"distance":[1304.97,1304.97,1304.97,1302.2,1302.2,1111.8,1111.8],"passengers":[null,null,null,null,null,null,null],"stops":[326.0,336.0,340.0,342.0,349.0,351.0,357.0],"routes":[58.0,58.0,58.0,57.0,57.0,52.0,52.0]},{"region":"전남","city":"영광군","discount":"천원버스, 25년부터 노인무료","quasi_public":"","pop_decline":true,"income":[1054.0,799.0,772.0,808.0,864.0,934.0,964.0],"subsidy":[3752.0,3146.0,4470.0,4951.0,5800.0,5885.0,6580.0],"distance":[2938469.0,2938469.0,2962413.0,2967158.0,2987671.0,2987671.0,2990007.0],"passengers":[1050.0,798.0,773.0,794.0,864.0,920.0,1025.0],"stops":[590.0,590.0,590.0,590.0,590.0,634.0,634.0],"routes":[39.0,39.0,39.0,39.0,40.0,40.0,40.0]},{"region":"전남","city":"장성군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"전남","city":"진도군","discount":"24.7월부터 전면무료","quasi_public":"","pop_decline":true,"income":[804.0,678.0,381.0,339.0,322.0,210.0,null],"subsidy":[1018.0,1033.0,1579.0,1684.0,1847.0,2509.0,2548.0],"distance":[1616366.0,1643960.0,1643960.0,1643960.0,1643960.0,1643960.0,1643960.0],"passengers":[436.0,356.0,345.0,321.0,366.0,499.0,481.0],"stops":[255.0,256.0,256.0,256.0,256.0,256.0,256.0],"routes":[34.0,35.0,35.0,35.0,35.0,35.0,35.0]},{"region":"전남","city":"신안군","discount":"07년부터노인무상, 19년부터어린이청소년무상,08년부터천원단일요금","quasi_public":"07년부터완전공영제","pop_decline":true,"income":[120.0,148.0,152.0,146.0,156.0,167.0,160.0],"subsidy":[3413.0,4576.0,4323.0,5530.0,5964.0,6312.0,6585.0],"distance":[2883135.0,3448155.0,3668250.0,3725555.0,3725555.0,3725555.0,3725555.0],"passengers":[672.0,540.0,553.0,570.0,623.0,642.0,600.0],"stops":[400.0,415.0,420.0,425.0,426.0,428.0,430.0],"routes":[118.0,118.0,119.0,119.0,119.0,119.0,119.0]},{"region":"경북","city":"포항시","discount":"25.7월부터경북관내전체노인무상","quasi_public":"","pop_decline":false,"income":[26726.0,18539.0,17196.0,18280.0,20094.0,20628.0,null],"subsidy":[20969.0,25677.0,30918.0,34798.0,39919.0,37912.0,36424.0],"distance":[20849693.0,21171724.0,21760352.0,20916409.0,20719266.0,19783201.0,null],"passengers":[24296.0,16853.0,15632.0,17233.0,19815.0,20492.0,null],"stops":[1616.0,1624.0,1635.0,1802.0,1815.0,1839.0,1874.0],"routes":[109.0,24.0,24.0,24.0,24.0,23.0,23.0]},{"region":"경북","city":"경주시","discount":"","quasi_public":"","pop_decline":true,"income":[16839.0,10940.0,11288.0,12768.0,13650.0,13973.0,10763.0],"subsidy":[9194.0,14704.0,15299.0,18490.0,19019.0,19897.0,21009.0],"distance":[15955095.0,null,15436624.0,16011047.0,16546239.0,16592207.0,null],"passengers":[10928.0,7221.0,7765.0,8979.0,9856.0,11295.0,null],"stops":[null,null,1105.0,1137.0,1211.0,1241.0,1297.0],"routes":[86.0,86.0,89.0,90.0,90.0,96.0,95.0]},{"region":"경북","city":"영천시","discount":"23년노인,24년부터어린이청소년무상","quasi_public":"","pop_decline":true,"income":[4958.0,3692.0,3703.0,3910.0,3810.0,4660.0,null],"subsidy":[6440.0,7684.0,7592.0,7499.0,6304.0,6015.0,5161.0],"distance":[null,null,7335770.0,7383220.0,7383220.0,7383220.0,null],"passengers":[3831.0,3090.0,3238.0,2547.0,2547.0,3119.0,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,120.0,122.0,124.0,124.0,112.0]},{"region":"경북","city":"김천시","discount":"","quasi_public":"","pop_decline":true,"income":[5224.0,3762.0,3843.0,3828.0,4001.0,4111.0,3010.0],"subsidy":[768.0,1864.0,1002.0,869.0,703.0,503.0,419.0],"distance":[null,null,null,null,null,null,null],"passengers":[4630.0,3479.0,3466.0,3525.0,3698.0,3731.0,3758.0],"stops":[1461.0,1461.0,1461.0,1461.0,1461.0,1461.0,1461.0],"routes":[475.0,475.0,475.0,475.0,475.0,475.0,475.0]},{"region":"경북","city":"안동시","discount":"","quasi_public":"","pop_decline":true,"income":[10272.0,6979.0,8246.0,8341.0,8662.0,8863.0,7307.0],"subsidy":[14242.0,16577.0,17258.0,20242.0,20123.0,20884.0,22751.0],"distance":[12584361.0,12393678.0,12288500.0,12288026.0,11794448.0,11625208.0,11268511.0],"passengers":[7577.0,5403.0,5939.0,5979.0,6256.0,6470.0,6631.0],"stops":[1229.0,1273.0,1302.0,1310.0,1350.0,1364.0,1381.0],"routes":[39.0,39.0,47.0,47.0,47.0,47.0,47.0]},{"region":"경북","city":"구미시","discount":"","quasi_public":"","pop_decline":false,"income":[15678.0,11045.0,12772.0,13718.0,14277.0,14463.0,13342.0],"subsidy":[9281.0,15180.0,14719.0,15039.0,20904.0,25396.0,25258.0],"distance":[13653297.0,13691004.0,13384796.0,13203257.0,13231679.0,13493385.0,null],"passengers":[16174.0,11394.0,11519.0,11907.0,12419.0,12994.0,11680.0],"stops":[894.0,null,null,null,null,922.0,957.0],"routes":[192.0,192.0,191.0,209.0,210.0,214.0,184.0]},{"region":"경북","city":"영주시","discount":"","quasi_public":"","pop_decline":true,"income":[3810.0,2325.0,2452.0,2648.0,2940.0,2981.0,2603.0],"subsidy":[4900.0,5050.0,5100.0,5300.0,5450.0,5600.0,6100.0],"distance":[null,null,null,null,null,null,null],"passengers":[2020.0,1233.0,1367.0,1409.0,1453.0,1602.0,1402.0],"stops":[405.0,410.0,416.0,418.0,420.0,422.0,429.0],"routes":[57.0,57.0,57.0,57.0,57.0,57.0,57.0]},{"region":"경북","city":"상주시","discount":"25년부터전면무료","quasi_public":"","pop_decline":true,"income":[1415.0,1024.0,976.0,1042.0,1013.0,999.0,958.0],"subsidy":[5954.0,6711.0,6917.0,8036.0,8892.0,9902.0,11082.0],"distance":[12048.0,12048.0,13128.0,13128.0,13128.0,13128.0,13128.0],"passengers":[1048.0,759.0,679.0,651.0,647.0,625.0,516.0],"stops":[665.0,665.0,705.0,744.0,765.0,792.0,792.0],"routes":[58.0,58.0,69.0,69.0,69.0,69.0,69.0]},{"region":"경북","city":"문경시","discount":"25년부터 전면무료","quasi_public":"","pop_decline":true,"income":[1566.0,1156.0,1237.0,1312.0,1348.0,1287.0,0.0],"subsidy":[4291.0,4507.0,4714.0,5383.0,5383.0,5783.0,6442.0],"distance":[3721321.0,3721321.0,3721321.0,3721321.0,3721321.0,3564189.0,3627845.0],"passengers":[1332.0,987.0,954.0,735.0,851.0,812.0,1608.0],"stops":[948.0,948.0,948.0,948.0,1010.0,1022.0,1059.0],"routes":[72.0,72.0,72.0,72.0,72.0,72.0,73.0]},{"region":"경북","city":"경산시","discount":"","quasi_public":"","pop_decline":false,"income":[23236.0,14832.0,16237.0,16615.0,15785.0,17053.0,14848.0],"subsidy":[9179.0,14899.0,12591.0,17009.0,27891.0,25876.0,20038.0],"distance":[50657328.0,45380523.0,46435884.0,41950600.0,42478280.0,45380523.0,65756502.0],"passengers":[18589.0,11865.0,12989.0,13292.0,12628.0,11368.0,9899.0],"stops":[846.0,854.0,882.0,914.0,914.0,1009.0,1019.0],"routes":[35.0,37.0,33.0,34.0,34.0,34.0,39.0]},{"region":"경북","city":"의성군","discount":"25년부터전면무료","quasi_public":"","pop_decline":true,"income":[739.0,573.0,525.0,507.0,486.0,467.0,null],"subsidy":[2568.0,2718.0,3088.0,3831.0,4592.0,4159.0,4471.0],"distance":[2797250.0,2803305.0,2803305.0,2813087.0,2813087.0,2813087.0,2813087.0],"passengers":[684.0,530.0,486.0,469.0,449.0,432.0,515.0],"stops":[425.0,442.0,460.0,475.0,497.0,510.0,521.0],"routes":[96.0,113.0,113.0,113.0,113.0,114.0,114.0]},{"region":"경북","city":"청송군","discount":"23년부터전면무료","quasi_public":"","pop_decline":true,"income":[469.0,357.0,335.0,325.0,0.0,0.0,0.0],"subsidy":[1950.0,2115.0,2106.0,2466.0,2780.0,3102.0,3251.0],"distance":[1778754.0,1935881.0,1941581.0,1941581.0,1941581.0,1941581.0,1941581.0],"passengers":[376.0,286.0,266.0,262.0,271.0,276.0,311.0],"stops":[190.0,195.0,198.0,200.0,203.0,205.0,210.0],"routes":[63.0,63.0,63.0,63.0,63.0,63.0,63.0]},{"region":"경북","city":"영양군","discount":"","quasi_public":"","pop_decline":true,"income":[306.0,260.0,262.0,235.0,241.0,237.0,209.0],"subsidy":[1712.0,1847.0,1785.0,2113.0,2160.0,2159.0,2023.0],"distance":[1122010.0,1345025.0,1347215.0,1362974.0,1384080.0,1383715.0,1384810.0],"passengers":[235.0,200.0,201.0,181.0,185.0,182.0,176.0],"stops":[282.0,299.0,299.0,299.0,299.0,299.0,299.0],"routes":[59.0,67.0,67.0,67.0,67.0,67.0,67.0]},{"region":"경북","city":"영덕군(부존재)","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경북","city":"청도군","discount":"","quasi_public":"","pop_decline":true,"income":[946.0,662.0,721.0,815.0,823.0,817.0,null],"subsidy":[2564.0,2614.0,2806.0,3409.0,3659.0,3648.0,3621.0],"distance":[null,null,2243107.0,2243107.0,2243107.0,2243107.0,2364657.0],"passengers":[761.0,533.0,580.0,627.0,633.0,628.0,null],"stops":[null,null,478.0,481.0,487.0,495.0,501.0],"routes":[null,null,39.0,39.0,39.0,39.0,40.0]},{"region":"경북","city":"고령군","discount":"","quasi_public":"","pop_decline":true,"income":[1947.0,1279.0,1384.0,1404.0,1264.0,1149.0,444.0],"subsidy":[1510.0,1983.0,1856.0,2287.0,2362.0,2577.0,2658.0],"distance":[2786825.0,2480144.0,2472023.0,2439319.0,2197474.0,2000552.0,1332031.0],"passengers":[1147.0,780.0,760.0,730.0,700.0,650.0,414.0],"stops":[515.0,515.0,515.0,515.0,515.0,515.0,457.0],"routes":[72.0,71.0,72.0,71.0,68.0,69.0,63.0]},{"region":"경북","city":"성주군","discount":"","quasi_public":"","pop_decline":true,"income":[2100.0,1533.0,1783.0,1894.0,1893.0,1849.0,null],"subsidy":[2246.0,2475.0,2576.0,2583.0,2851.0,2857.0,2349.0],"distance":[null,null,null,null,null,null,null],"passengers":[1510.0,900.0,960.0,930.0,873.0,812.0,888.0],"stops":[null,null,null,null,null,null,null],"routes":[63.0,63.0,63.0,63.0,63.0,63.0,63.0]},{"region":"경북","city":"칠곡군","discount":"","quasi_public":"","pop_decline":false,"income":[5506.0,3674.0,4093.0,4393.0,4500.0,4475.0,3718.0],"subsidy":[325.9,306.0,277.0,275.2,275.2,194.7,159.9],"distance":[3341940.0,3347502.0,3308214.0,3308214.0,3277714.0,3323087.0,3326572.0],"passengers":[457.0,260.0,278.0,292.0,300.0,299.0,292.0],"stops":[659.0,659.0,659.0,659.0,659.0,659.0,659.0],"routes":[36.0,36.0,36.0,36.0,36.0,38.0,38.0]},{"region":"경북","city":"예천군","discount":"","quasi_public":"","pop_decline":false,"income":[1072.0,760.0,912.0,937.0,967.0,1016.0,1064.0],"subsidy":[3506.0,4499.0,4649.0,5283.0,5235.0,5713.0,5834.0],"distance":[3508450.0,3368798.0,3521599.0,3454575.0,3464343.0,3569360.0,3569112.0],"passengers":[893.0,633.0,651.0,664.0,691.0,726.0,760.0],"stops":[558.0,560.0,823.0,834.0,851.0,888.0,902.0],"routes":[71.0,71.0,71.0,76.0,75.0,75.0,75.0]},{"region":"경북","city":"봉화군","discount":"24년부터전면무료","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경북","city":"울진군","discount":"25.3월부터전면무상","quasi_public":"","pop_decline":true,"income":[1036.0,1049.0,817.0,793.0,795.0,789.0,null],"subsidy":[2098.0,2407.0,2409.0,2897.0,3125.0,3321.0,null],"distance":[null,null,null,null,null,null,null],"passengers":[829.0,655.0,653.0,634.0,636.0,631.0,821.0],"stops":[268.0,277.0,283.0,288.0,296.0,300.0,304.0],"routes":[83.0,83.0,83.0,83.0,83.0,83.0,86.0]},{"region":"경북","city":"울릉군(부존재)","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경남","city":"창원시","discount":"","quasi_public":"21.9월부터 준공영제","pop_decline":false,"income":[109136.0,89227.0,89441.0,93485.0,95829.0,89351.0,87788.0],"subsidy":[39777.0,50226.0,66966.0,92820.0,92376.0,94301.0,85404.0],"distance":[null,null,null,null,null,null,null],"passengers":[84661.0,61505.0,62285.0,65664.0,68804.0,79368.0,null],"stops":[2182.0,2111.0,2111.0,2187.0,2473.0,2473.0,2473.0],"routes":[138.0,138.0,140.0,136.0,135.0,136.0,136.0]},{"region":"경남","city":"진주시","discount":"","quasi_public":"","pop_decline":false,"income":[29848.0,24576.0,22763.0,25184.0,26383.0,26827.0,20472.0],"subsidy":[17664.0,23206.0,27986.0,31749.0,31072.0,30647.0,29293.0],"distance":[23238455.0,23477895.0,23463295.0,23635575.0,23611850.0,23629735.0,19653600.0],"passengers":[27844.0,20406.0,18482.0,21040.0,21915.0,22494.0,20376.0],"stops":[1743.0,1768.0,1780.0,1795.0,1822.0,1845.0,1881.0],"routes":[87.0,94.0,94.0,95.0,96.0,96.0,91.0]},{"region":"경남","city":"통영시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[3958.0,6451.0,8036.0,10721.0,9791.0,9385.0,null],"distance":[8256300.0,8256300.0,6986100.0,6986100.0,6986100.0,6815575.0,null],"passengers":[8000.0,6000.0,5500.0,6500.0,7000.0,7000.0,null],"stops":[800.0,830.0,860.0,890.0,920.0,940.0,null],"routes":[145.0,145.0,103.0,103.0,103.0,109.0,null]},{"region":"경남","city":"사천시","discount":"","quasi_public":"","pop_decline":true,"income":[2341.0,2198.0,1987.0,1970.0,1811.0,1993.0,2081.0],"subsidy":[2333.0,2571.0,3227.0,4286.0,4695.0,4958.0,4868.0],"distance":[3246052.0,3266415.0,3293996.0,3355865.0,3355284.0,3548929.0,3657008.0],"passengers":[906.0,810.0,804.0,847.0,989.0,1149.0,1146.0],"stops":[505.0,508.0,510.0,512.0,516.0,536.0,543.0],"routes":[156.0,156.0,96.0,96.0,56.0,58.0,60.0]},{"region":"경남","city":"김해시","discount":"","quasi_public":"","pop_decline":false,"income":[13475.0,12776.0,14345.0,18657.0,24755.0,30101.0,30482.0],"subsidy":[12543.0,15965.0,18953.0,24578.0,25455.0,26917.0,30357.0],"distance":[19250861.0,17907163.0,18186633.0,18369441.0,19707215.0,21344860.0,20724418.0],"passengers":[19652.0,14285.0,15356.0,16542.0,18676.0,20756.0,19665.0],"stops":[1404.0,1479.0,1481.0,1486.0,1496.0,1530.0,1555.0],"routes":[54.0,56.0,57.0,58.0,61.0,62.0,64.0]},{"region":"경남","city":"밀양시","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[2881.0,3158.0,3420.0,4370.0,3580.0,4025.0,3764.0],"distance":[3211318.0,3211318.0,3211318.0,3114475.0,3114475.0,3070046.0,3070046.0],"passengers":[2389.0,1966.0,1720.0,1731.0,1750.0,1794.0,1796.0],"stops":[945.0,945.0,945.0,945.0,945.0,945.0,945.0],"routes":[63.0,63.0,63.0,61.0,61.0,60.0,60.0]},{"region":"경남","city":"거제시","discount":"24년부터성인제외무료","quasi_public":"22년부터표준운송원가 전액보장","pop_decline":false,"income":[12646.0,10840.0,9931.0,11014.0,11760.0,13314.0,15007.0],"subsidy":[9896.0,10255.0,15680.0,15917.0,14940.0,16539.0,18073.0],"distance":[10774604.0,10835879.0,10158419.0,10175685.0,9592142.0,9636863.0,7142731.0],"passengers":[8959.0,6876.0,6379.0,7212.0,7653.0,8894.0,7480.0],"stops":[1163.0,1176.0,1228.0,1241.0,1240.0,1251.0,1260.0],"routes":[50.0,50.0,50.0,50.0,50.0,49.0,49.0]},{"region":"경남","city":"양산시","discount":"","quasi_public":"","pop_decline":false,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경남","city":"의령군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[1627.0,1418.0,1565.0,1998.0,2305.0,2527.0,2556.0],"distance":[609696.0,693500.0,1035614.0,1276368.0,1276368.0,1276368.0,1276368.0],"passengers":[null,null,null,null,null,null,null],"stops":[302.0,312.0,329.0,342.0,342.0,342.0,342.0],"routes":[47.0,43.0,45.0,45.0,45.0,46.0,47.0]},{"region":"경남","city":"함안군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[4417.0,4534.0,4731.0,5411.0,5891.0,5993.0,6261.0],"distance":[3214100.0,3335699.0,3335699.0,3434011.0,3441715.0,3442289.0,3422871.0],"passengers":[null,null,null,null,null,null,null],"stops":[434.0,426.0,426.0,426.0,426.0,426.0,426.0],"routes":[70.0,67.0,67.0,68.0,68.0,68.0,65.0]},{"region":"경남","city":"창녕군","discount":"24년부터 천원단일요금제","quasi_public":"","pop_decline":true,"income":[457.0,516.0,554.0,469.0,480.0,341.0,368.0],"subsidy":[1320.0,1839.0,2387.0,2581.0,2677.0,2871.0,2805.0],"distance":[1943211.4,1944521.4,1939208.5,1769309.68,2006618.5,1842041.4,1837008.5],"passengers":[398.0,387.0,382.0,358.0,367.0,392.0,397.0],"stops":[288.0,288.0,288.0,295.0,303.0,306.0,306.0],"routes":[51.0,51.0,51.0,51.0,51.0,51.0,51.0]},{"region":"경남","city":"고성군(부존재)","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경남","city":"남해군","discount":"23년부터천원단일요금제","quasi_public":"","pop_decline":true,"income":[1449.0,1256.0,1113.0,1200.0,727.0,707.0,677.0],"subsidy":[1139.0,1538.0,1791.0,2228.0,2670.0,2846.0,2711.0],"distance":[1953334.0,1704769.0,1698199.0,1829964.0,1602241.0,1814488.0,1814488.0],"passengers":[1190.0,889.0,788.0,850.0,746.0,726.0,null],"stops":[258.0,312.0,312.0,312.0,316.0,318.0,322.0],"routes":[36.0,35.0,35.0,34.0,34.0,34.0,34.0]},{"region":"경남","city":"하동군","discount":"24년부터100원버스","quasi_public":"","pop_decline":true,"income":[657.0,408.0,377.0,382.0,345.0,194.0,42.0],"subsidy":[987.0,1131.0,1265.0,1710.0,1711.0,2135.0,2445.0],"distance":[1124.0,1124.0,1124.0,1124.0,1124.0,1740.0,null],"passengers":[379.0,278.0,255.0,299.0,311.0,366.0,412.0],"stops":[263.0,277.0,282.0,323.0,342.0,360.0,370.0],"routes":[42.0,42.0,42.0,42.0,42.0,49.0,49.0]},{"region":"경남","city":"산청군","discount":"","quasi_public":"","pop_decline":true,"income":[385.0,294.0,256.0,290.0,302.0,277.0,96.0],"subsidy":[621.0,938.0,1130.0,1393.0,1377.0,1522.0,1841.0],"distance":[1135843.0,1135843.0,1208333.0,1281995.0,1384992.0,1388787.0,1382834.0],"passengers":[265.0,294.0,256.0,290.0,302.0,277.0,null],"stops":[258.0,264.0,266.0,273.0,278.0,285.0,288.0],"routes":[48.0,48.0,56.0,57.0,57.0,57.0,57.0]},{"region":"경남","city":"함양군","discount":"천원요금제, 노인어린이청소년무료","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[3500.0,3650.0,3680.0,3732.0,4213.0,4071.0,3986.0],"distance":[6077.0,6077.0,6077.0,6077.0,6077.0,6077.0,5580.0],"passengers":[360.0,362.0,365.0,368.0,371.0,378.0,348.0],"stops":[255.0,255.0,255.0,255.0,255.0,258.0,262.0],"routes":[60.0,60.0,60.0,60.0,60.0,60.0,60.0]},{"region":"경남","city":"거창군","discount":"","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"경남","city":"합천군","discount":"","quasi_public":"","pop_decline":true,"income":[2040.0,1449.0,1379.0,1260.0,485.0,509.0,537.0],"subsidy":[2005.0,1988.0,2550.0,3079.0,3363.0,3597.0,3760.0],"distance":[5819034.4,5755721.5,5182270.0,5640235.5,2620116.0,2810171.5,2770313.5],"passengers":[2147.0,1525.0,1451.0,1326.0,510.0,535.0,null],"stops":[812.0,812.0,812.0,812.0,405.0,405.0,405.0],"routes":[176.0,174.0,174.0,177.0,93.0,86.0,86.0]},{"region":"강원","city":"원주시","discount":"","quasi_public":"","pop_decline":false,"income":[22659.0,19417.0,13674.0,13815.0,18141.0,18376.0,19004.0],"subsidy":[7304.0,8058.0,8493.0,11831.0,9544.0,10473.0,10272.0],"distance":[15350951.0,11167723.0,11824431.0,12017078.0,12659113.0,12932717.0,13209971.0],"passengers":[18899.0,12010.0,11326.0,12223.0,12602.0,12952.0,11065.0],"stops":[1622.0,1791.0,1843.0,1864.0,1881.0,1901.0,1916.0],"routes":[75.0,46.0,51.0,51.0,52.0,53.0,51.0]},{"region":"강원","city":"강릉시","discount":"23년부터노인(20회)무상","quasi_public":"","pop_decline":true,"income":[14609.0,10239.0,7765.0,8354.0,11599.0,12490.0,12900.0],"subsidy":[3083.0,5487.0,5350.0,5601.0,3786.0,4016.0,null],"distance":[2052.0,1690.0,1275.0,1092.0,1024.0,1068.0,1166.0],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[108.0,104.0,64.0,64.0,64.0,65.0,69.0]},{"region":"강원","city":"동해시","discount":"","quasi_public":"","pop_decline":true,"income":[3080.0,2117.0,2097.0,2214.0,2599.0,2768.0,2929.0],"subsidy":[2173.0,2220.0,2469.0,2729.0,2506.0,2705.0,2728.0],"distance":[2591711.0,1888152.0,1888152.0,1837109.0,1753001.0,1772759.0,1868870.0],"passengers":[2349.0,1849.0,1683.0,1811.0,1783.0,1818.0,1873.0],"stops":[330.0,368.0,368.0,368.0,362.0,364.0,364.0],"routes":[45.0,35.0,35.0,35.0,32.0,32.0,34.0]},{"region":"강원","city":"춘천시","discount":"22년부터노인(20회)무상","quasi_public":"23.7부터준공영제","pop_decline":false,"income":[13410.0,8465.0,8712.0,8525.0,9914.0,10815.0,9308.0],"subsidy":[4575.0,8527.0,10015.0,12664.0,14095.0,14770.0,14922.0],"distance":[8695024.0,7175618.0,6659666.0,6819913.0,6862523.0,6862523.0,6862523.0],"passengers":[11522.0,7973.0,8213.0,9907.0,10686.0,11719.0,10195.0],"stops":[1470.0,1666.0,1666.0,1736.0,1760.0,1797.0,1827.0],"routes":[18.0,25.0,25.0,26.0,28.0,53.0,52.0]},{"region":"강원","city":"태백시","discount":"","quasi_public":"","pop_decline":true,"income":[1749.0,1340.0,1265.0,1296.0,1385.0,1350.0,null],"subsidy":[1743.0,2292.0,2391.0,2377.0,2530.0,2890.0,null],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[null,null,null,null,null,null,null]},{"region":"강원","city":"속초시","discount":"24년부터노인무료(10회)","quasi_public":"","pop_decline":true,"income":[5346.0,3703.0,3445.0,3428.0,4205.0,4033.0,3809.0],"subsidy":[1008.0,1543.0,2002.0,2654.0,1838.0,1781.0,1200.0],"distance":[3002700.0,2925293.0,2863313.0,2704851.0,2746880.0,2746880.0,2488935.0],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[27.0,16.0,20.0,19.0,19.0,19.0,19.0]},{"region":"강원","city":"삼척시","discount":"24년부터노인무료(20회)","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[3520.0,4299.0,4592.0,4302.0,3673.0,4292.0,4845.0],"distance":[2947314.9,2170561.4,2170561.5,2377050.0,2723119.0,2723119.0,2398050.0],"passengers":[null,null,null,null,null,null,null],"stops":[389.0,393.0,422.0,1061.0,910.0,916.0,919.0],"routes":[56.0,53.0,53.0,52.0,98.0,50.0,50.0]},{"region":"강원","city":"홍천군","discount":"24년부터노인무료(20회)","quasi_public":"","pop_decline":true,"income":[1374.0,1101.0,905.0,1198.0,1331.0,1290.0,1181.0],"subsidy":[4835.0,4296.0,4360.0,4849.0,4742.0,4785.0,5101.0],"distance":[3869218.0,3869218.0,3869218.0,3869218.0,3869218.0,3869218.0,3869218.0],"passengers":[531.0,491.0,440.0,568.0,571.0,699.0,800.0],"stops":[1050.0,1052.0,1057.0,1059.0,1065.0,1065.0,1065.0],"routes":[92.0,92.0,92.0,92.0,92.0,92.0,92.0]},{"region":"강원","city":"횡성군(자료부실)","discount":"24년부터노인어린이청소년무료","quasi_public":"","pop_decline":true,"income":[null,null,null,null,null,null,null],"subsidy":[null,null,null,null,null,null,null],"distance":[2172152.0,2172152.0,2172152.0,2172152.0,2172152.0,2307384.0,2307384.0],"passengers":[null,null,null,null,null,null,null],"stops":[859.0,859.0,867.0,867.0,867.0,747.0,747.0],"routes":[56.0,56.0,56.0,56.0,56.0,22.0,23.0]},{"region":"강원","city":"영월군","discount":"","quasi_public":"","pop_decline":true,"income":[727.0,497.0,473.0,468.0,474.0,458.0,415.0],"subsidy":[1484.0,1554.0,1557.0,1984.0,2081.0,2196.0,2254.0],"distance":[1984249.0,1729935.0,1723968.0,1723968.0,1723968.0,1723968.0,null],"passengers":[342.0,260.0,232.0,231.0,217.0,207.0,null],"stops":[278.0,300.0,300.0,300.0,309.0,321.0,322.0],"routes":[28.0,28.0,28.0,28.0,28.0,28.0,28.0]},{"region":"강원","city":"평창군","discount":"24년부터 천원요금수요응답형버스","quasi_public":"","pop_decline":true,"income":[641.0,496.0,446.0,454.0,536.0,592.0,332.0],"subsidy":[1376.0,1531.0,1690.0,1664.0,1991.0,2106.0,1914.0],"distance":[null,null,null,null,null,null,null],"passengers":[null,null,null,null,null,null,null],"stops":[null,null,null,null,null,null,null],"routes":[44.0,44.0,45.0,45.0,45.0,44.0,49.0]},{"region":"강원","city":"철원군","discount":"23년부터노인(무제한)청소년어린이(1일2회)무료","quasi_public":"","pop_decline":true,"income":[651.0,454.0,441.0,471.0,507.0,401.0,392.0],"subsidy":[2055.0,2208.0,2190.0,2365.0,2409.0,2434.0,2480.0],"distance":[1656443.0,1656443.0,1656443.0,1548622.0,1548622.0,1540081.0,1548622.0],"passengers":[484.0,334.0,331.0,373.0,500.0,523.0,480.0],"stops":[183.0,183.0,183.0,183.0,183.0,183.0,183.0],"routes":[29.0,29.0,29.0,29.0,29.0,29.0,29.0]},{"region":"강원","city":"화천군","discount":"","quasi_public":"","pop_decline":true,"income":[681.0,262.0,164.0,189.0,182.0,282.0,231.0],"subsidy":[1255.0,1131.0,1349.0,1565.0,1468.0,1484.0,1452.0],"distance":[1839965.0,1006195.0,1067756.0,1379261.0,1070983.0,1163583.0,1054104.0],"passengers":[569.0,271.0,192.0,201.0,162.0,195.0,157.0],"stops":[120.0,125.0,130.0,136.0,142.0,148.0,157.0],"routes":[24.0,11.0,13.0,13.0,12.0,8.0,9.0]},{"region":"강원","city":"양구군","discount":"25년부터무료완전공영제","quasi_public":"","pop_decline":true,"income":[419.0,282.0,251.0,244.0,275.0,274.0,0.0],"subsidy":[1079.0,923.0,1111.0,1176.0,1246.0,1514.0,0.0],"distance":[983164.0,983164.0,983164.0,826287.0,904470.0,904470.0,959147.0],"passengers":[277.0,206.0,186.0,190.0,176.0,184.0,206.0],"stops":[225.0,225.0,225.0,225.0,218.0,218.0,295.0],"routes":[11.0,11.0,11.0,11.0,10.0,10.0,21.0]},{"region":"강원","city":"인제군","discount":"24년부터노인무상, 천원요금제","quasi_public":"","pop_decline":true,"income":[739.0,419.0,318.0,294.0,345.0,395.0,319.0],"subsidy":[1543.0,1660.0,1840.0,2313.0,2124.0,2375.0,2438.0],"distance":[1500315.0,1891961.0,2022326.0,1911870.0,1867222.0,1840445.0,1826159.0],"passengers":[767.0,620.0,321.0,352.0,398.0,456.0,null],"stops":[null,null,null,null,null,null,null],"routes":[48.0,49.0,41.0,41.0,41.0,41.0,41.0]},{"region":"강원","city":"고성군","discount":"","quasi_public":"","pop_decline":true,"income":[2076.0,1722.0,1567.0,1295.0,1656.0,1715.0,1714.0],"subsidy":[465.0,445.0,491.0,1065.0,1122.0,1005.0,1277.0],"distance":[1811741.0,1561260.0,1471637.0,1465231.0,1477547.0,1489516.0,null],"passengers":[1538.0,1276.0,956.0,1066.0,1015.0,1177.0,1170.0],"stops":[423.0,423.0,423.0,423.0,423.0,424.0,424.0],"routes":[5.0,5.0,5.0,5.0,5.0,5.0,5.0]},{"region":"강원","city":"양양군","discount":"","quasi_public":"","pop_decline":true,"income":[597.0,464.0,445.0,454.0,436.0,468.0,436.0],"subsidy":[1164.0,1111.0,1223.0,1299.0,1454.0,1455.0,1430.0],"distance":[922975.0,893772.0,891330.0,891330.0,872168.0,1091522.0,801066.0],"passengers":[486.0,316.0,285.0,307.0,272.0,291.0,280.0],"stops":[321.0,321.0,321.0,408.0,457.0,457.0,463.0],"routes":[22.0,22.0,22.0,22.0,22.0,22.0,22.0]},{"region":"강원","city":"정선군","discount":"20년부터 노인무료, 25년부터 완전무료","quasi_public":"20년부터완전공영","pop_decline":true,"income":[1017.0,150.0,269.0,315.0,341.0,355.0,191.0],"subsidy":[2874.0,3729.0,4460.0,5455.0,5548.0,5696.0,6445.0],"distance":[2026757.0,2406080.0,2517405.0,2519595.0,2512660.0,2573250.0,2587850.0],"passengers":[457.0,529.0,663.0,780.0,865.0,934.0,797.0],"stops":[582.0,624.0,645.0,645.0,668.0,672.0,700.0],"routes":[57.0,75.0,75.0,75.0,75.0,75.0,75.0]},{"region":"제주특별자치도","city":"제주특별자치도","discount":"24.7부터노인전면무료,25.8청소년무료","quasi_public":"준공영제일부공영제","pop_decline":false,"income":[51437.0,37759.0,41163.0,44607.0,45699.0,45156.0,null],"subsidy":[93468.0,100880.0,107160.0,122224.0,120235.0,122326.0,null],"distance":[71760130.0,68763137.0,69307663.0,70947509.0,70767552.0,67158131.0,null],"passengers":[64845.0,50373.0,53133.0,57727.0,59515.0,61265.0,null],"stops":[3763.0,3916.0,3965.0,4069.0,4081.0,4145.0,4233.0],"routes":[184.0,182.0,182.0,181.0,185.0,176.0,178.0]},{"region":"경기도본청","city":"경기도본청","discount":"경기패스","quasi_public":"24년부터공공관리제도입,20년부터 대광위지원","pop_decline":false,"income":[1540500.0,1199700.0,1168300.0,1289300.0,1353600.0,1521300.0,null],"subsidy":[304700.0,427581.0,681753.0,743526.0,902336.0,1225730.0,null],"distance":[null,null,null,null,null,null,null],"passengers":[160426.0,112298.0,121514.0,151361.0,165399.0,173300.0,null],"stops":[null,null,null,null,null,null,null],"routes":[242.0,242.0,253.0,262.0,265.0,280.0,291.0]}];
 
-const YEARS=[2019,2020,2021,2022,2023,2024,2025];
-const REGIONS=[...new Set(DATA.map(d=>d.region))].filter(Boolean).sort();
-let cityChart=null, selRegion='', selCity='', cmpMetric='subsidy', cmpYear=5;
-const METRIC_LABELS={subsidy:'지원금(백만원)',income:'수입(백만원)',passengers:'승객수(천명)',routes:'노선수',stops:'정류장수'};
+/* ── 상수 ── */
+const YEARS   = [2019,2020,2021,2022,2023,2024,2025];
+const METRO   = ['서울','부산','대구','인천','광주','대전','울산','세종','제주특별자치도','경기도본청'];
+const BASIC_DO= [...new Set(DATA.map(d=>d.region))].filter(r=>r&&!METRO.includes(r)).sort();
+const M_LABEL = {subsidy:'지원금',income:'운송수입',distance:'운행거리',passengers:'승객수',routes:'노선수',stops:'정류장수'};
 
-// helpers
-function nf(v){return v==null?'—':Math.round(v).toLocaleString('ko-KR')}
-function isQP(d){const q=(d.quasi_public||'').trim();return q&&q!=='0'&&q!=='없음'}
-function hasFree(d){return !!(d.discount&&d.discount.trim())}
-function latest(arr){const v=arr.filter(x=>x!=null);return v.length?v[v.length-1]:null}
-function trendOf(arr){
-  const v=arr.filter(x=>x!=null);
-  if(v.length<2) return {dir:'na',diff:0};
-  const d=v[v.length-1]-v[v.length-2];
-  return {dir:d>0?'up':d<0?'dn':'na',diff:Math.abs(Math.round(d))};
-}
-function trendSpan(arr){
-  const t=trendOf(arr);
-  if(t.dir==='up') return `<span class="up">▲${t.diff.toLocaleString()}</span>`;
-  if(t.dir==='dn') return `<span class="dn">▼${t.diff.toLocaleString()}</span>`;
-  return `<span class="na">—</span>`;
-}
+/* ── 헬퍼 ── */
+const isQP  = d=>{ const q=(d.quasi_public||'').trim(); return q&&q!=='0'; };
+const hasFr = d=>!!(d.discount&&d.discount.trim());
+const lv    = arr=>{ for(let i=arr.length-1;i>=0;i--) if(arr[i]!=null) return arr[i]; return null; };
+const li    = arr=>{ for(let i=arr.length-1;i>=0;i--) if(arr[i]!=null) return i; return -1; };
+const ly    = arr=>{ const i=li(arr); return i>=0?YEARS[i]:null; };
+const dn    = s=>(s||'').replace(/\(.*?\)/g,'').trim();
+const nf    = v=>v==null?'—':Math.round(v).toLocaleString('ko-KR');
 
-// ── PAGE NAV ──
-function goPage(name){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('pg-'+name).classList.add('active');
-  event.currentTarget.classList.add('active');
-}
+/* ── 탭 전환 ── */
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('pg-'+btn.dataset.page).classList.add('active');
+  });
+});
 
-// ── SUMMARY PILLS ──
-let activeCategory = null; // 'qp' | 'pd' | 'free' | null
+/* ═══════════════════════════════
+   내 지역 보기
+═══════════════════════════════ */
+let activeCat = null;
+let cityChart = null;
+let activeMetric = 'subsidy';
 
-function renderPills(){
-  const d=DATA;
-  const sub24=d.reduce((s,x)=>s+(x.subsidy[5]||0),0);
-  document.getElementById('summary-pills').innerHTML=
-    `<div class="pill">집계 <strong>${d.length}개</strong> 지자체</div>`+
-    `<button class="pill-btn${activeCategory==='qp'?' active':''}" onclick="toggleCategory('qp')">준공영제 <strong>${d.filter(isQP).length}개</strong></button>`+
-    `<button class="pill-btn${activeCategory==='pd'?' active-pd':''}" onclick="toggleCategory('pd')">인구감소지역 <strong>${d.filter(x=>x.pop_decline).length}개</strong></button>`+
-    `<button class="pill-btn${activeCategory==='free'?' active-free':''}" onclick="toggleCategory('free')">요금할인 <strong>${d.filter(hasFree).length}개</strong></button>`+
-    `<div class="pill">2024 총 지원금 <strong>${Math.round(sub24/100).toLocaleString()}억원</strong></div>`;
-}
-
-function toggleCategory(cat){
-  activeCategory = (activeCategory===cat) ? null : cat;
-  selRegion=''; selCity='';
-  renderPills();
-  if(activeCategory){
-    renderCategoryView(activeCategory);
-  } else {
-    renderPicker();
-    document.getElementById('city-row').innerHTML='';
-    document.getElementById('selector-title').textContent='지역을 선택하세요';
-    document.getElementById('city-display').innerHTML=`<div class="placeholder-msg"><span class="big">🚌</span>위에서 광역시도를 선택하면 시군구 목록이 나옵니다</div>`;
-  }
+/* PILLS */
+function buildPills(){
+  const row = document.getElementById('pill-row');
+  row.innerHTML = '';
+  const add = (html, cls, cat)=>{
+    const el = document.createElement(cat?'button':'div');
+    el.className = cls; el.innerHTML = html;
+    if(cat){ el.dataset.cat=cat; el.addEventListener('click',()=>onCat(cat)); }
+    row.appendChild(el);
+  };
+  const sub = DATA.reduce((s,d)=>s+(lv(d.subsidy)||0),0);
+  add(`집계 <strong>${DATA.length}개</strong> 지자체`, 'pill');
+  add(`준공영제 <strong>${DATA.filter(isQP).length}개</strong>`,   'pill-btn'+(activeCat==='qp'?' on-qp':''),   'qp');
+  add(`인구감소지역 <strong>${DATA.filter(d=>d.pop_decline).length}개</strong>`, 'pill-btn'+(activeCat==='pd'?' on-pd':''),   'pd');
+  add(`요금할인 <strong>${DATA.filter(hasFr).length}개</strong>`,   'pill-btn'+(activeCat==='free'?' on-free':''), 'free');
+  add(`총 지원금 <strong>${Math.round(sub/100).toLocaleString()}억원</strong>`, 'pill');
 }
 
-function renderCategoryView(cat){
-  const labels={qp:'준공영제 도입 지자체',pd:'인구감소지역',free:'요금할인 운영 지자체'};
-  const filterFn={qp:isQP, pd:d=>d.pop_decline, free:hasFree};
-  const badgeClass={qp:'bqp',pd:'bpd',free:'bfree'};
-  const filtered=DATA.filter(filterFn[cat]);
+function onCat(cat){
+  activeCat = (activeCat===cat)?null:cat;
+  buildPills();
+  clearRegionActive();
+  document.getElementById('city-btns').innerHTML='';
+  if(activeCat) showCatView(activeCat);
+  else resetDisplay();
+}
 
-  // 지역선택기 숨기고 카테고리 목록 표시
-  document.getElementById('region-picker').innerHTML='';
-  document.getElementById('selector-title').textContent=`${labels[cat]} (${filtered.length}개)`;
+/* PICKERS */
+function buildPickers(){
+  /* 광역 */
+  const metroEl = document.getElementById('metro-btns');
+  METRO.filter(r=>DATA.some(d=>d.region===r)).forEach(r=>{
+    const b=document.createElement('button');
+    b.className='rgn-btn metro-style';
+    b.textContent = r==='제주특별자치도'?'제주': r==='경기도본청'?'경기광역': r;
+    b.dataset.region=r;
+    b.addEventListener('click',()=>onMetro(r));
+    metroEl.appendChild(b);
+  });
+  /* 기초 도 */
+  const doEl = document.getElementById('do-btns');
+  BASIC_DO.forEach(r=>{
+    const b=document.createElement('button');
+    b.className='rgn-btn'; b.textContent=r; b.dataset.region=r;
+    b.addEventListener('click',()=>onDo(r));
+    doEl.appendChild(b);
+  });
+}
 
-  // city-row에 전체 목록을 지역 태그 달아서 표시
-  document.getElementById('city-row').innerHTML=filtered.map(d=>
-    `<button class="city-chip" onclick="selectCity('${d.city}')">
-      <span style="font-size:10px;color:var(--light);font-family:var(--mono)">${d.region}</span> ${d.city}
-    </button>`
-  ).join('');
+function setActive(region){
+  document.querySelectorAll('#metro-btns .rgn-btn, #do-btns .rgn-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.region===region);
+  });
+}
+function clearRegionActive(){
+  document.querySelectorAll('#metro-btns .rgn-btn, #do-btns .rgn-btn').forEach(b=>b.classList.remove('active'));
+}
 
-  // display 영역에 카드 그리드 표시
-  const cards=filtered.map(d=>{
-    const s24=d.subsidy[5], s19=d.subsidy[0];
-    const col=s24!=null&&s19!=null&&s24>s19?'var(--green)':s24!=null&&s19!=null&&s24<s19?'var(--rust)':'var(--text)';
-    const extraBadges=[];
-    if(cat!=='qp'&&isQP(d)) extraBadges.push('<span class="badge bqp">준공영제</span>');
-    if(cat!=='pd'&&d.pop_decline) extraBadges.push('<span class="badge bpd">인구감소</span>');
-    if(cat!=='free'&&hasFree(d)) extraBadges.push('<span class="badge bfree">요금할인</span>');
-    return `<div style="background:var(--surface);border:0.5px solid var(--border);border-radius:var(--rl);padding:14px 16px;cursor:pointer;transition:border-color .12s" 
-      onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor=''"
-      onclick="selectCity('${d.city}')">
-      <div style="font-size:11px;color:var(--light);font-family:var(--mono)">${d.region}</div>
-      <div style="font-size:15px;font-weight:700;margin-bottom:6px">${d.city}</div>
-      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">${extraBadges.join('')}</div>
-      <div style="font-size:12px;color:var(--muted);margin-bottom:2px">${cat==='free'?'요금할인: '+d.discount:cat==='qp'?'준공영제: '+d.quasi_public:''}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:12px;margin-top:6px">
-        <div><span style="color:var(--light)">2024 지원금</span><br><span style="font-weight:500;font-family:var(--mono);color:${col}">${nf(s24)}</span></div>
-        <div><span style="color:var(--light)">승객수(천명)</span><br><span style="font-weight:500;font-family:var(--mono)">${nf(d.passengers[5])}</span></div>
-      </div>
-    </div>`;
-  }).join('');
+function onMetro(r){
+  activeCat=null; buildPills();
+  setActive(r);
+  document.getElementById('city-btns').innerHTML='';
+  document.getElementById('sel-title').textContent=r;
+  const entry=DATA.find(d=>d.region===r);
+  if(entry) showCity(entry.city||entry.region,'metro');
+}
 
+function onDo(r){
+  activeCat=null; buildPills();
+  setActive(r);
+  document.getElementById('sel-title').textContent=r;
   document.getElementById('city-display').innerHTML=
-    `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;animation:fadeIn .2s ease">${cards}</div>`;
+    `<div class="placeholder-msg"><span class="big">👆</span>${r}의 시군구를 선택하세요</div>`;
+  const cityEl=document.getElementById('city-btns');
+  cityEl.innerHTML='';
+  DATA.filter(d=>d.region===r&&d.city&&!METRO.includes(d.region)).forEach(d=>{
+    const b=document.createElement('button');
+    b.className='city-chip'; b.textContent=dn(d.city);
+    b.addEventListener('click',()=>{
+      cityEl.querySelectorAll('.city-chip').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      showCity(d.city,'basic');
+    });
+    cityEl.appendChild(b);
+  });
 }
 
-// ── REGION / CITY PICKER ──
-function renderPicker(){
-  const rp=document.getElementById('region-picker');
-  rp.innerHTML=REGIONS.map(r=>
-    `<button class="rgn-btn${r===selRegion?' active':''}" onclick="selectRegion('${r}')">${r}</button>`
-  ).join('');
-}
-function selectRegion(r){
-  selRegion=r; selCity='';
-  activeCategory=null;
-  renderPills();
-  renderPicker();
-  const cities=DATA.filter(d=>d.region===r);
-  document.getElementById('city-row').innerHTML=cities.map(d=>
-    `<button class="city-chip" onclick="selectCity('${d.city}')">${d.city}</button>`
-  ).join('');
-  document.getElementById('city-display').innerHTML=`<div class="placeholder-msg"><span class="big">👆</span>${r}의 시군구를 선택하세요</div>`;
-}
-function selectCity(city){
-  selCity=city;
-  document.querySelectorAll('.city-chip').forEach(c=>c.classList.toggle('active',c.textContent===city));
-  renderCityDetail(city);
+/* 카테고리 뷰 */
+function showCatView(cat){
+  const lbl={qp:'준공영제 도입',pd:'인구감소지역',free:'요금할인 운영'};
+  const fn ={qp:isQP, pd:d=>d.pop_decline, free:hasFr};
+  const list=DATA.filter(fn[cat]);
+  document.getElementById('sel-title').textContent=`${lbl[cat]} (${list.length}개)`;
+
+  const cityEl=document.getElementById('city-btns');
+  cityEl.innerHTML='';
+  list.forEach(d=>{
+    const b=document.createElement('button');
+    b.className='city-chip';
+    b.innerHTML=`<span style="font-size:10px;color:var(--light);font-family:var(--mono)">${d.region}</span> ${dn(d.city||d.region)}`;
+    b.addEventListener('click',()=>{
+      cityEl.querySelectorAll('.city-chip').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      if(METRO.includes(d.region)) onMetro(d.region);
+      else showCity(d.city,'basic');
+    });
+    cityEl.appendChild(b);
+  });
+
+  const wrap=document.getElementById('city-display');
+  wrap.innerHTML='';
+  const grid=document.createElement('div');
+  grid.className='cat-grid';
+  list.forEach(d=>{
+    const isM=METRO.includes(d.region);
+    const sub=lv(d.subsidy), base=d.subsidy[0], pass=lv(d.passengers);
+    const col=sub&&base&&sub>base?'var(--rust)':'var(--green)';
+    const badges=[];
+    if(cat!=='qp'&&isQP(d)) badges.push('<span class="badge bqp">준공영제</span>');
+    if(cat!=='pd'&&d.pop_decline) badges.push('<span class="badge bpd">인구감소</span>');
+    if(cat!=='free'&&hasFr(d)) badges.push('<span class="badge bfree">요금할인</span>');
+    const subStr=sub!=null?(isM?Math.round(sub/100).toLocaleString()+'억':Math.round(sub).toLocaleString()+'백만')+'원':'—';
+    const pStr=pass!=null?(isM?Math.round(pass/10000).toLocaleString()+'만':Math.round(pass).toLocaleString()+'천')+'명':'—';
+    const card=document.createElement('div');
+    card.className='cat-card';
+    card.innerHTML=`
+      <div style="font-size:11px;color:var(--light);font-family:var(--mono)">${d.region}</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:6px">${dn(d.city||d.region)}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px">${badges.join('')}</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:4px">${cat==='free'?d.discount:cat==='qp'?d.quasi_public:''}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:12px;margin-top:4px">
+        <div><span style="color:var(--light)">지원금</span><br><span style="font-weight:500;font-family:var(--mono);color:${col}">${subStr}</span></div>
+        <div><span style="color:var(--light)">승객수</span><br><span style="font-weight:500;font-family:var(--mono)">${pStr}</span></div>
+      </div>`;
+    card.addEventListener('click',()=>{
+      if(METRO.includes(d.region)) onMetro(d.region);
+      else showCity(d.city,'basic');
+    });
+    grid.appendChild(card);
+  });
+  wrap.appendChild(grid);
 }
 
-// ── CITY DETAIL ──
-let activeMetric='subsidy';
-function renderCityDetail(cityName){
-  const d=DATA.find(x=>x.city===cityName);
-  if(!d){return;}
-  const badges=[];
-  if(isQP(d)) badges.push(`<span class="badge bqp">준공영제</span>`);
-  if(hasFree(d)) badges.push(`<span class="badge bfree">요금할인</span>`);
-  if(d.pop_decline) badges.push(`<span class="badge bpd">인구감소지역</span>`);
+function resetDisplay(){
+  document.getElementById('sel-title').textContent='지역을 선택하세요';
+  document.getElementById('city-display').innerHTML=
+    `<div class="placeholder-msg"><span class="big">🚌</span>위에서 지역을 선택하세요</div>`;
+}
 
+/* ── 도시 상세 ── */
+function showCity(cityName, type){
+  const d=DATA.find(x=>x.city===cityName||x.region===cityName);
+  if(!d) return;
+  const isM=(type==='metro');
+
+  /* 단위 포맷 */
+  const monFmt = v=>{ if(v==null) return '자료없음';
+    return isM ? Math.round(v/100).toLocaleString()+'억원'
+               : (v>=10000 ? (v/100).toFixed(1)+'억원' : Math.round(v).toLocaleString()+'백만원'); };
+  const distFmt= v=>{ if(v==null) return '자료없음';
+    return isM ? (v/1e6).toFixed(2)+'백만km' : (v/1e4).toFixed(1)+'만km'; };
+  const passFmt= v=>{ if(v==null) return '자료없음';
+    return isM ? Math.round(v/10000).toLocaleString()+'만명' : Math.round(v).toLocaleString()+'천명'; };
+
+  const diffStr=(arr,fmtFn,bad)=>{
+    const ci=li(arr), cv=arr[ci], bv=arr[0];
+    if(cv==null||bv==null||bv===0) return '';
+    const pct=((cv-bv)/Math.abs(bv)*100).toFixed(0);
+    const up=cv>bv;
+    const col=(bad&&up)||(!bad&&!up)?'var(--rust)':'var(--green)';
+    const mark=up?'▲':'▼';
+    return `<div class="sc-diff" style="color:${col}">${mark} ${pct}% <span style="color:var(--light)">(2019년 대비)</span></div>`;
+  };
+
+  /* 경고 */
+  const warns=[];
+  const s24=lv(d.subsidy),s19=d.subsidy[0],i24=lv(d.income),i19=d.income[0];
+  const dst24=lv(d.distance),dst19=d.distance[0],stp24=lv(d.stops),stp19=d.stops[0];
+  if(s19&&s24&&i19&&i24){ const sr=(s24-s19)/s19*100,ir=(i24-i19)/i19*100;
+    if(sr>30&&ir<0) warns.push(`재정지원 ${sr.toFixed(0)}% 증가, 운송수입 ${Math.abs(ir).toFixed(0)}% 감소 — 고비용 구조 심화`);
+    else if(sr>50) warns.push(`재정지원 5년간 ${sr.toFixed(0)}% 증가 — 재정 의존도 높음`); }
+  if(dst19&&dst24&&stp19&&stp24){ const dr=(dst24-dst19)/dst19*100,str2=(stp24-stp19)/stp19*100;
+    if(dr<-3&&str2>3) warns.push(`정류장 ${str2.toFixed(0)}% 늘었지만 운행거리 ${Math.abs(dr).toFixed(0)}% 감소 — 외형 확대·실질 축소`); }
+  if(s19&&lv(d.passengers)&&d.passengers[0]){
+    const pr=(lv(d.passengers)-d.passengers[0])/d.passengers[0]*100;
+    if(pr<-10) warns.push(`승객 수 ${Math.abs(pr).toFixed(0)}% 감소 — 코로나 이전 미회복`); }
+
+  const warnHtml=warns.length?`<div class="warn-box"><div class="wt">⚠️ 주요 이슈</div>${warns.map(w=>`<div class="wi">• ${w}</div>`).join('')}</div>`:'';
+
+  /* 수입 vs 지원 바 */
+  const barHtml=(s24&&i24)?`<div class="cmp-bar-box">
+    <div style="font-size:11px;font-family:var(--mono);color:var(--light);margin-bottom:8px">수입 vs 재정지원 비교 (${ly(d.subsidy)||2024}년 기준)</div>
+    <div class="cmp-row"><span>운송수입</span><span style="font-family:var(--mono);font-weight:500">${monFmt(i24)}</span></div>
+    <div class="bar-track"><div class="bar-fill-g" style="width:${Math.min(100,Math.round(i24/Math.max(i24,s24)*100))}%"></div></div>
+    <div class="cmp-row"><span>재정지원금</span><span style="font-family:var(--mono);font-weight:500;color:var(--rust)">${monFmt(s24)}</span></div>
+    <div class="bar-track"><div class="bar-fill-r" style="width:${Math.min(100,Math.round(s24/Math.max(i24,s24)*100))}%"></div></div>
+    ${s24>i24?'<div style="font-size:11px;color:var(--rust);margin-top:4px">⚠️ 재정지원금이 운송수입 초과</div>':''}
+  </div>`:'';
+
+  /* 스탯 카드 */
   const metrics=[
-    {k:'subsidy',label:'2024 지원금',unit:'백만원'},
-    {k:'income',label:'2024 수입',unit:'백만원'},
-    {k:'passengers',label:'2024 승객수',unit:'천명'},
-    {k:'routes',label:'노선수',unit:'개'},
-    {k:'stops',label:'정류장수',unit:'개'},
+    {k:'subsidy',  lbl:'재정지원금', fmt:monFmt,  bad:true},
+    {k:'income',   lbl:'운송수입',   fmt:monFmt,  bad:false},
+    {k:'distance', lbl:'총 운행거리',fmt:distFmt, bad:false},
+    {k:'passengers',lbl:'승객 수',   fmt:passFmt, bad:false},
+    {k:'routes',   lbl:'노선 수',    fmt:v=>v==null?'자료없음':Math.round(v).toLocaleString()+'개', bad:false},
+    {k:'stops',    lbl:'정류장 수',  fmt:v=>v==null?'자료없음':Math.round(v).toLocaleString()+'개', bad:false},
   ];
-
   const cards=metrics.map(m=>{
-    const v=d[m.k][5]??latest(d[m.k]);
-    const t=trendOf(d[m.k]);
-    const tColor=t.dir==='up'?'var(--green)':t.dir==='dn'?'var(--rust)':'var(--light)';
-    const tMark=t.dir==='up'?'▲':t.dir==='dn'?'▼':'';
-    return `<div class="stat-card">
-      <div class="sc-label">${m.label}</div>
-      <div class="sc-val">${nf(v)}</div>
-      <div class="sc-sub" style="color:${tColor}">${tMark}${t.diff>0?t.diff.toLocaleString():''} <span style="color:var(--light)">${m.unit}</span></div>
+    const v=lv(d[m.k]); const yr=ly(d[m.k]);
+    const noData=v==null;
+    const yearLbl=yr?`${yr}년 기준${yr===2025?' (잠정)':''}`:'자료없음';
+    return `<div class="stat-card" style="${noData?'opacity:.45':''}">
+      <div class="sc-label">${m.lbl}</div>
+      <div class="sc-year" style="color:${yr===2025?'var(--green)':'var(--light)'}">${yearLbl}</div>
+      <div class="sc-val">${m.fmt(v)}</div>
+      ${noData?'':diffStr(d[m.k],m.fmt,m.bad)}
     </div>`;
   }).join('');
 
-  const infoRows=[
-    ['준공영제',d.quasi_public||'미도입'],
-    ['요금할인',d.discount||'없음'],
-    ['인구감소지역',d.pop_decline?'해당':'해당없음'],
-  ].map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+  /* 뱃지 */
+  const badges=[];
+  if(isQP(d)) badges.push(`<span class="badge bqp">준공영제: ${d.quasi_public}</span>`);
+  if(hasFr(d)) badges.push(`<span class="badge bfree">요금할인: ${d.discount}</span>`);
+  if(d.pop_decline) badges.push('<span class="badge bpd">인구감소지역</span>');
+
+  /* 정보 */
+  const info=[['준공영제',d.quasi_public||'미도입'],['요금할인',d.discount||'없음'],['인구감소',d.pop_decline?'해당':'해당없음']]
+    .map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+
+  /* 탭 메뉴 */
+  const tabs=Object.entries(M_LABEL).map(([k,l])=>
+    `<button class="mt-btn${k===activeMetric?' active':''}" data-metric="${k}">${l}</button>`).join('');
 
   document.getElementById('city-display').innerHTML=`
-    <div class="city-display">
-      <div class="city-header">
-        <div>
-          <div class="city-title">
-            <div class="city-name-big">${d.city}</div>
-            <div class="city-region-tag">${d.region}</div>
-          </div>
-          <div class="badge-row">${badges.join('')||'<span style="font-size:12px;color:var(--light)">특이사항 없음</span>'}</div>
-        </div>
+    <div style="animation:fadeIn .2s ease">
+      <div style="display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem">
+        <div style="font-size:24px;font-weight:700">${dn(d.city||d.region)}</div>
+        <div style="font-size:12px;color:var(--light);font-family:var(--mono)">${d.region}</div>
       </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem">${badges.join('')||'<span style="font-size:12px;color:var(--light)">특이사항 없음</span>'}</div>
+      ${warnHtml}${barHtml}
       <div class="stat-grid">${cards}</div>
-      <div class="trend-section">
+      <div class="trend-box">
         <h3>연도별 추이</h3>
-        <div class="metric-tabs">${Object.entries(METRIC_LABELS).map(([k,l])=>
-          `<button class="mt-btn${k===activeMetric?' active':''}" onclick="switchMetric('${cityName}','${k}')">${l}</button>`
-        ).join('')}</div>
-        <div class="chart-wrap"><canvas id="city-chart" role="img" aria-label="${d.city} 연도별 버스 지표 추이">연도별 추이</canvas></div>
+        <div class="metric-tabs" id="mt-tabs">${tabs}</div>
+        <div id="chart-wrap-outer"></div>
       </div>
-      <table class="info-table">${infoRows}</table>
+      <table class="info-table" style="margin-top:.5rem">${info}</table>
     </div>`;
+
+  // 탭 클릭
+  document.getElementById('mt-tabs').addEventListener('click',e=>{
+    const btn=e.target.closest('[data-metric]');
+    if(!btn) return;
+    activeMetric=btn.dataset.metric;
+    document.querySelectorAll('#mt-tabs .mt-btn').forEach(b=>b.classList.toggle('active',b.dataset.metric===activeMetric));
+    drawChart(d, activeMetric);
+  });
 
   drawChart(d, activeMetric);
 }
 
-function switchMetric(city,metric){
-  activeMetric=metric;
-  document.querySelectorAll('.mt-btn').forEach(b=>{
-    b.classList.toggle('active', b.getAttribute('onclick').includes(`'${metric}'`));
-  });
-  const d=DATA.find(x=>x.city===city);
-  drawChart(d,metric);
-}
-
-function drawChart(d,metric){
+/* ── 차트 ── */
+const FMT={
+  subsidy:{div:100,unit:'억원',tip:v=>(v/100).toFixed(1)+'억원'},
+  income:{div:100,unit:'억원',tip:v=>(v/100).toFixed(1)+'억원'},
+  distance:{div:1e6,unit:'백만km',tip:v=>(v/1e6).toFixed(2)+'백만km'},
+  passengers:{div:1000,unit:'백만명',tip:v=>(v/1000).toFixed(1)+'백만명'},
+  routes:{div:1,unit:'개',tip:v=>Math.round(v).toLocaleString()+'개'},
+  stops:{div:1,unit:'개',tip:v=>Math.round(v).toLocaleString()+'개'},
+};
+function drawChart(d, metric){
   if(cityChart){cityChart.destroy();cityChart=null;}
+  const outer=document.getElementById('chart-wrap-outer');
+  if(!outer) return;
   const vals=d[metric];
   const idxs=YEARS.map((_,i)=>i).filter(i=>vals[i]!=null);
-  const ctx=document.getElementById('city-chart');
-  if(!ctx) return;
-  cityChart=new Chart(ctx,{
+  if(!idxs.length){
+    outer.innerHTML=`<div class="no-data-box"><span style="font-size:24px">📭</span><span>이 지표의 자료가 없습니다</span><span style="font-size:11px">해당 지자체가 정보공개를 거부하거나 제출하지 않은 항목입니다</span></div>`;
+    return;
+  }
+  outer.innerHTML='<div class="chart-wrap"><canvas id="the-chart"></canvas></div>';
+  const fmt=FMT[metric]||{div:1,unit:'',tip:v=>v};
+  const latI=li(vals);
+  cityChart=new Chart(document.getElementById('the-chart'),{
     type:'bar',
     data:{
-      labels:idxs.map(i=>YEARS[i]),
-      datasets:[{label:METRIC_LABELS[metric],data:idxs.map(i=>vals[i]),backgroundColor:'#1d4e3a',borderRadius:3,borderSkipped:false}]
+      labels:idxs.map(i=>YEARS[i]===2025?'2025(잠정)':String(YEARS[i])),
+      datasets:[{
+        data:idxs.map(i=>vals[i]/fmt.div),
+        backgroundColor:idxs.map(i=>i===latI?(YEARS[i]===2025?'#5a9070':'#1d4e3a'):'#8ab8a0'),
+        borderRadius:4,borderSkipped:false
+      }]
     },
     options:{
       responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${METRIC_LABELS[metric]}: ${Math.round(c.raw).toLocaleString('ko-KR')}`}}},
-      scales:{y:{beginAtZero:true,ticks:{callback:v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1000?(v/1000).toFixed(0)+'K':v}},x:{ticks:{autoSkip:false}}}
+      plugins:{legend:{display:false},tooltip:{callbacks:{
+        label:c=>`${M_LABEL[metric]}: ${fmt.tip(idxs.map(i=>vals[i])[c.dataIndex])}`
+      }}},
+      scales:{
+        y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'},
+          title:{display:true,text:fmt.unit,font:{size:11},color:'#9b9285'},
+          ticks:{maxTicksLimit:6,font:{size:11},callback:v=>v.toLocaleString('ko-KR')}},
+        x:{grid:{display:false},ticks:{autoSkip:false,font:{size:11}}}
+      }
     }
   });
 }
 
-// ── COMPARE ──
-const MAX_COMPARE=4;
-let compareSelections=Array(MAX_COMPARE).fill('');
+
+/* ═══════════════════════════════
+   지역 비교
+═══════════════════════════════ */
+let cmpYear=5, cmpMetric='subsidy';
 
 function initCompare(){
-  // slots
-  const sl=document.getElementById('compare-slots');
-  sl.innerHTML=Array.from({length:MAX_COMPARE},(_,i)=>{
-    const sel=`<select class="slot-select" id="cmp-slot-${i}" onchange="updateCompare()">
-      <option value="">— ${i===0?'첫 번째':'두 번째'.replace('두','세 네'.split(' ')[i-1]||i+'번째')} 지역 선택 —</option>
-      ${REGIONS.map(r=>`<optgroup label="${r}">${DATA.filter(d=>d.region===r).map(d=>`<option value="${d.city}">${d.city}</option>`).join('')}</optgroup>`).join('')}
-    </select>`;
-    return sel;
-  }).join('');
-
-  // year buttons
-  document.getElementById('yr-btns').innerHTML=YEARS.map((y,i)=>
-    `<button class="yr-btn${i===5?' active':''}" onclick="setCmpYear(${i},this)">${y}</button>`
-  ).join('');
-
-  // metric row
-  document.getElementById('cmp-metric-row').innerHTML=
-    `<span style="font-size:12px;color:var(--muted);margin-right:4px">비교 항목:</span>`+
-    Object.entries(METRIC_LABELS).map(([k,l])=>
-      `<button class="yr-btn${k===cmpMetric?' active':''}" onclick="setCmpMetric('${k}',this)">${l}</button>`
-    ).join('');
-
-  // fix slot labels
-  ['첫 번째','두 번째','세 번째','네 번째'].forEach((label,i)=>{
-    const sel=document.getElementById(`cmp-slot-${i}`);
-    if(sel) sel.options[0].text=`— ${label} 지역 —`;
+  /* 슬롯 4개 */
+  const sl=document.getElementById('cmp-slots');
+  ['첫 번째','두 번째','세 번째','네 번째'].forEach((_,i)=>{
+    const sel=document.createElement('select');
+    sel.className='slot-sel'; sel.id=`csl-${i}`;
+    sel.innerHTML=`<option value="">— ${['첫','두','세','네'][i]} 번째 지역 —</option>`+
+      METRO.filter(r=>DATA.some(d=>d.region===r)).map(r=>`<option value="${r}">${dn(r)}</option>`).join('')+
+      BASIC_DO.map(r=>`<optgroup label="${r}">`+
+        DATA.filter(d=>d.region===r&&d.city).map(d=>`<option value="${d.city}">${dn(d.city)}</option>`).join('')+
+      `</optgroup>`).join('');
+    sel.addEventListener('change',renderCompare);
+    sl.appendChild(sel);
+  });
+  /* 연도 버튼 */
+  const yb=document.getElementById('yr-btns');
+  YEARS.forEach((y,i)=>{
+    if(!DATA.some(d=>d.subsidy[i]!=null)) return;
+    const b=document.createElement('button');
+    b.className='yr-btn'+(i===5?' active':''); b.textContent=y+'년'; b.dataset.i=i;
+    b.addEventListener('click',()=>{
+      cmpYear=i;
+      document.querySelectorAll('#yr-btns .yr-btn').forEach(x=>x.classList.toggle('active',x.dataset.i==i));
+      renderCompare();
+    });
+    yb.appendChild(b);
+  });
+  /* 지표 버튼 */
+  const mb=document.getElementById('cmp-metric-btns');
+  Object.entries(M_LABEL).forEach(([k,l])=>{
+    const b=document.createElement('button');
+    b.className='yr-btn'+(k==='subsidy'?' active':''); b.textContent=l; b.dataset.k=k;
+    b.addEventListener('click',()=>{
+      cmpMetric=k;
+      document.querySelectorAll('#cmp-metric-btns .yr-btn').forEach(x=>x.classList.toggle('active',x.dataset.k===k));
+      renderCompare();
+    });
+    mb.appendChild(b);
   });
 }
 
-function setCmpYear(i,btn){
-  cmpYear=i;
-  document.querySelectorAll('#yr-btns .yr-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  updateCompare();
-}
-function setCmpMetric(k,btn){
-  cmpMetric=k;
-  document.querySelectorAll('#cmp-metric-row .yr-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  updateCompare();
-}
+function renderCompare(){
+  const selected=Array.from({length:4},(_,i)=>{
+    const v=document.getElementById(`csl-${i}`).value;
+    if(!v) return null;
+    return DATA.find(d=>d.city===v||d.region===v)||null;
+  }).filter(Boolean);
 
-function updateCompare(){
-  compareSelections=Array.from({length:MAX_COMPARE},(_,i)=>document.getElementById(`cmp-slot-${i}`)?.value||'');
-  const selected=compareSelections.map(c=>DATA.find(d=>d.city===c)).filter(Boolean);
-  const el=document.getElementById('compare-result');
+  const el=document.getElementById('cmp-result');
   if(selected.length<2){
     el.innerHTML='<div class="placeholder-msg"><span class="big">⚖️</span>2개 이상 지역을 선택하면 비교표가 나타납니다</div>';
     return;
   }
-
-  const metrics=['subsidy','income','passengers','routes','stops'];
-  // find best/worst per metric
-  const best={},worst={};
-  metrics.forEach(m=>{
-    const vals=selected.map(d=>d[m][cmpYear]).filter(x=>x!=null);
-    if(vals.length){ best[m]=Math.max(...vals); worst[m]=Math.min(...vals); }
-  });
-
-  // max per metric for bar
-  const maxVal={};
-  metrics.forEach(m=>{maxVal[m]=Math.max(...selected.map(d=>d[m][cmpYear]||0))||1});
-
-  const rows=selected.map(d=>{
-    const cells=metrics.map(m=>{
-      const v=d[m][cmpYear];
-      const pct=v!=null?Math.round(v/maxVal[m]*100):0;
-      const cls=v===best[m]&&v!=null?'best':v===worst[m]&&v!=null&&selected.length>2?'worst':'';
-      return `<td class="num ${cls}">
-        <div class="bar-inline">
-          ${nf(v)}
-          <div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div>
-        </div>
-      </td>`;
+  const metrics=['subsidy','income','distance','passengers','routes','stops'];
+  const vals=selected.map(d=>metrics.map(m=>d[m][cmpYear]));
+  const maxV=metrics.map((_,mi)=>Math.max(...vals.map(v=>v[mi]||0))||1);
+  const rows=selected.map((d,di)=>{
+    const isM=METRO.includes(d.region);
+    const cells=metrics.map((m,mi)=>{
+      const v=vals[di][mi];
+      const pct=v!=null?Math.round(v/maxV[mi]*100):0;
+      const allV=vals.map(x=>x[mi]).filter(x=>x!=null);
+      const best=allV.length>1&&v===Math.max(...allV);
+      const worst=allV.length>2&&v===Math.min(...allV);
+      let disp='—';
+      if(v!=null){
+        if(m==='subsidy'||m==='income') disp=isM?Math.round(v/100).toLocaleString()+'억':Math.round(v).toLocaleString()+'백만';
+        else if(m==='distance') disp=isM?(v/1e6).toFixed(1)+'백만km':(v/1e4).toFixed(1)+'만km';
+        else if(m==='passengers') disp=isM?Math.round(v/10000).toLocaleString()+'만명':Math.round(v).toLocaleString()+'천명';
+        else disp=Math.round(v).toLocaleString()+'개';
+      }
+      return `<td class="${best?'best-val':worst?'worst-val':''}">
+        <div class="bar-inline">${disp}<div class="mini-bar"><div class="mini-fill" style="width:${pct}%"></div></div></div></td>`;
     }).join('');
-    const badges=[];
-    if(isQP(d)) badges.push('<span class="badge bqp" style="font-size:10px">준공영제</span>');
-    if(d.pop_decline) badges.push('<span class="badge bpd" style="font-size:10px">인구감소</span>');
-    return `<tr>
-      <td><div class="city-col"><span class="cn">${d.city}</span><span class="cr">${d.region}</span>${badges.join('')}</div></td>
-      ${cells}
-    </tr>`;
+    const b=[];
+    if(isQP(d)) b.push('<span class="badge bqp" style="font-size:10px">준공영제</span>');
+    if(d.pop_decline) b.push('<span class="badge bpd" style="font-size:10px">인구감소</span>');
+    return `<tr><td><div style="font-weight:500">${dn(d.city||d.region)}</div><div style="font-size:11px;color:var(--light)">${d.region}</div><div style="display:flex;gap:3px;margin-top:2px">${b.join('')}</div></td>${cells}</tr>`;
   }).join('');
 
-  el.innerHTML=`
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead><tr>
-          <th>지역</th>
-          ${metrics.map(m=>`<th style="text-align:right">${METRIC_LABELS[m]}</th>`).join('')}
-        </tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    <div style="margin-top:.75rem;font-size:11px;color:var(--light);font-family:var(--mono)">
-      기준 연도: ${YEARS[cmpYear]}년 · <span style="color:var(--green)">■ 최고값</span> · <span style="color:var(--rust)">■ 최저값</span> (3개 이상 비교 시)
-    </div>`;
+  el.innerHTML=`<div class="cmp-table-wrap"><table class="cmp-table">
+    <thead><tr><th>지역</th>${metrics.map(m=>`<th>${M_LABEL[m]}</th>`).join('')}</tr></thead>
+    <tbody>${rows}</tbody>
+  </table></div>
+  <div style="margin-top:.75rem;font-size:11px;color:var(--light);font-family:var(--mono)">
+    기준 연도: ${YEARS[cmpYear]}년 · <span style="color:var(--green)">■ 최고값</span> · <span style="color:var(--rust)">■ 최저값</span> (3개 이상 비교 시)
+  </div>`;
 }
 
-// ── INIT ──
-renderPills();
-renderPicker();
+/* ═════ 분석 결과 페이지 표 데이터 ═════ */
+function fillFindingsTables(){
+  const natData=[[2019,19795,51238,4220388],[2020,23598,39518,3136380],[2021,32985,39665,3096553],[2022,39849,43689,3392947],[2023,42709,48180,3564052],[2024,41002,54732,3686910]];
+  const bscData=[[2019,6847,8937,1029350],[2020,8198,6946,751427],[2021,9574,7030,753505],[2022,11267,7537,806449],[2023,11885,8137,844393],[2024,12500,8368,888404]];
+  const fillTb=(id,rows,baseRow)=>{
+    const tb=document.getElementById(id); if(!tb) return;
+    tb.innerHTML=rows.map((r,i)=>{
+      const isBase=i===0, isLast=i===rows.length-1;
+      const bg=isLast?'':'';
+      return `<tr style="${isLast?'font-weight:600':''}${i%2===0?'background:var(--surface2)':''}">
+        <td style="padding:8px 12px;border-bottom:.5px solid var(--border)">${r[0]}</td>
+        <td style="padding:8px 12px;border-bottom:.5px solid var(--border);text-align:right;font-family:var(--mono);color:${isBase?'inherit':'var(--rust)'}">${r[1].toLocaleString()}</td>
+        <td style="padding:8px 12px;border-bottom:.5px solid var(--border);text-align:right;font-family:var(--mono);color:${isBase||isLast&&id==='nat-tbody'?'inherit':'var(--rust)'}">${r[2].toLocaleString()}</td>
+        <td style="padding:8px 12px;border-bottom:.5px solid var(--border);text-align:right;font-family:var(--mono);color:${isBase?'inherit':'var(--rust)'}">${r[3].toLocaleString()}</td>
+      </tr>`;
+    }).join('');
+  };
+  fillTb('nat-tbody',natData);
+  fillTb('basic-tbody',bscData);
+}
+
+/* ── INIT ── */
+buildPills();
+buildPickers();
 initCompare();
+fillFindingsTables();
 </script>
 </body>
 </html>
